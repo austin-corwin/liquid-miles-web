@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "#ffc800",
+        light: "#ffffff",
+      },
+      fontFamily: {
+        primary: "Poppins",
       },
     },
   },
