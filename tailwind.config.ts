@@ -27,6 +27,9 @@ export default {
       fontSize: {
         hero: "4rem",
       },
+      boxShadow: {
+        "btn-fill": "inset 0 -4rem 0 0 #ffc800",
+      },
     },
   },
   plugins: [],
