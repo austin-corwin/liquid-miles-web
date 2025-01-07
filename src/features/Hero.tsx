@@ -1,14 +1,14 @@
 const Hero = ({}) => {
   return (
     <section
-      className={`w-full flex justify-center items-center min-h-[95vh] relative`}
+      className={`w-full flex justify-center items-center relative h-[500px] md:h-[650px] lg:h-[795px] xl:h-[calc(100vh-4rem)]`}
       style={{
-        background: `url("../../images/bg-beers.png") center -300px / cover no-repeat`,
+        background: `url("../../images/bg-beers.png") center bottom / cover no-repeat`,
       }}
     >
       <div className='flex justify-center items-center'>
         <div className='flex flex-col justify-center items-center'>
-          <h1 className='text-white font-primary font-extrabold text-hero'>
+          <h1 className='text-white font-primary font-extrabold text-lg lg:text-hero lg:leading-none'>
             Welcome to Liquid Miles
           </h1>
           <button className='p-4 rounded-lg border-primary border-2 w-fit font-extrabold font-primary text-white duration-300 transition-all hover:shadow-btn-fill'>
