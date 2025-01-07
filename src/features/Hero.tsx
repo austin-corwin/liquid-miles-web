@@ -11,7 +11,7 @@ const Hero = ({}) => {
       }}
     >
       <div className='flex justify-center items-center'>
-        <h1 className='text-white font-primary font-bold text-7xl'>
+        <h1 className='text-white font-primary font-bold text-hero'>
           Welcome to Liquid Miles
         </h1>
       </div>

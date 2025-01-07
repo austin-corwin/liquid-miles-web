@@ -18,7 +18,6 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${poppins.variable} antialiased`}>
         <Navigation />
-        <h1 className='text-white text-2xl font-bold'>fuck you</h1>
         {children}
       </body>
     </html>
