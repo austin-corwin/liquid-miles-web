@@ -11,9 +11,7 @@ const About = () => {
             What is Liquid Miles?
           </h2>
           <p>
-            The Liquid Miles Challenge is a one-of-a-kind endurance event taking
-            place on Saturday, August 3rd, 2024, in beautiful Fort Collins,
-            Colorado. Participants will attempt to conquer a unique test of both
+            Participants will attempt to conquer a unique test of both
             athleticism and camaraderie: running 10 miles, drinking 10 beers,
             and doing it all within a 10-hour window. It’s a quirky combination
             of fitness, fun, and friendly competition that promises plenty of
