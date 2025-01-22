@@ -21,7 +21,7 @@ const Navigation = () => {
       </div>
       <div className='flex items-center gap-4'>
         <Link
-          href='/about'
+          href='#about'
           className='font-primary font-extrabold hover:text-white duration-300 transition-all ease-in-out'
         >
           About

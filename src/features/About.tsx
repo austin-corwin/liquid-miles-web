@@ -4,7 +4,10 @@ import BlobMask from "@/components/BlobMask";
 
 const About = () => {
   return (
-    <div className='bg-secondary w-full flex justify-center py-12 pb-24'>
+    <div
+      id='about'
+      className='bg-secondary w-full flex justify-center py-12 pb-24'
+    >
       <div className='container w-full flex gap-12'>
         <section className='gap-4 flex flex-col text-white max-w-[700px]'>
           <h2 className='text-white font-extrabold text-[4rem] font-primary'>
