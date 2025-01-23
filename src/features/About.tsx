@@ -1,16 +1,18 @@
-// import neighborhoodRoute from "../../images/neighborhoodRoute.jpg";
-
 import BlobMask from "@/components/BlobMask";
+import Wave from "@/components/Wave";
 
 const About = () => {
   return (
     <div
       id='about'
-      className='bg-secondary w-full flex justify-center py-12 pb-24'
+      className='bg-secondary w-full flex justify-center py-12 pb-24 relative'
     >
-      <div className='container w-full flex gap-12'>
+      <div className='container w-full flex flex-col lg:flex-row gap-12'>
+        <div className='w-full max-w-[500px]'>
+          <BlobMask path='../../images/neighborhoodRoute.jpg' id='aboutPhoto' />
+        </div>
         <section className='gap-4 flex flex-col text-white max-w-[700px]'>
-          <h2 className='text-white font-extrabold text-[4rem] font-primary'>
+          <h2 className='text-white font-extrabold text-[1.5rem] lg:text-[4rem] font-primary '>
             What is Liquid Miles?
           </h2>
           <p>
@@ -40,10 +42,10 @@ const About = () => {
           </p>
           <p>Prost!</p>
         </section>
-
-        <div className='w-full max-w-[500px]'>
-          <BlobMask path='../../images/neighborhoodRoute.jpg' id='aboutPhoto' />
-        </div>
+      </div>
+      <div className='absolute -bottom-20 md:-bottom-40 lg:-bottom-[16rem] left-0 right-0 -rotate-180'>
+        <Wave fill='#1C606D' />
+        {/* <Wave fill='#000000' /> */}
       </div>
     </div>
   );

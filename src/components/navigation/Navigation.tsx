@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <div className='w-full h-16 bg-primary flex items-center justify-between px-4'>
       <div className='flex items-center'>
-        <Link href='/#about' className='relative w-14 h-14 flex'>
+        <Link href='/' className='relative w-14 h-14 flex'>
           <Image
             src={lmLogo}
             alt='Logo showing white ribbon with checkered background and cartoon beer'
@@ -21,7 +21,7 @@ const Navigation = () => {
       </div>
       <div className='flex items-center gap-4'>
         <Link
-          href='#about'
+          href='/about'
           className='font-primary font-extrabold hover:text-white duration-300 transition-all ease-in-out'
         >
           About

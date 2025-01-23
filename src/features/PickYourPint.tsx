@@ -5,14 +5,14 @@ const PickYourPint = () => {
       <h3 className='text-secondary font-primary uppercase font-extrabold text-[4rem]'>
         Pick Your Pint
       </h3>
-      <div className='flex gap-4'>
-        <div className='w-64 p-4 h-80 border-2 rounded-xl border-secondary'>
+      <div className='flex flex-col lg:flex-row gap-4'>
+        <div className='w-full p-4 h-80 border-2 rounded-xl border-secondary'>
           <p className='uppercase font-primary text-secondary font-semibold text-2xl'>
             Full Pint
           </p>
           A test card here
         </div>
-        <div className='w-64 p-4 h-80 border-2 rounded-xl border-secondary'>
+        <div className='w-full p-4 h-80 border-2 rounded-xl border-secondary'>
           <p className='uppercase font-primary text-secondary font-semibold text-2xl'>
             Half Pint
           </p>

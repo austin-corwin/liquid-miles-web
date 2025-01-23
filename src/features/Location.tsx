@@ -2,7 +2,7 @@ import BlobMask from "@/components/BlobMask";
 
 const Location = () => {
   return (
-    <div className='bg-white w-full flex justify-center py-12 pb-24'>
+    <div className='bg-white w-full flex justify-center py-48 pb-24'>
       <div className='container w-full flex gap-12'>
         <div className='w-full max-w-[500px]'>
           <BlobMask
