@@ -1,15 +1,19 @@
 import { useState } from "react";
 
-const FaqItem = ({ item }: { item: { title: string; body: string } }) => {
+const FaqItem = ({
+  item,
+}: {
+  item: { title: string; body: string; id: string };
+}) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const { title, body } = item;
+  const handleClick = () => {
+    setIsExpanded(!isExpanded);
+  };
   return (
     <li
       key={title}
-      onClick={() => {
-        setIsExpanded(!isExpanded);
-        // onClick();
-      }}
+      onClick={handleClick}
       className='uppercase font-primary font-extrabold w-full list-decimal text-base lg:text-2xl cursor-pointer'
     >
       {title && (
