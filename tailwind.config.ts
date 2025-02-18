@@ -19,8 +19,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "#ffc800",
-        contrastPrimary: "1C606D",
-        secondary: "#2C95A9",
+        secondary: "#1C606D",
+        // secondary: "#2C95A9",
         light: "#ffffff",
       },
       fontFamily: {

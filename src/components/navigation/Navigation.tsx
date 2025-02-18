@@ -2,7 +2,7 @@ import Image from "next/image";
 import lmLogo from "../../../public/logos/lm-logo.png";
 import Link from "next/link";
 
-const Navigation = () => {
+const Navigation = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='w-full h-16 bg-primary flex items-center justify-between px-4'>
       <div className='flex items-center'>
@@ -44,6 +44,7 @@ const Navigation = () => {
         >
           Contact
         </Link>
+        {children}
       </div>
     </div>
   );
