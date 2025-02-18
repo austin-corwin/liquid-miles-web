@@ -1,4 +1,3 @@
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import "../globals.css";
 export default function RootLayout({
   children,
@@ -6,14 +5,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-      {children}
-    </>
+    <div className='flex justify-center w-full bg-secondary'>
+      <div className='flex flex-col items-center container py-16'>
+        {children}
+      </div>
+    </div>
   );
 }
