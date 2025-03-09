@@ -34,9 +34,8 @@ export const fetchGraphQL = async <D = unknown>(
 			}
 		)
 		const { data } = await request.json()
-		if (data) {
-			console.log(data)
-			response.data = data
+		if (!!data) {
+			response.data = Object.values(data)?.[0] as D
 			response.success = true
 		}
 	} catch (error: unknown) {
