@@ -3,20 +3,8 @@
 import BlobMask from '@/components/BlobMask'
 import Wave from '@/components/Wave'
 import React from 'react'
-// import { fetchGraphQL } from './api/api'
-// import { pagesQuery } from './api/queries/pagesQuery'
 
 const About = () => {
-	// console.log('about...')
-	// React.useEffect(() => {
-	// 	console.log('loaded...')
-	// 	;(async () => {
-	// 		console.log('Get data...')
-	// 		const data = await fetchGraphQL(pagesQuery)
-	// 		console.log(data)
-	// 	})()
-	// }, [])
-
 	return (
 		<div
 			id='about'
