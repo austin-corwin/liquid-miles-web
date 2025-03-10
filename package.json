@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^6.10.1",
+		"@contentful/rich-text-plain-text-renderer": "^17.0.0",
 		"@contentful/rich-text-react-renderer": "^15.17.1",
 		"@contentful/rich-text-types": "^16.2.1",
 		"@contentful/vercel-nextjs-toolkit": "latest",

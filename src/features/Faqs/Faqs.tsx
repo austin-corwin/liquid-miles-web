@@ -13,7 +13,7 @@ const Faqs: React.FC<FaqsProps> = ({ faqs = [] }) => {
 			</h1>
 			<ol className='w-full text-xl text-white flex flex-col justify-center pl-12 pr-10 gap-12 h-full'>
 				{faqs.map((faq) => (
-					<FaqItem key={faq?._id} item={faq as Faq} />
+					<FaqItem key={faq?._id} item={faq} />
 				))}
 			</ol>
 		</>
