@@ -7,7 +7,6 @@ loadEnvConfig(projectDir)
 const config: CodegenConfig = {
 	overwrite: true,
 	schema: {
-		// [`${CMS_API}${process.env.CONTENTFUL_SPACE_ID}`]: {
 		[`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`]:
 			{
 				headers: {

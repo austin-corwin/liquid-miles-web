@@ -1,11 +1,11 @@
+import { pageFragment } from './fragments/pageFragment'
+
 export const pagesQuery = /* GraphQL */ `
+	${pageFragment}
 	query pageCollectionQuery {
 		pageCollection {
 			items {
-				sys {
-					id
-				}
-				# add the fields you want to query
+				...PageFragment
 			}
 		}
 	}
