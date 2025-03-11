@@ -1,3 +1,4 @@
+import { graphql } from '@/api/gql'
 import { PageCollection } from '@/api/gql/graphql'
 import Wave from '@/components/Wave'
 import { fetchGraphQL } from '@/features/api/api'
@@ -27,12 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { data } = await fetchGraphQL<PageCollection>(getPageBySlugQuery, {
 		slug,
 	})
+	const q = graphql(getPageBySlugQuery)
+	console.log(q)
 	const page = data?.items?.shift()
 	if (!page && slug) notFound()
 	const plainContent = documentToPlainTextString(page?.subtitle?.json) // -> Hello world!
 
 	const metaData: Metadata = {
-		title: page.title,
+		title: page?.title,
 		description: plainContent || 'Liquid Miles',
 	}
 	return metaData
