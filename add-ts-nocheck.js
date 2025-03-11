@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs')
 
-const generatedFilePath = 'src/gql/gql.ts'
+const generatedFilePath = 'src/api/gql/gql.ts'
 
 fs.readFile(generatedFilePath, 'utf8', (err, data) => {
 	if (err) {
