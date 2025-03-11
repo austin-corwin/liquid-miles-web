@@ -1,6 +1,7 @@
 'use client'
+
 import { Faq } from '@/api/gql/graphql'
-import { Content, Markdown } from '@/utils/contentful/markdown'
+import { Content, Markdown } from '@/components/atoms/Markdown'
 import { useState } from 'react'
 
 const FaqItem = ({ item }: { item: Faq }) => {
@@ -12,7 +13,7 @@ const FaqItem = ({ item }: { item: Faq }) => {
 
 	return (
 		<li
-			key={item.title}
+			key={item._id}
 			onClick={handleClick}
 			className='uppercase font-primary font-extrabold w-full list-decimal text-base lg:text-2xl cursor-pointer'
 		>
@@ -51,7 +52,7 @@ const FaqItem = ({ item }: { item: Faq }) => {
 							: `w-full normal-case font-normal text-base h-full max-h-[20rem] opacity-100 transition-all ease-in-out duration-300`
 					}
 				>
-					<Markdown content={item.content as Content} />
+					<Markdown content={item?.content as Content} />
 				</div>
 			)}
 		</li>
