@@ -1,70 +1,77 @@
-import { graphql } from '@/api/gql'
 import { PageCollection } from '@/api/gql/graphql'
 import Wave from '@/components/Wave'
 import { fetchGraphQL } from '@/features/api/api'
 import { getPageBySlugQuery } from '@/features/api/queries'
 
+import { Content, Markdown } from '@/components/atoms/Markdown'
 import FaqItem from '@/features/Faqs/FaqItem'
 import Home from '@/features/Home/Home'
-import { Content, Markdown } from '@/utils/contentful/markdown'
+import { parsePageTitle } from '@/features/seo/utils'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 type Props = {
 	params?: Promise<{ slug: string[] }>
-	searchParams?: Promise<unknown>
 }
 
 // Catch-all page generation using ISR
-export const dynamicParams = true // attempt to build a page if it is not already cached
-export const revalidate = false // only rebuild cache on manual revalidations
+export const dynamicParams = true // try to build a page before 404ing if it is not in build cache
+export const revalidate = 3600 // 1 hour cache lifetime
+
+const getPagebySlug = async (slug: string = 'home') => {
+	const { data } = await fetchGraphQL<PageCollection>(getPageBySlugQuery, {
+		slug,
+	})
+	return data?.items?.shift()
+}
 
 // generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const requestParams = await params
-	// @TODO: abstract this function for use by any content type
 	const slug = requestParams?.slug?.join('/')
-	const { data } = await fetchGraphQL<PageCollection>(getPageBySlugQuery, {
-		slug,
-	})
-	const q = graphql(getPageBySlugQuery)
-	console.log(q)
-	const page = data?.items?.shift()
-	if (!page && slug) notFound()
-	const plainContent = documentToPlainTextString(page?.subtitle?.json) // -> Hello world!
+	const page = await getPagebySlug(slug)
+	if (!page) {
+		// Handle 404 metadata here since Next does not yet support it in not-found.tsx
+		return {
+			title: parsePageTitle('404'),
+			description: 'Unable to find the page you were looking for',
+			robots: 'noindex,nofollow',
+		}
+	}
 
 	const metaData: Metadata = {
-		title: page?.title,
-		description: plainContent || 'Liquid Miles',
+		title: parsePageTitle(page?.title),
+		description: documentToPlainTextString(page?.subtitle?.json),
 	}
+
 	return metaData
 }
 
 // control build-time page generation
-// returning an empty array will build pages on request, if not already cached
-export async function generateStaticParams(): Promise<unknown[]> {
-	return []
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
+	return [
+		{
+			slug: ['home'],
+		},
+	]
 }
 
 export default async function Page({ params }: Props) {
 	const requestParams = await params
 	const slug = requestParams?.slug?.join('/')
-	if (!slug) return <Home />
-
-	const { data } = await fetchGraphQL<PageCollection>(getPageBySlugQuery, {
-		slug,
-	})
-	const page = data?.items?.shift()
-	if (!page) notFound()
+	const page = await getPagebySlug(slug)
 	const faqs = page?.faqsCollection?.items
+	if (!page) notFound()
 
-	return (
+	return page?.slug === 'home' ? (
+		<Home />
+	) : (
 		<div className='flex flex-col w-full gap-16'>
 			<header className='px-6 py-16 bg-secondary'>
 				<div className='flex flex-col gap-8 mx-auto container'>
 					<h1 className='w-full mb-12 text-2xl lg:text-[6rem] font-extrabold font-primary uppercase text-white border-b-4 border-white lg:leading-[5rem] pb-3 container'>
-						{page.title}
+						{page?.title}
 					</h1>
 					{page?.subtitle && (
 						<h2 className='text-2xl'>
@@ -74,7 +81,9 @@ export default async function Page({ params }: Props) {
 				</div>
 			</header>
 			<div className='container mx-auto text-lg'>
-				<Markdown content={page.content as Content} />
+				{page?.content?.json && (
+					<Markdown content={page?.content as Content} />
+				)}
 			</div>
 			{faqs?.length > 0 && (
 				<section className='p-6'>

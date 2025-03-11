@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS, Document, Node } from '@contentful/rich-text-types'
 import Image from 'next/image'
 
 interface Asset {
@@ -16,7 +15,7 @@ interface AssetLink {
 }
 
 export interface Content {
-	json: any
+	json: Document
 	links: {
 		assets: AssetLink
 	}
@@ -39,9 +38,9 @@ function RichTextAsset({
 }
 
 export function Markdown({ content }: { content: Content }) {
-	return documentToReactComponents(content.json, {
+	return documentToReactComponents(content?.json, {
 		renderNode: {
-			[BLOCKS.EMBEDDED_ASSET]: (node: any) => (
+			[BLOCKS.EMBEDDED_ASSET]: (node: Node) => (
 				<RichTextAsset
 					id={node.data.target.sys.id}
 					assets={content.links.assets.block}

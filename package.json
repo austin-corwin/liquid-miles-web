@@ -7,8 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"setup": "node ./src/utils/contentful/setup.js",
-		"codegen": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js"
+		"codegen": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js",
+		"inst": "npm install --legacy-peer-deps"
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^6.10.1",
@@ -16,7 +16,6 @@
 		"@contentful/rich-text-react-renderer": "^15.17.1",
 		"@contentful/rich-text-types": "^16.2.1",
 		"@contentful/vercel-nextjs-toolkit": "latest",
-		"contentful-import": "^9.0.4",
 		"date-fns": "2.30.0",
 		"graphql": "^16.10.0",
 		"next": "15.1.3",
