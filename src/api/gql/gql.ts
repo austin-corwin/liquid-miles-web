@@ -16,13 +16,15 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 type Documents = {
     "\n\tquery Faqs {\n\t\tfaqCollection(limit: 50) {\n\t\t\titems {\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": typeof types.FaqsDocument,
-    "\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tsubtitle {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tfaqsCollection {\n\t\t\t\t\titems {\n\t\t\t\t\t\t__typename\n\t\t\t\t\t\t_id\n\t\t\t\t\t\ttitle\n\t\t\t\t\t\tcontent {\n\t\t\t\t\t\t\tjson\n\t\t\t\t\t\t\t__typename\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": typeof types.GetPageBySlugDocument,
-    "\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\tsys {\n\t\t\t\t\tid\n\t\t\t\t}\n\t\t\t\t# add the fields you want to query\n\t\t\t}\n\t\t}\n\t}\n": typeof types.PageCollectionQueryDocument,
+    "\n\tfragment PageFragment on Page {\n\t\t__typename\n\t\t_id\n\t\ttitle\n\t\tslug\n\t\tcontent {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tsubtitle {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tfaqsCollection {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": typeof types.PageFragmentFragmentDoc,
+    "\n\t\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n": typeof types.GetPageBySlugDocument,
+    "\n\t\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n": typeof types.PageCollectionQueryDocument,
 };
 const documents: Documents = {
     "\n\tquery Faqs {\n\t\tfaqCollection(limit: 50) {\n\t\t\titems {\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": types.FaqsDocument,
-    "\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tsubtitle {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tfaqsCollection {\n\t\t\t\t\titems {\n\t\t\t\t\t\t__typename\n\t\t\t\t\t\t_id\n\t\t\t\t\t\ttitle\n\t\t\t\t\t\tcontent {\n\t\t\t\t\t\t\tjson\n\t\t\t\t\t\t\t__typename\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": types.GetPageBySlugDocument,
-    "\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\tsys {\n\t\t\t\t\tid\n\t\t\t\t}\n\t\t\t\t# add the fields you want to query\n\t\t\t}\n\t\t}\n\t}\n": types.PageCollectionQueryDocument,
+    "\n\tfragment PageFragment on Page {\n\t\t__typename\n\t\t_id\n\t\ttitle\n\t\tslug\n\t\tcontent {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tsubtitle {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tfaqsCollection {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": types.PageFragmentFragmentDoc,
+    "\n\t\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n": types.GetPageBySlugDocument,
+    "\n\t\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n": types.PageCollectionQueryDocument,
 };
 
 /**
@@ -46,11 +48,15 @@ export function graphql(source: "\n\tquery Faqs {\n\t\tfaqCollection(limit: 50) 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tsubtitle {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tfaqsCollection {\n\t\t\t\t\titems {\n\t\t\t\t\t\t__typename\n\t\t\t\t\t\t_id\n\t\t\t\t\t\ttitle\n\t\t\t\t\t\tcontent {\n\t\t\t\t\t\t\tjson\n\t\t\t\t\t\t\t__typename\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tsubtitle {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t\tfaqsCollection {\n\t\t\t\t\titems {\n\t\t\t\t\t\t__typename\n\t\t\t\t\t\t_id\n\t\t\t\t\t\ttitle\n\t\t\t\t\t\tcontent {\n\t\t\t\t\t\t\tjson\n\t\t\t\t\t\t\t__typename\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n"];
+export function graphql(source: "\n\tfragment PageFragment on Page {\n\t\t__typename\n\t\t_id\n\t\ttitle\n\t\tslug\n\t\tcontent {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tsubtitle {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tfaqsCollection {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\tfragment PageFragment on Page {\n\t\t__typename\n\t\t_id\n\t\ttitle\n\t\tslug\n\t\tcontent {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tsubtitle {\n\t\t\tjson\n\t\t\t__typename\n\t\t}\n\t\tfaqsCollection {\n\t\t\titems {\n\t\t\t\t__typename\n\t\t\t\t_id\n\t\t\t\ttitle\n\t\t\t\tcontent {\n\t\t\t\t\tjson\n\t\t\t\t\t__typename\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\tsys {\n\t\t\t\t\tid\n\t\t\t\t}\n\t\t\t\t# add the fields you want to query\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\tsys {\n\t\t\t\t\tid\n\t\t\t\t}\n\t\t\t\t# add the fields you want to query\n\t\t\t}\n\t\t}\n\t}\n"];
+export function graphql(source: "\n\t\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\t\n\tquery GetPageBySlug($slug: String!) {\n\t\tpageCollection(where: { slug: $slug }, limit: 1) {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n\t\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\t\n\tquery pageCollectionQuery {\n\t\tpageCollection {\n\t\t\titems {\n\t\t\t\t...PageFragment\n\t\t\t}\n\t\t}\n\t}\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

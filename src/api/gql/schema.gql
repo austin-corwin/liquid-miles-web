@@ -630,6 +630,79 @@ type Query {
   faqCollection(limit: Int = 100, locale: String, order: [FaqOrder], preview: Boolean, skip: Int = 0, where: FaqFilter): FaqCollection
   page(id: String!, locale: String, preview: Boolean): Page
   pageCollection(limit: Int = 100, locale: String, order: [PageOrder], preview: Boolean, skip: Int = 0, where: PageFilter): PageCollection
+  race(id: String!, locale: String, preview: Boolean): Race
+  raceCollection(limit: Int = 100, locale: String, order: [RaceOrder], preview: Boolean, skip: Int = 0, where: RaceFilter): RaceCollection
+}
+
+"""
+Individual races (years) [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/race)
+"""
+type Race implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): RaceLinkingCollections
+  raceDate(locale: String): DateTime
+  slug(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type RaceCollection {
+  items: [Race]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input RaceFilter {
+  AND: [RaceFilter]
+  OR: [RaceFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  raceDate: DateTime
+  raceDate_exists: Boolean
+  raceDate_gt: DateTime
+  raceDate_gte: DateTime
+  raceDate_in: [DateTime]
+  raceDate_lt: DateTime
+  raceDate_lte: DateTime
+  raceDate_not: DateTime
+  raceDate_not_in: [DateTime]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type RaceLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum RaceOrder {
+  raceDate_ASC
+  raceDate_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 interface ResourceLink {
