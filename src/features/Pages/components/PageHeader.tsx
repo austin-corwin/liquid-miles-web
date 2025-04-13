@@ -7,7 +7,11 @@ interface PageHeaderProps extends StackProps {
 	title?: string
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, children }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({
+	title,
+	children,
+	...stackProps
+}) => {
 	return (
 		<VStack
 			as='header'
@@ -15,8 +19,14 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, children }) => {
 			gap={{ base: 4, md: 8 }}
 			py={{ base: 8, md: 12 }}
 			position={'relative'}
+			{...stackProps}
 		>
-			<Heading w='full' as='h1' size={{ base: '3xl', lg: '4xl' }}>
+			<Heading
+				w='full'
+				as='h1'
+				size={{ base: '3xl', lg: '4xl' }}
+				color='inherit'
+			>
 				{title}
 			</Heading>
 			{children && <Box w='full'>{children}</Box>}
