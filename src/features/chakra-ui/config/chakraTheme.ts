@@ -7,19 +7,19 @@ import fonts from './fonts'
 const twTheme = getTailwindTheme()
 
 const chakraTheme = extendTheme({
-	breakpoints,
-	components: componentsConfig,
-	colors: {
-		...twTheme.colors,
-	},
-	fonts: fonts,
-	initialColorMode: 'light',
-	sizes: {
-		container: {
-			...breakpoints,
-		},
-	},
-	useSystemColorMode: false,
+  breakpoints,
+  components: componentsConfig,
+  colors: {
+    ...twTheme.colors,
+  },
+  fonts: fonts,
+  initialColorMode: 'light',
+  sizes: {
+    container: {
+      ...breakpoints,
+    },
+  },
+  useSystemColorMode: false,
 })
 
 export { chakraTheme }

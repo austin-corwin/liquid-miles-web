@@ -5,11 +5,11 @@ import React from 'react'
 import { chakraTheme } from '../config/chakraTheme'
 
 interface ChakraUiProvider {
-	children: React.ReactNode
+  children: React.ReactNode
 }
 
 const ChakraUiProvider: React.FC<ChakraUiProvider> = ({ children }) => {
-	return <ChakraProvider theme={chakraTheme}>{children}</ChakraProvider>
+  return <ChakraProvider theme={chakraTheme}>{children}</ChakraProvider>
 }
 
 export { ChakraUiProvider }
