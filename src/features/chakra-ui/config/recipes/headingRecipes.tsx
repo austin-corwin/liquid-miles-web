@@ -18,50 +18,58 @@ const headingRecipes: Record<HeadingRecipe, HeadingProps> = {
   },
   H2: {
     as: 'h2',
-    size: '4xl',
+    size: '2xl',
     textTransform: 'capitalize',
   },
   H3: {
     as: 'h3',
-    size: '2xl',
-    textTransform: 'uppercase',
-  },
-  H4: {
-    as: 'h4',
     size: 'xl',
     textTransform: 'capitalize',
   },
+  H4: {
+    as: 'h4',
+    size: 'lg',
+    textTransform: 'uppercase',
+  },
   H5: {
     as: 'h5',
-    size: 'lg',
+    size: 'md',
     textDecoration: 'underline',
-    textUnderlineOffset: '6px',
+    textUnderlineOffset: '4px',
     mb: 2,
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
   },
   H6: {
     as: 'h6',
-    size: 'base',
+    size: 'sm',
     textTransform: 'uppercase',
   },
   Anchor: {
     role: 'group',
     cursor: 'pointer',
+    position: 'relative',
+    pr: 6,
     onClick: async (e: React.MouseEvent<HTMLHeadingElement>) => {
+      // @TODO: connect this to a toast
       const text = `${window.location.href}#${e.currentTarget.id}`
       await navigator.clipboard.writeText(text)
-      console.log('Copy: ', text)
     },
     _after: {
-      content: '"🔗"',
-      position: 'relative',
-      left: 2,
+      content: '"#"',
+      position: 'absolute',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      h: 'full',
+      fontSize: 'xl',
+      right: 0,
       opacity: 0,
       trasition: CSSTransition.EaseIn200,
     },
     _hover: {
       _after: {
-        opacity: 1,
+        opacity: 0.8,
       },
     },
   },

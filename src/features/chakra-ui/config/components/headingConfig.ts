@@ -10,8 +10,8 @@ const headingConfig: ComponentSingleStyleConfig = defineStyleConfig({
   },
   variants: {},
   sizes: {
+    '4xl': { fontSize: '4.5rem', lineHeight: 1 }, // 72
     '5xl': { fontSize: '5.25rem', lineHeight: 1.1 }, // 84px
-    '6xl': { fontSize: '6rem', lineHeight: 1 }, // 96px
   },
   defaultProps: {},
 })

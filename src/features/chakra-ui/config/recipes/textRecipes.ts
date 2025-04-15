@@ -11,6 +11,14 @@ const textRecipes: Record<TextRecipe, TextProps> = {
     as: 'p',
     fontSize: 'xl',
     fontWeight: 'medium',
+    sx: {
+      '> a': {
+        color: 'secondary',
+        _hover: {
+          textDecoration: 'underline',
+        },
+      },
+    },
   },
   Body: {
     as: 'p',
@@ -22,7 +30,7 @@ const textRecipes: Record<TextRecipe, TextProps> = {
         color: 'secondary',
         textDecoration: 'underline',
         _hover: {
-          color: 'tertiary',
+          color: 'black',
         },
       },
     },
@@ -30,10 +38,20 @@ const textRecipes: Record<TextRecipe, TextProps> = {
   Compact: {
     fontSize: 'md',
     fontWeight: 'normal',
+    sx: {
+      '> a': {
+        textDecoration: 'underline',
+      },
+    },
   },
   FinePrint: {
     fontSize: 'sm',
     fontWeight: 'normal',
+    sx: {
+      '> a': {
+        textDecoration: 'underline',
+      },
+    },
   },
 }
 

@@ -1,5 +1,6 @@
 'use client'
 
+import { headingRecipes } from '@/features/chakra-ui/config/recipes'
 import { Heading, StackProps, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 
@@ -27,7 +28,8 @@ const UiComponent: React.FC<UiComponentProps> = ({
           gap={4}
           w='full'
         >
-          <Heading as='h3' size='lg' w='full'>
+          {/* <Heading as='h3' size='lg' w='full'> */}
+          <Heading {...headingRecipes.H3} {...headingRecipes.Anchor}>
             {title}
           </Heading>
           {description && (

@@ -1,5 +1,6 @@
 'use client'
 
+import { headingRecipes } from '@/features/chakra-ui/config/recipes'
 import { Box, Heading, Icon, StackProps, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { GoBookmarkFill } from 'react-icons/go'
@@ -12,8 +13,9 @@ const UiSection: React.FC<UiSectionProps> = ({
   icon = GoBookmarkFill,
   ...props
 }) => {
-  const shallowProps: Partial<UiSectionProps> = props
+  const shallowProps: Partial<UiSectionProps> = { ...props }
   delete shallowProps.icon
+  delete shallowProps.id
   const stackProps: StackProps = shallowProps
   return (
     <VStack
@@ -31,7 +33,12 @@ const UiSection: React.FC<UiSectionProps> = ({
         gap={6}
         pb={4}
       >
-        <Heading as='h2' size='2xl' gap={4}>
+        <Heading
+          {...headingRecipes.H2}
+          {...headingRecipes.Anchor}
+          id={props?.id}
+          gap={4}
+        >
           <Box
             w='fit-content'
             aspectRatio='1/1'

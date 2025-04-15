@@ -1,5 +1,6 @@
 'use client'
 
+import { textRecipes } from '@/features/chakra-ui/config/recipes/textRecipes'
 import { PageHeader } from '@/features/Pages/components/PageHeader'
 import { PageLayout } from '@/features/Pages/components/PageLayout'
 import { Divider, HStack, Text, VStack } from '@chakra-ui/react'
@@ -13,8 +14,9 @@ const StyleGuide: React.FC = () => {
   return (
     <PageLayout bg='white'>
       <PageHeader title='UI Components & Style Guide'>
-        <Text fontSize='xl'>
-          Just a quick overview of the design tokens and core components.
+        <Text {...textRecipes.Lead}>
+          Overview of the design tokens, <a href='#recipes'>recipes</a> and core
+          components built on Chakra UI.
         </Text>
       </PageHeader>
 
