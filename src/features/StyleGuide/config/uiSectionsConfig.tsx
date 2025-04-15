@@ -15,6 +15,7 @@ export interface UiSectionProps extends StackProps {
   description?: React.ReactNode
   previews?: UiComponentPreview[]
   icon?: ElementType
+  tags?: string[]
 }
 
 export interface UiComponentPreview extends UiSectionProps {
@@ -49,6 +50,15 @@ const uiSectionConfig: UiSectionProps[] = [
     description: 'User inputs, controls and form components.',
     previews: [],
     icon: TbInputCheck,
+  },
+  {
+    id: 'recipes',
+    title: 'Recipes',
+    description: 'Typesafe ',
+    children: 'asdasd',
+    previews: [],
+    icon: TbInputCheck,
+    tags: ['new'],
   },
 ]
 

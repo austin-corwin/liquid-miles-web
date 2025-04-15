@@ -26,7 +26,8 @@ const StyleGuide: React.FC = () => {
         justifyContent='flex-start'
         flexDirection={{ base: 'column', md: 'row' }}
         gap={8}
-        py={12}
+        pt={12}
+        pb={24}
         w='full'
       >
         <VStack
