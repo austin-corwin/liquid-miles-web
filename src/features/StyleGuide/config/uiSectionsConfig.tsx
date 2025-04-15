@@ -26,7 +26,7 @@ const uiSectionConfig: UiSectionProps[] = [
     id: 'typography',
     title: 'Typography',
     description: 'Fonts etc.',
-    previews: [previews.headingsPreviewConfig],
+    previews: [previews.headingsPreviewConfig, previews.TextPreviewConfig],
     icon: TbTypography,
   },
   {

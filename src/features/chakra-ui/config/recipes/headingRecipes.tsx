@@ -13,12 +13,12 @@ export enum HeadingRecipe {
 const headingRecipes: Record<HeadingRecipe, HeadingProps> = {
   H1: {
     as: 'h1',
-    size: '4xl',
+    size: '5xl',
     textTransform: 'capitalize',
   },
   H2: {
     as: 'h2',
-    size: '3xl',
+    size: '4xl',
     textTransform: 'capitalize',
   },
   H3: {
@@ -34,6 +34,9 @@ const headingRecipes: Record<HeadingRecipe, HeadingProps> = {
   H5: {
     as: 'h5',
     size: 'lg',
+    textDecoration: 'underline',
+    textUnderlineOffset: '6px',
+    mb: 2,
     textTransform: 'uppercase',
   },
   H6: {

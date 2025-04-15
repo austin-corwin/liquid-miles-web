@@ -10,16 +10,8 @@ const headingConfig: ComponentSingleStyleConfig = defineStyleConfig({
   },
   variants: {},
   sizes: {
-    // sm: { fontSize: '0.875rem' },
-    // base: { fontSize: '1rem' },
-    // lg: { fontSize: '1.125rem' }, // 18px
-    // xl: { fontSize: '1.25rem' }, // 20px
-    // '2xl': { fontSize: '1.5rem' }, // 24px
-    // '3xl': { fontSize: '2rem' }, // 32px
-    // '4xl': { fontSize: '2.875rem' }, // 46px
-    // '5xl': { fontSize: '3.125rem' }, // 50px
-    // '6xl': { fontSize: '3.5rem' }, // 56px
-    // '7xl': { fontSize: '4.5rem' }, // 72px
+    '5xl': { fontSize: '5.25rem', lineHeight: 1.1 }, // 84px
+    '6xl': { fontSize: '6rem', lineHeight: 1 }, // 96px
   },
   defaultProps: {},
 })

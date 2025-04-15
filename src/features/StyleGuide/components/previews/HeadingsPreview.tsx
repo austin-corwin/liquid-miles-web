@@ -7,6 +7,15 @@ import { UiComponentPreview } from '../../config/uiSectionsConfig'
 const HeadingsPreview: React.FC = () => {
   return (
     <>
+      <Heading size='6xl'>
+        Heading <Badge size='sm'>6xl</Badge>
+      </Heading>
+      <Heading size='5xl'>
+        Heading <Badge size='sm'>5xl</Badge>
+      </Heading>
+      <Heading size='4xl'>
+        Heading <Badge size='sm'>4xl</Badge>
+      </Heading>
       <Heading size='3xl'>
         Heading <Badge size='sm'>3xl</Badge>
       </Heading>

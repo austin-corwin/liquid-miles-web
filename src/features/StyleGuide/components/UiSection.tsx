@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  Box,
-  Heading,
-  HStack,
-  Icon,
-  StackProps,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Heading, Icon, StackProps, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { GoBookmarkFill } from 'react-icons/go'
 import { UiSectionProps } from '../config/uiSectionsConfig'
@@ -56,13 +49,9 @@ const UiSection: React.FC<UiSectionProps> = ({
           </Box>
         )}
       </VStack>
-      <HStack
-        w='full'
-        gap={{ base: 6, md: 12 }}
-        flexDirection={{ base: 'column', lg: 'row' }}
-      >
+      <VStack w='full' gap={{ base: 6, md: 12 }}>
         {children}
-      </HStack>
+      </VStack>
     </VStack>
   )
 }
