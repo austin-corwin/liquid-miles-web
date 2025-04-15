@@ -1,4 +1,5 @@
 export * from './ColorsPreview'
 export * from './HeadingsPreview'
 export * from './IconsPreview'
+export * from './RecipeExamplesPreview'
 export * from './TextPreview'

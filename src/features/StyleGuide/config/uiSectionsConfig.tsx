@@ -1,6 +1,7 @@
 import { StackProps } from '@chakra-ui/react'
 import { ElementType } from 'react'
 import {
+  TbChecklist,
   TbColorSwatch,
   TbFavicon,
   TbInputCheck,
@@ -8,6 +9,7 @@ import {
 } from 'react-icons/tb'
 import * as previews from '../components/previews'
 import { IconsDescription } from '../components/snippets/IconsDescription'
+import { RecipesDescription } from '../components/snippets/RecipesDescription'
 
 export interface UiSectionProps extends StackProps {
   id: string
@@ -54,10 +56,9 @@ const uiSectionConfig: UiSectionProps[] = [
   {
     id: 'recipes',
     title: 'Recipes',
-    description: 'Typesafe ',
-    children: 'asdasd',
-    previews: [],
-    icon: TbInputCheck,
+    description: <RecipesDescription />,
+    previews: [previews.recipeExamplesPreviewConfig],
+    icon: TbChecklist,
     tags: ['new'],
   },
 ]
