@@ -9,32 +9,6 @@ const buttonConfig: ComponentSingleStyleConfig = defineStyleConfig({
     letterSpacing: 0.25,
   },
   variants: {
-    // link: defineStyle({
-    // 	fontWeight: 'bold',
-    // 	background: 'none',
-    // 	border: 'none',
-    // }),
-    // navLink: defineStyle({
-    // 	fontWeight: 'bold',
-    // 	background: 'none',
-    // 	height: 'fit-content',
-    // 	border: 'none',
-    // 	p: 0,
-    // 	py: 2,
-    // 	_active: {
-    // 		color: 'primary',
-    // 		position: 'relative',
-    // 		_after: {
-    // 			content: '""',
-    // 			position: 'absolute',
-    // 			right: 0,
-    // 			bottom: 0,
-    // 			height: '2px',
-    // 			w: 'full',
-    // 			background: 'primary',
-    // 		},
-    // 	},
-    // }),
     unstyled: defineStyle({
       padding: 0,
       px: 0,
@@ -42,6 +16,9 @@ const buttonConfig: ComponentSingleStyleConfig = defineStyleConfig({
       height: 'unset',
       minWidth: 'unset',
     }),
+  },
+  defaultProps: {
+    colorScheme: 'dark',
   },
 })
 

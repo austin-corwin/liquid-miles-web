@@ -17,9 +17,13 @@ const ButtonsPreview: React.FC = () => {
     'outline',
     'ghost',
     'link',
-    'unstyled',
   ]
-  const colorScheme: ButtonProps['colorScheme'][] = ['gray', 'yellow', 'teal']
+  const colorScheme: ButtonProps['colorScheme'][] = [
+    'dark',
+    'gray',
+    'yellow',
+    'teal',
+  ]
 
   return (
     <>
