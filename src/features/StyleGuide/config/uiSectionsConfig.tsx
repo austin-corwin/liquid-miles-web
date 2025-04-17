@@ -50,7 +50,7 @@ const uiSectionConfig: UiSectionProps[] = [
     id: 'controls',
     title: 'Controls',
     description: 'User inputs, controls and form components.',
-    previews: [previews.buttonsPreviewConfig],
+    previews: [previews.buttonsPreviewConfig, previews.formPreviewConfig],
     icon: TbInputCheck,
   },
   {

@@ -24,6 +24,17 @@ export default {
         warning: '#FF8966',
         error: '#E5446D',
         light: '#ffffff',
+        dark: {
+          50: '#FFF',
+          100: '#DDD',
+          200: 'pink',
+          300: 'blue',
+          400: 'purple',
+          500: '#444', // primary bg and border color
+          600: '#000', // hover color
+          700: '#1C606D', // active color for solid
+          900: 'yellow',
+        },
       },
       fontFamily: {
         primary: 'Poppins',
