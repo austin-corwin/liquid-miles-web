@@ -1,17 +1,21 @@
+import { Divider } from '@chakra-ui/react'
+import { PageHeader } from './Pages/components/PageHeader'
+import { PageLayout } from './Pages/components/PageLayout'
+
 const Contact = () => {
   return (
-    <>
-      <h1 className='w-full mb-12 text-2xl lg:text-[6rem] font-extrabold font-primary uppercase text-white border-b-4 border-white lg:leading-[5rem] pb-3 '>
-        Contact
-      </h1>
+    <PageLayout bg='secondary'>
+      <PageHeader title='Contact' color='white'>
+        <Divider borderTopColor='white' borderTopWidth={2} opacity={1} />
+      </PageHeader>
       <p className='text-white font-primary w-full'>
-        Contact us at{" "}
+        Contact us at{' '}
         <a className='underline' href='mailto:liquidmilesrace@gmail.com'>
           liquidmilesrace@gmail.com
         </a>
       </p>
-    </>
-  );
-};
+    </PageLayout>
+  )
+}
 
-export default Contact;
+export default Contact
