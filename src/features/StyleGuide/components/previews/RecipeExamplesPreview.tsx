@@ -15,7 +15,7 @@ const RecipeExamplesPreview: React.FC = () => {
           Properties are set explicitly and repeated providing flexibility, but
           also room for error and bloat.
         </Text>
-        <Code px={4} my={4} rounded='lg' colorScheme='gray'>
+        <Code px={4} my={4} rounded='lg' colorScheme='gray' w='full'>
           <pre>{`
 <Heading
   as='h2'

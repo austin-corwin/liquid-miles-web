@@ -30,9 +30,9 @@ export default {
           200: 'pink',
           300: 'blue',
           400: 'purple',
-          500: '#444', // primary bg and border color
-          600: '#000', // hover color
-          700: '#1C606D', // active color for solid
+          500: '#444',
+          600: '#000',
+          700: '#1C606D',
           900: 'yellow',
         },
       },

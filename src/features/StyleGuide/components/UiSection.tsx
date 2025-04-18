@@ -51,7 +51,7 @@ const UiSection: React.FC<UiSectionProps> = ({
           {title}
         </Heading>
         {description && (
-          <Box fontFamily={'mono'} w='full' maxW='prose'>
+          <Box fontFamily={'mono'} w='full'>
             {description}
           </Box>
         )}
