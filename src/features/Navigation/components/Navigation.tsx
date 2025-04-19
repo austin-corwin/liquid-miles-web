@@ -2,6 +2,7 @@ import { Link as ChakraLink, HStack, Image, Text } from '@chakra-ui/react'
 import { mainNavigationConfig } from '../config/mainNavigationConfig'
 import { AuthLinks } from './AuthLinks'
 import { NavMenu } from './NavMenu'
+import { NavToggle } from './mobile/NavToggle'
 
 const Navigation: React.FC<{ children?: React.ReactNode }> = () => {
   return (
@@ -37,9 +38,13 @@ const Navigation: React.FC<{ children?: React.ReactNode }> = () => {
           </Text>
         </ChakraLink>
       </HStack>
-      <NavMenu links={mainNavigationConfig}>
+      <NavMenu
+        links={mainNavigationConfig}
+        display={{ base: 'none', md: 'flex' }}
+      >
         <AuthLinks />
       </NavMenu>
+      <NavToggle />
     </HStack>
   )
 }
