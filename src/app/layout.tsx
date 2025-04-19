@@ -1,5 +1,6 @@
 import { fonts } from '@/config/fonts'
 import { ChakraUiProvider } from '@/features/chakra-ui/components/ChakraUiProvider'
+import { DebugBreakpoints } from '@/features/chakra-ui/components/DebugBreakpoints'
 import Navigation from '@/features/Navigation/components/Navigation'
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
@@ -23,6 +24,7 @@ export default function RootLayout({
           <ChakraUiProvider>
             <Navigation />
             <main>{children}</main>
+            <DebugBreakpoints />
           </ChakraUiProvider>
         </body>
       </html>
