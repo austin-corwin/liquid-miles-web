@@ -13,7 +13,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link, ...linkProps }) => {
     <ChakraLink
       href={link?.url}
       target={link?.target || '_self'}
-      itemprop='url'
+      itemProp='url'
       variant='nav'
       //   fontSize={{ base: 'sm', md: 'xs' }}
       className='font-primary font-extrabold hover:text-white duration-300 transition-all ease-in-out'

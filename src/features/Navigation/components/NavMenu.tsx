@@ -13,6 +13,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ links, ...stackProps }) => {
       {links.map((link) => (
         <NavLink link={link} key={link._id} />
       ))}
+      {stackProps?.children}
     </HStack>
   )
 }
