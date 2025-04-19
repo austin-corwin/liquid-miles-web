@@ -2,6 +2,7 @@
 
 import { Link } from '@/api/gql/graphql'
 import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 interface NavLinkProps extends LinkProps {
@@ -9,14 +10,16 @@ interface NavLinkProps extends LinkProps {
 }
 
 const NavLink: React.FC<NavLinkProps> = ({ link, ...linkProps }) => {
+  const pathname = usePathname()
   return (
     <ChakraLink
       href={link?.url}
       target={link?.target || '_self'}
       itemProp='url'
       variant='nav'
-      //   fontSize={{ base: 'sm', md: 'xs' }}
-      className='font-primary font-extrabold hover:text-white duration-300 transition-all ease-in-out'
+      textDecoration={pathname === link?.url && 'underline'}
+      pointerEvents={pathname === link?.url ? 'none' : 'auto'}
+      textUnderlineOffset={2}
       {...linkProps}
     >
       {link?.label}

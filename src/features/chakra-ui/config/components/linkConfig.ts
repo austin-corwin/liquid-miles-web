@@ -16,7 +16,7 @@ const linkConfig: ComponentSingleStyleConfig = defineStyleConfig({
       color: 'black',
       transition: CSSTransition.EaseIn200,
       _hover: {
-        textDecoration: 'none',
+        textDecoration: 'inherit',
         color: 'white',
       },
     }),
