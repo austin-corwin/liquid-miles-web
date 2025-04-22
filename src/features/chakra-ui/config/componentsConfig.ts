@@ -12,6 +12,7 @@ import {
   selectConfig,
   skeletonConfig,
 } from './components'
+import { textareaConfig } from './components/textareaConfig'
 
 const componentsConfig: Record<string, ComponentStyleConfig> = {
   Accordion: accordionConfig,
@@ -25,6 +26,7 @@ const componentsConfig: Record<string, ComponentStyleConfig> = {
   Radio: radioConfig,
   Select: selectConfig,
   Skeleton: skeletonConfig,
+  Textarea: textareaConfig,
 }
 
 export { componentsConfig }
