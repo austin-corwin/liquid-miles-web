@@ -17,14 +17,16 @@ const Contact = () => {
         alignItems='flex-start'
         w='full'
       >
-        <VStack w='full' maxWidth='container.md' alignItems='start'>
+        <VStack w='full' maxWidth='container.md' alignItems='start' gap={4}>
           <Text {...textRecipes.Lead} color='white'>
             Drop us a line and we&#39;ll get back to you as soon as we can!
           </Text>
-          <Text {...textRecipes.Body} color='white'>
-            Got questions? You might find what you need on the <Link>FAQs</Link>{' '}
-            page or, perhaps, the
-            <Link>rules</Link>.
+          <Text {...textRecipes.Body} {...textRecipes.Light}>
+            Got questions? You might find what you need among the{' '}
+            <Link href='/faqs' color={{ base: 'primary' }}>
+              FAQs
+            </Link>{' '}
+            page or on the <Link href='/rules'>rules</Link> page.
           </Text>
         </VStack>
         <Box
@@ -32,7 +34,7 @@ const Contact = () => {
           maxWidth='xl'
           bg='white'
           rounded='lg'
-          p={{ base: 4, md: 6 }}
+          p={{ base: 8, md: 12 }}
         >
           <ContactForm />
         </Box>

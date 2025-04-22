@@ -9,11 +9,22 @@ const baseStyle = definePartsStyle({
   field: {
     fontWeight: 'semibold',
     _placeholder: {
-      color: 'gray.300',
+      color: 'gray.400',
       fontFamily: 'poppins',
       fontWeight: 'semibold',
     },
-    _focus: {},
+    _groupHover: {
+      outlineColor: 'gray.100',
+      borderColor: 'black',
+    },
+    _hover: {
+      borderColor: 'black',
+    },
+    _focus: {
+      ringColor: 'black',
+      outlineColor: 'gray.300',
+      borderColor: 'black',
+    },
     _invalid: {
       color: 'red.700',
       _placeholder: {
