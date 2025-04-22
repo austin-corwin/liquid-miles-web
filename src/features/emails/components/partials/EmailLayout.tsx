@@ -1,4 +1,11 @@
-import { Body, BodyProps, Head, Html, Tailwind } from '@react-email/components'
+import {
+  Body,
+  BodyProps,
+  Head,
+  Html,
+  Section,
+  Tailwind,
+} from '@react-email/components'
 import React from 'react'
 import tailwindConfig from '../../../../../tailwind.config'
 import EmailHeader from './EmailHeader'
@@ -12,10 +19,12 @@ const EmailLayout: React.FC<EmailLayoutProps> = ({ children, title }) => {
   return (
     <Html>
       <Head>{title && <title>{title}</title>}</Head>
-      <Body>
+      <Body style={{ background: '#CCC' }}>
         <Tailwind config={twConfig}>
           <EmailHeader />
-          {children}
+          <Section className='w-full max-w-screen-md rounded-b-md bg-white pb-4'>
+            {children}
+          </Section>
         </Tailwind>
       </Body>
     </Html>
