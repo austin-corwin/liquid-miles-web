@@ -48,7 +48,11 @@ const TextField: React.FC<TextFieldProps> = ({
     >
       <FormLabel>{label}</FormLabel>
       {fieldType === 'textarea' ? (
-        <Textarea {...fieldProps} />
+        <Textarea
+          {...fieldProps}
+          // @todo: move to component config
+          _hover={{ borderColor: 'black', outlineColor: 'gray.200' }}
+        />
       ) : (
         <Input type={fieldType} {...fieldProps} />
       )}
