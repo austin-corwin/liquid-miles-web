@@ -28,9 +28,7 @@ const ContactForm: React.FC = () => {
         fieldType='text'
         isRequired
         isReadOnly={isSubmitting}
-        // simulations
-        // helperText={'What should we call you?'}
-        // error={'This is not a real name'}
+        helperText={'What should we call you?'}
       />
       <TextField
         id='email'

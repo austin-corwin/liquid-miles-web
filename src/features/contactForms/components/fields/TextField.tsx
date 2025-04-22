@@ -41,7 +41,11 @@ const TextField: React.FC<TextFieldProps> = ({
     ...inputProps,
   }
   return (
-    <FormControl isRequired isReadOnly={formControlProps?.isReadOnly} id={id}>
+    <FormControl
+      isRequired={formControlProps?.isRequired}
+      isReadOnly={formControlProps?.isReadOnly}
+      id={id}
+    >
       <FormLabel>{label}</FormLabel>
       {fieldType === 'textarea' ? (
         <Textarea {...fieldProps} />
