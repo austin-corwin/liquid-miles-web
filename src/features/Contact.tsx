@@ -1,6 +1,15 @@
-import { Box, Divider, Link, Stack, Text, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Divider,
+  Heading,
+  Link,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
 import { PageHeader } from './Pages/components/PageHeader'
 import { PageLayout } from './Pages/components/PageLayout'
+import { headingRecipes } from './chakra-ui/config/recipes'
 import { textRecipes } from './chakra-ui/config/recipes/textRecipes'
 import { ContactForm } from './contactForms/components/forms/ContactForm'
 
@@ -18,15 +27,23 @@ const Contact = () => {
         w='full'
       >
         <VStack w='full' maxWidth='container.md' alignItems='start' gap={4}>
-          <Text {...textRecipes.Lead} color='white'>
-            Drop us a line and we&#39;ll get back to you as soon as we can!
-          </Text>
-          <Text {...textRecipes.Body} {...textRecipes.Light}>
-            Got questions? You might find what you need among the{' '}
+          <Heading {...headingRecipes.H3} color='white'>
+            Got Questions?
+          </Heading>
+
+          <Text {...textRecipes.Lead} {...textRecipes.Light}>
+            You might find what you need among the{' '}
             <Link href='/faqs' color={{ base: 'primary' }}>
               FAQs
             </Link>{' '}
             page or on the <Link href='/rules'>rules</Link> page.
+          </Text>
+          <Text {...textRecipes.Body} {...textRecipes.Light}>
+            For anything else get in touch using the form or{' '}
+            <a className='underline' href='mailto:liquidmilesrace@gmail.com'>
+              email us
+            </a>{' '}
+            and we&#39;ll get back to you as soon as we can.
           </Text>
         </VStack>
         <Box
