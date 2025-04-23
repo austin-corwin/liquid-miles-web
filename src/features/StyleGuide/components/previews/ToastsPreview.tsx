@@ -16,16 +16,13 @@ const ToastsPreview: React.FC = () => {
     info: {
       title: 'Information Toast',
       description: 'Letting you something non-critical happened.',
-      // status: 'info',
       duration: 9000,
       isClosable: true,
       ...toastRecipes.info,
     },
-
     success: {
       title: 'Successful Toast',
       description: 'Letting you know something good happened.',
-      // status: 'success',
       duration: 9000,
       isClosable: true,
       ...toastRecipes.success,
@@ -33,7 +30,6 @@ const ToastsPreview: React.FC = () => {
     error: {
       title: 'Error Toast',
       description: 'Letting you know something critical went wrong.',
-      // status: 'error',
       duration: 9000,
       isClosable: true,
       ...toastRecipes.error,
@@ -41,7 +37,6 @@ const ToastsPreview: React.FC = () => {
     warning: {
       title: 'Warning Toast',
       description: 'Letting you know something non-critical went wrong.',
-      // status: 'warning',
       duration: 9000,
       isClosable: true,
       ...toastRecipes.warning,
@@ -49,7 +44,6 @@ const ToastsPreview: React.FC = () => {
     loading: {
       title: 'Loading Toast',
       description: 'Letting you know something is in progress.',
-      // status: 'loading',
       duration: 9000,
       isClosable: true,
       ...toastRecipes.loading,
@@ -59,19 +53,6 @@ const ToastsPreview: React.FC = () => {
   return (
     <VStack alignItems='start' gap={8} w='full'>
       <ButtonGroup>
-        {/* <Button
-          onClick={() =>
-            toast({
-              title: 'Default Toast',
-              variant: 'default',
-              duration: 9000,
-              icon: <TbHierarchy2 />,
-            })
-          }
-          textTransform='capitalize'
-        >
-          Default Toast
-        </Button> */}
         {Object.entries(toastOptions).map(([label, toastData]) => (
           <Button
             key={label}
