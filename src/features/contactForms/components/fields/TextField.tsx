@@ -23,6 +23,9 @@ interface TextFieldProps extends FormControlProps {
   inputProps?: InputProps & TextareaProps
 }
 
+/**
+ * Form field for single and multi-line text and number inputs.
+ */
 const TextField: React.FC<TextFieldProps> = ({
   fieldType,
   label,
@@ -48,11 +51,7 @@ const TextField: React.FC<TextFieldProps> = ({
     >
       <FormLabel>{label}</FormLabel>
       {fieldType === 'textarea' ? (
-        <Textarea
-          {...fieldProps}
-          // @todo: move to component config
-          _hover={{ borderColor: 'black', outlineColor: 'gray.200' }}
-        />
+        <Textarea {...fieldProps} />
       ) : (
         <Input type={fieldType} {...fieldProps} />
       )}

@@ -15,6 +15,9 @@ interface FormControlsProps extends ButtonGroupProps {
   isLoading?: boolean
 }
 
+/**
+ * Form controls. e.g. submit buttons, pagination
+ */
 const FormControls: React.FC<FormControlsProps> = ({
   submitLabel = 'Submit',
   isLoading,

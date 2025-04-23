@@ -6,10 +6,12 @@ import React from 'react'
 interface FormProps extends StackProps {
   id: string
 }
-
+/**
+ * Form element and wrapper for form fields
+ */
 const Form: React.FC<FormProps> = ({ children, onSubmit }) => {
   return (
-    <VStack alignItems='start' gap={6} as='form' w='full' onSubmit={onSubmit}>
+    <VStack as='form' alignItems='start' gap={6} w='full' onSubmit={onSubmit}>
       {children}
     </VStack>
   )
