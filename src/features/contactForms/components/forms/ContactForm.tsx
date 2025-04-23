@@ -1,13 +1,10 @@
 'use client'
 
+import { sleep } from '@/features/api/utils/sleep'
 import React, { FormEvent } from 'react'
 import { TextField } from '../fields/TextField'
 import { Form } from '../partials/Form'
 import { FormControls } from '../partials/FormControls'
-
-const simulateSubmission = async (ms: number = 500) => {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
 
 const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false)
@@ -15,8 +12,8 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await simulateSubmission(1000)
-    console.log('form submitted')
+    await sleep(1000)
+    console.log('form submitted', e)
     setIsSubmitting(false)
   }
 
