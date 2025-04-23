@@ -40,10 +40,8 @@ const Contact = () => {
           </Text>
           <Text {...textRecipes.Body} {...textRecipes.Light}>
             For anything else get in touch using the form or{' '}
-            <a className='underline' href='mailto:liquidmilesrace@gmail.com'>
-              email us
-            </a>{' '}
-            and we&#39;ll get back to you as soon as we can.
+            <a href='mailto:liquidmilesrace@gmail.com'>email us</a> and
+            we&#39;ll get back to you as soon as we can.
           </Text>
         </VStack>
         <Box
