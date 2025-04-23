@@ -14,7 +14,7 @@ const baseStyle = definePartsStyle({
       fontWeight: 'medium',
     },
     _groupHover: {
-      outlineColor: 'gray.100',
+      outlineColor: 'gray.200',
       borderColor: 'black',
     },
     _hover: {
