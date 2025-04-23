@@ -1,4 +1,5 @@
 import { HeadingProps } from '@chakra-ui/react'
+import { copyToClipboard } from '../../utils/copyToClipboard'
 import { CSSTransition } from '../transitions'
 
 export enum HeadingRecipe {
@@ -50,9 +51,10 @@ const headingRecipes: Record<HeadingRecipe, HeadingProps> = {
     position: 'relative',
     pr: 6,
     onClick: async (e: React.MouseEvent<HTMLHeadingElement>) => {
-      // @TODO: connect this to a toast
-      const text = `${window.location.href}#${e.currentTarget.id}`
-      await navigator.clipboard.writeText(text)
+      await copyToClipboard(
+        `${window.location.href}#${e.currentTarget.id}`,
+        'Link Coppied'
+      )
     },
     _after: {
       content: '"#"',
