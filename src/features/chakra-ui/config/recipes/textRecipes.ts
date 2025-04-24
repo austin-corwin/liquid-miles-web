@@ -14,6 +14,7 @@ const textRecipes: Record<TextRecipe, TextProps> = {
     fontWeight: 'medium',
     sx: {
       '> a': {
+        display: 'inline-block',
         color: 'secondary',
         _hover: {
           textDecoration: 'underline',
@@ -28,6 +29,7 @@ const textRecipes: Record<TextRecipe, TextProps> = {
     mb: 2,
     sx: {
       '> a': {
+        display: 'inline-block',
         color: 'secondary',
         textDecoration: 'underline',
         _hover: {
@@ -41,6 +43,7 @@ const textRecipes: Record<TextRecipe, TextProps> = {
     fontWeight: 'normal',
     sx: {
       '> a': {
+        display: 'inline-block',
         textDecoration: 'underline',
       },
     },
@@ -50,6 +53,7 @@ const textRecipes: Record<TextRecipe, TextProps> = {
     fontWeight: 'normal',
     sx: {
       '> a': {
+        display: 'inline-block',
         textDecoration: 'underline',
       },
     },
@@ -58,6 +62,7 @@ const textRecipes: Record<TextRecipe, TextProps> = {
     color: 'white',
     sx: {
       '> a': {
+        display: 'inline-block',
         color: 'primary',
       },
     },
