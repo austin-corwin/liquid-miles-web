@@ -1,6 +1,7 @@
 import { StackProps } from '@chakra-ui/react'
 import { ElementType } from 'react'
 import {
+  TbAlertCircle,
   TbChecklist,
   TbColorSwatch,
   TbFavicon,
@@ -52,6 +53,13 @@ const uiSectionConfig: UiSectionProps[] = [
     description: 'User inputs, controls and form components.',
     previews: [previews.buttonsPreviewConfig, previews.formPreviewConfig],
     icon: TbInputCheck,
+  },
+  {
+    id: 'feedback',
+    title: 'Feedback',
+    description: '',
+    previews: [previews.toastsPreviewConfig],
+    icon: TbAlertCircle,
   },
   {
     id: 'recipes',
