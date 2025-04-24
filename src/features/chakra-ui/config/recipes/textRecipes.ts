@@ -5,6 +5,7 @@ export enum TextRecipe {
   Body = 'Body',
   Compact = 'Compact',
   FinePrint = 'FinePrint',
+  Light = 'Light',
 }
 const textRecipes: Record<TextRecipe, TextProps> = {
   Lead: {
@@ -50,6 +51,14 @@ const textRecipes: Record<TextRecipe, TextProps> = {
     sx: {
       '> a': {
         textDecoration: 'underline',
+      },
+    },
+  },
+  Light: {
+    color: 'white',
+    sx: {
+      '> a': {
+        color: 'primary',
       },
     },
   },
