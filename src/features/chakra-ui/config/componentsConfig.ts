@@ -8,13 +8,16 @@ import {
   formLabelConfig,
   headingConfig,
   inputConfig,
+  linkConfig,
   radioConfig,
   selectConfig,
   skeletonConfig,
 } from './components'
+import { alertConfig } from './components/alertConfig'
 
 const componentsConfig: Record<string, ComponentStyleConfig> = {
   Accordion: accordionConfig,
+  Alert: alertConfig,
   Badge: badgeConfig,
   Button: buttonConfig,
   Card: cardConfig,
@@ -22,6 +25,7 @@ const componentsConfig: Record<string, ComponentStyleConfig> = {
   FormLabel: formLabelConfig,
   Heading: headingConfig,
   Input: inputConfig,
+  Link: linkConfig,
   Radio: radioConfig,
   Select: selectConfig,
   Skeleton: skeletonConfig,
