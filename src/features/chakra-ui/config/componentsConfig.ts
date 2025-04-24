@@ -13,9 +13,11 @@ import {
   selectConfig,
   skeletonConfig,
 } from './components'
+import { alertConfig } from './components/alertConfig'
 
 const componentsConfig: Record<string, ComponentStyleConfig> = {
   Accordion: accordionConfig,
+  Alert: alertConfig,
   Badge: badgeConfig,
   Button: buttonConfig,
   Card: cardConfig,
