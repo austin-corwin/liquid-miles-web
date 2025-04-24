@@ -12,6 +12,7 @@ interface FormControlsProps extends ButtonGroupProps {
   submitLabel: string
   loadingText?: string
   submitButtonProps?: ButtonProps
+  resetButtonProps?: ButtonProps
   isLoading?: boolean
 }
 
@@ -23,18 +24,40 @@ const FormControls: React.FC<FormControlsProps> = ({
   isLoading,
   loadingText,
   submitButtonProps,
+  resetButtonProps,
   ...buttonGroupProps
 }) => {
   return (
-    <ButtonGroup isDisabled={isLoading} {...buttonGroupProps}>
+    <ButtonGroup
+      flexDirection={'column'}
+      alignItems='center'
+      justifyContent='center'
+      gap={2}
+      w='full'
+      isDisabled={isLoading}
+      {...buttonGroupProps}
+    >
       <Button
         type='submit'
         isLoading={isLoading}
         loadingText={loadingText}
-        minW={40}
+        w='full'
+        maxW='sm'
         {...submitButtonProps}
       >
         {submitLabel}
+      </Button>
+      <Button
+        type='reset'
+        isDisabled={isLoading}
+        variant='link'
+        colorScheme='gray'
+        w='full'
+        maxW='sm'
+        size='sm'
+        {...resetButtonProps}
+      >
+        {resetButtonProps?.['aria-label'] || 'Reset'}
       </Button>
     </ButtonGroup>
   )
