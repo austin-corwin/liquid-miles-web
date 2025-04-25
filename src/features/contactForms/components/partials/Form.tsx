@@ -18,6 +18,7 @@ const Form: React.FC<FormProps> = ({ children, onSubmit, ...stackProps }) => {
       gap={6}
       w='full'
       onSubmit={onSubmit}
+      noValidate
       {...stackProps}
     >
       {children}
