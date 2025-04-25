@@ -23,7 +23,6 @@ const RenderForm = function <D>({ formConfig }: RenderFormProps<D>) {
   const initialValues = parseinitialValues<D>(formConfig.fields)
   const toast = useToast()
   const handleSubmit = async (values: D) => {
-    formik.setSubmitting(true)
     await formConfig.onSubmit(values)
     toast({
       title: 'Message Sent!',
