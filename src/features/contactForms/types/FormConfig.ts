@@ -11,6 +11,7 @@ interface FormField extends TextFieldProps {
 export interface FormConfig<D> {
   id: string
   successMessage: (data: D) => React.ReactNode
+  onSubmit: (values: D) => Promise<void>
   fields: FormField[]
   validationSchema?: yup.ObjectSchema<D>
   formControlsProps?: FormControlsProps

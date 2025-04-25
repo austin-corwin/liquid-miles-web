@@ -6,6 +6,7 @@ import { useToast } from '@chakra-ui/react'
 import { useFormik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
+import { FormConfig } from '../../types/FormConfig'
 import { TextField } from '../fields/TextField'
 import { Form } from '../partials/Form'
 import { FormControls } from '../partials/FormControls'
@@ -16,34 +17,84 @@ interface ContactFormValues {
   message: string
 }
 
-const validationSchema: yup.ObjectSchema<ContactFormValues> = yup
-  .object()
-  .shape({
-    name: yup.string().min(2, 'Too short').required(),
-    email: yup.string().email('Invalid email').required(),
-    message: yup.string(),
-  })
+const formConfig: FormConfig<ContactFormValues> = {
+  id: 'contact-form',
+  successMessage: (values: ContactFormValues) => {
+    const firstName = values?.name?.split(' ').shift()
+    return `We'll be in touch soon, ${firstName}!`
+  },
+  onSubmit: async (values: ContactFormValues) => {
+    console.log('Contact Form Submitted', values)
+    await sleep(1000)
+  },
+  formControlsProps: {
+    submitLabel: 'Send It',
+    loadingText: 'Sending',
+  },
+  fields: [
+    {
+      id: 'name',
+      label: 'Name',
+      fieldType: 'text',
+      isRequired: true,
+      helperText: 'What should we call you?',
+      schema: yup.string().min(2, 'Too short').required(),
+    },
+    {
+      id: 'email',
+      label: 'Email',
+      fieldType: 'email',
+      isRequired: true,
+      schema: yup.string().email('Invalid email address').required(),
+    },
+    {
+      id: 'message',
+      label: 'Message',
+      fieldType: 'textarea',
+      schema: yup.string(),
+    },
+  ],
+}
+
+const parseinitialValues = <D,>(fields: FormConfig<D>['fields']): D => {
+  const schemaShape: Record<keyof D, string | number> = Object.fromEntries(
+    fields.map((field): [keyof D, string | number] => [
+      field.id as keyof D,
+      field?.initialValue,
+    ])
+  ) as Record<keyof D, string | number>
+  return schemaShape as D
+}
+
+const parseValidationSchema = <D,>(
+  config: FormConfig<D>
+): yup.ObjectSchema<D> => {
+  const schemaShape: Record<keyof D, yup.AnySchema> = Object.fromEntries(
+    config.fields.map((field): [keyof D, yup.AnySchema] => [
+      field.id as keyof D,
+      field.schema,
+    ])
+  ) as Record<keyof D, yup.AnySchema>
+  return yup.object().shape(schemaShape) as unknown as yup.ObjectSchema<D>
+}
 
 const ContactForm: React.FC = () => {
+  const validationSchema = parseValidationSchema<ContactFormValues>(formConfig)
+  const initialValues = parseinitialValues<ContactFormValues>(formConfig.fields)
+
   const toast = useToast()
   const handleSubmit = async (values: ContactFormValues) => {
     formik.setSubmitting(true)
-    console.log('form submitted', values)
-    const firstName = values?.name?.split(' ').shift()
-    await sleep(1000)
+    await formConfig.onSubmit(values)
     toast({
       title: 'Message Sent!',
-      description: `We'll be in touch soon, ${firstName}!`,
+      description: formConfig.successMessage(values),
       ...toastRecipes.success,
     })
   }
 
   const formik = useFormik<ContactFormValues>({
-    initialValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
+    initialValues,
     onSubmit: async (values: ContactFormValues) => {
       await handleSubmit(values)
     },
@@ -52,50 +103,31 @@ const ContactForm: React.FC = () => {
   })
 
   return (
-    <Form id='contact-form' onSubmit={formik.handleSubmit}>
-      <TextField
-        id='name'
-        label='Name'
-        fieldType='text'
-        isRequired
-        isReadOnly={formik.isSubmitting}
-        helperText={'What should we call you?'}
-        error={formik.touched.name && formik.errors?.name}
-        inputProps={{
-          value: formik.values.name,
-          onChange: formik.handleChange,
-          onBlur: formik.handleBlur,
-        }}
-      />
-      <TextField
-        id='email'
-        label='Email'
-        fieldType='email'
-        isRequired
-        isReadOnly={formik.isSubmitting}
-        error={formik.touched.email && formik.errors?.email}
-        inputProps={{
-          value: formik.values.email,
-          onChange: formik.handleChange,
-          onBlur: formik.handleBlur,
-        }}
-      />
-      <TextField
-        id='message'
-        label='Message'
-        fieldType='textarea'
-        isReadOnly={formik.isSubmitting}
-        error={formik.touched.message && formik.errors?.message}
-        inputProps={{
-          value: formik.values.message,
-          onChange: formik.handleChange,
-          onBlur: formik.handleBlur,
-        }}
-      />
+    <Form id={formConfig.id} onSubmit={formik.handleSubmit}>
+      {formConfig?.fields.map((field) => {
+        const fieldKey = field.id as keyof ContactFormValues
+        return (
+          <TextField
+            key={field.id}
+            id={field.id}
+            label={field.label}
+            fieldType={field.fieldType}
+            isRequired={field.isRequired}
+            isReadOnly={formik.isSubmitting}
+            helperText={field?.helperText}
+            error={formik.touched?.[fieldKey] && formik.errors?.[fieldKey]}
+            inputProps={{
+              value: formik.values?.[fieldKey],
+              onChange: formik.handleChange,
+              onBlur: formik.handleBlur,
+            }}
+          />
+        )
+      })}
+
       <FormControls
+        {...formConfig?.formControlsProps}
         isLoading={formik.isSubmitting}
-        submitLabel='Send It'
-        loadingText='Sending'
       />
     </Form>
   )
