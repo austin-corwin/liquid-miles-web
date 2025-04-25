@@ -47,6 +47,7 @@ const TextField: React.FC<TextFieldProps> = ({
     <FormControl
       isRequired={formControlProps?.isRequired}
       isReadOnly={formControlProps?.isReadOnly}
+      isInvalid={!!error}
       id={id}
     >
       <FormLabel>{label}</FormLabel>

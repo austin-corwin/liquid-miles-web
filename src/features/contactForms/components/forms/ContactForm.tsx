@@ -5,6 +5,7 @@ import { toastRecipes } from '@/features/chakra-ui/config/recipes/toastRecipes'
 import { useToast } from '@chakra-ui/react'
 import { useFormik } from 'formik'
 import React from 'react'
+import * as yup from 'yup'
 import { TextField } from '../fields/TextField'
 import { Form } from '../partials/Form'
 import { FormControls } from '../partials/FormControls'
@@ -14,6 +15,14 @@ interface ContactFormValues {
   email: string
   message: string
 }
+
+const validationSchema: yup.ObjectSchema<ContactFormValues> = yup
+  .object()
+  .shape({
+    name: yup.string().min(2, 'Too short').required(),
+    email: yup.string().email('Invalid email').required(),
+    message: yup.string(),
+  })
 
 const ContactForm: React.FC = () => {
   const toast = useToast()
@@ -39,6 +48,7 @@ const ContactForm: React.FC = () => {
       await handleSubmit(values)
     },
     validateOnBlur: true,
+    validationSchema,
   })
 
   return (
@@ -50,6 +60,7 @@ const ContactForm: React.FC = () => {
         isRequired
         isReadOnly={formik.isSubmitting}
         helperText={'What should we call you?'}
+        error={formik.touched.name && formik.errors?.name}
         inputProps={{
           value: formik.values.name,
           onChange: formik.handleChange,
@@ -62,6 +73,7 @@ const ContactForm: React.FC = () => {
         fieldType='email'
         isRequired
         isReadOnly={formik.isSubmitting}
+        error={formik.touched.email && formik.errors?.email}
         inputProps={{
           value: formik.values.email,
           onChange: formik.handleChange,
@@ -73,6 +85,7 @@ const ContactForm: React.FC = () => {
         label='Message'
         fieldType='textarea'
         isReadOnly={formik.isSubmitting}
+        error={formik.touched.message && formik.errors?.message}
         inputProps={{
           value: formik.values.message,
           onChange: formik.handleChange,
