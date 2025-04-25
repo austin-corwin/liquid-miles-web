@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 
-interface TextFieldProps extends FormControlProps {
+export interface TextFieldProps extends FormControlProps {
   id: string
   fieldType: InputProps['type'] | 'textarea'
   helperText?: React.ReactNode

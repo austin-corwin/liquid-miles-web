@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 
-interface FormControlsProps extends ButtonGroupProps {
+export interface FormControlsProps extends ButtonGroupProps {
   submitLabel: string
   loadingText?: string
   submitButtonProps?: ButtonProps
