@@ -1,6 +1,7 @@
 import * as yup from 'yup'
 import { FormConfig } from '../types/FormConfig'
 
+/** Create a yup validation object from a FormConfig. */
 const parseValidationSchema = <D>(
   config: FormConfig<D>
 ): yup.ObjectSchema<D> => {

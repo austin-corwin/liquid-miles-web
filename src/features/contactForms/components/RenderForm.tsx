@@ -15,10 +15,12 @@ interface RenderFormProps<D> {
   formConfig: FormConfig<D>
 }
 
-function RenderForm<D>({ formConfig }: RenderFormProps<D>) {
+/**
+ * Render a contact form based on a fonfig
+ */
+const RenderForm = function <D>({ formConfig }: RenderFormProps<D>) {
   const validationSchema = parseValidationSchema<D>(formConfig)
   const initialValues = parseinitialValues<D>(formConfig.fields)
-
   const toast = useToast()
   const handleSubmit = async (values: D) => {
     formik.setSubmitting(true)
