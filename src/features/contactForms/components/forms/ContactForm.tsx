@@ -45,7 +45,7 @@ const formConfig: FormConfig<ContactFormValues> = {
       fieldType: 'text',
       isRequired: true,
       helperText: 'What should we call you?',
-      schema: yup.string().min(2, 'Too short').required(),
+      schema: yup.string().required('Name is required'),
       initialValue: '',
     },
     {
@@ -53,7 +53,10 @@ const formConfig: FormConfig<ContactFormValues> = {
       label: 'Email',
       fieldType: 'email',
       isRequired: true,
-      schema: yup.string().email('Invalid email address').required(),
+      schema: yup
+        .string()
+        .email('Invalid email address')
+        .required('We need your email in order to reply to your message!'),
       initialValue: '',
     },
     {
