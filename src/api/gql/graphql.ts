@@ -371,6 +371,162 @@ export enum ContactFormEntriesOrder {
   TitleDesc = 'title_DESC'
 }
 
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntry = Entry & _Node & {
+  __typename?: 'ContactFormEntry';
+  _id: Scalars['ID']['output'];
+  channel?: Maybe<Scalars['String']['output']>;
+  contentfulMetadata: ContentfulMetadata;
+  data?: Maybe<Scalars['JSON']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<ContactFormEntryLinkingCollections>;
+  message?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryChannelArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryDataArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryEmailArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryMessageArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryPhoneArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
+export type ContactFormEntryTitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ContactFormEntryCollection = {
+  __typename?: 'ContactFormEntryCollection';
+  items: Array<Maybe<ContactFormEntry>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type ContactFormEntryFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ContactFormEntryFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ContactFormEntryFilter>>>;
+  channel?: InputMaybe<Scalars['String']['input']>;
+  channel_contains?: InputMaybe<Scalars['String']['input']>;
+  channel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  channel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  channel_not?: InputMaybe<Scalars['String']['input']>;
+  channel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  channel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  data_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  email_contains?: InputMaybe<Scalars['String']['input']>;
+  email_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  email_not?: InputMaybe<Scalars['String']['input']>;
+  email_not_contains?: InputMaybe<Scalars['String']['input']>;
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  message?: InputMaybe<Scalars['String']['input']>;
+  message_contains?: InputMaybe<Scalars['String']['input']>;
+  message_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  message_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  message_not?: InputMaybe<Scalars['String']['input']>;
+  message_not_contains?: InputMaybe<Scalars['String']['input']>;
+  message_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  name_contains?: InputMaybe<Scalars['String']['input']>;
+  name_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  name_not?: InputMaybe<Scalars['String']['input']>;
+  name_not_contains?: InputMaybe<Scalars['String']['input']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  phone_contains?: InputMaybe<Scalars['String']['input']>;
+  phone_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  phone_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  phone_not?: InputMaybe<Scalars['String']['input']>;
+  phone_not_contains?: InputMaybe<Scalars['String']['input']>;
+  phone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ContactFormEntryLinkingCollections = {
+  __typename?: 'ContactFormEntryLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ContactFormEntryLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum ContactFormEntryOrder {
+  ChannelAsc = 'channel_ASC',
+  ChannelDesc = 'channel_DESC',
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PhoneAsc = 'phone_ASC',
+  PhoneDesc = 'phone_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 export type ContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
   concepts: Array<Maybe<TaxonomyConcept>>;
@@ -1217,6 +1373,8 @@ export type Query = {
   assetCollection?: Maybe<AssetCollection>;
   contactFormEntries?: Maybe<ContactFormEntries>;
   contactFormEntriesCollection?: Maybe<ContactFormEntriesCollection>;
+  contactFormEntry?: Maybe<ContactFormEntry>;
+  contactFormEntryCollection?: Maybe<ContactFormEntryCollection>;
   entryCollection?: Maybe<EntryCollection>;
   faq?: Maybe<Faq>;
   faqCollection?: Maybe<FaqCollection>;
@@ -1278,6 +1436,23 @@ export type QueryContactFormEntriesCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ContactFormEntriesFilter>;
+};
+
+
+export type QueryContactFormEntryArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryContactFormEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContactFormEntryOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ContactFormEntryFilter>;
 };
 
 
