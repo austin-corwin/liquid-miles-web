@@ -1,5 +1,8 @@
 import { createClient } from 'contentful-management'
 
+/** Contentful REST API client for content CRUD
+ * https://www.contentful.com/developers/docs/references/content-management-api
+ */
 const contentfulClient = createClient(
   {
     accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,

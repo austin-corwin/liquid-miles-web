@@ -1,6 +1,6 @@
 # Contact Forms
 
-> Render forms that users can fill and submit without authentication.
+> Render forms that users can fill and submit to Contentful, without authentication.
 
 Form state management and validation using [Formik](https://formik.org/) and [yup](https://github.com/jquense/yup)
 
@@ -33,9 +33,19 @@ const formConfig: FormConfig<MyFormValues> = {
 	successMessage: (values: MyFormValues) => `Welcome, ${name}!`,
 	onSubmit: async (values: MyFormValues) => {
 		console.log('My Form was Submitted', values)
-		// ... do something with the data
+		// Send entry to Contentful
+		const entryData: Partial<ContactFormEntry> = {
+			name: values?.name,
+			// ... rest of fields
+		}
+		const { success } = await createContactEntry(entryData)
+		return success
 	},
 }
 export const SomeComponent: FC = () => <RenderForm formConfig={formConfig} />
 
 ```
+
+## Form Submissions
+
+Form submissions are stored in Contentful as a `Contact Form Entry`
