@@ -33,7 +33,7 @@ const Contact = () => {
 
           <Text {...textRecipes.Lead} {...textRecipes.Light}>
             You might find what you need among the{' '}
-            <Link href='/faqs' color={{ base: 'primary' }}>
+            <Link href='/faqs' display='inline-block'>
               FAQs
             </Link>{' '}
             page or on the <Link href='/rules'>rules</Link> page.
@@ -49,6 +49,7 @@ const Contact = () => {
           maxWidth='xl'
           bg='white'
           rounded='lg'
+          mx={{ base: 'auto', md: 0 }}
           p={{ base: 8, md: 12 }}
         >
           <ContactForm />

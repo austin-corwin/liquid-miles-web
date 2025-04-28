@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 
-interface TextFieldProps extends FormControlProps {
+export interface TextFieldProps extends FormControlProps {
   id: string
   fieldType: InputProps['type'] | 'textarea'
   helperText?: React.ReactNode
@@ -47,6 +47,7 @@ const TextField: React.FC<TextFieldProps> = ({
     <FormControl
       isRequired={formControlProps?.isRequired}
       isReadOnly={formControlProps?.isReadOnly}
+      isInvalid={!!error}
       id={id}
     >
       <FormLabel>{label}</FormLabel>
