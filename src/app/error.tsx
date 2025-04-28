@@ -1,11 +1,10 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
 
 interface ErrorProps {
   error: Error & { digest?: string }
   reset: () => void
-  other: any
 }
 
 const Error: React.FC<ErrorProps> = ({ error, reset }) => {
