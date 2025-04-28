@@ -9,7 +9,7 @@
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js",
     "inst": "npm install --legacy-peer-deps",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.4.2",
@@ -46,10 +46,12 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --check",
-      "npm run lint"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --check"
     ],
-    "*.{js,css,md}": "prettier --check"
+    "*.ts?(x)": [
+      "tsc --noEmit"
+    ]
   }
 }
