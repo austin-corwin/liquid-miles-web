@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React from 'react'
 
 interface ErrorProps {
   error: Error & { digest?: string }
