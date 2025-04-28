@@ -1,10 +1,11 @@
 'use client'
 
-import { sleep } from '@/features/api/utils/sleep'
 import React from 'react'
 import * as yup from 'yup'
 import { FormConfig } from '../../types/FormConfig'
 
+import { ContactFormEntry } from '@/api/gql/graphql'
+import { createContactEntry } from '../../utils/createContactEntry'
 import { RenderForm } from '../RenderForm'
 
 interface ContactFormValues {
@@ -21,7 +22,18 @@ const formConfig: FormConfig<ContactFormValues> = {
   },
   onSubmit: async (values: ContactFormValues) => {
     console.log('Contact Form Submitted', values)
-    await sleep(1000)
+    const title = `${values.email} - ${new Date().toLocaleDateString('en-US', {
+      dateStyle: 'medium',
+    })}`
+    const entryData: Partial<ContactFormEntry> = {
+      title,
+      channel: 'Contact',
+      name: values?.name,
+      email: values?.email,
+      message: values?.message,
+    }
+    const submission = await createContactEntry(entryData)
+    console.log('Results: ', submission)
   },
   formControlsProps: {
     submitLabel: 'Send It',

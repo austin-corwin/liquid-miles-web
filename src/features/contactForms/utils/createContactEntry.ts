@@ -25,7 +25,7 @@ const createContactEntry = async (
   try {
     // create a draft entry
     const createRequest = await contentfulClient.entry.create(
-      { contentTypeId: 'ContactFormEntry' },
+      { contentTypeId: 'contactFormEntry' },
       {
         fields: {
           title: { 'en-US': formData?.title },
