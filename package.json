@@ -49,6 +49,7 @@
     "*.{ts,tsx}": [
       "prettier --check",
       "npm run lint"
-    ]
+    ],
+    "*.{js,css,md}": "prettier --check"
   }
 }
