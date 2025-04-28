@@ -11,6 +11,7 @@ interface ConfentfulError {
   details: { errors: Record<string, string> }
 }
 
+/** Create a contactFormEntry in Contentful and publish it immediately */
 const createContactEntry = async (
   formData: Partial<ContactFormEntry>
 ): Promise<ApiResponse> => {
@@ -23,7 +24,6 @@ const createContactEntry = async (
   }
 
   try {
-    // create a draft entry
     const createRequest = await contentfulClient.entry.create(
       { contentTypeId: 'contactFormEntry' },
       {
@@ -36,9 +36,8 @@ const createContactEntry = async (
         },
       }
     )
-    // if successful, publish the draft
+
     if (createRequest) {
-      // console.log('Draft Entry created')
       const entry = await contentfulClient.entry.get({
         entryId: createRequest.sys?.id,
       })
@@ -52,7 +51,6 @@ const createContactEntry = async (
         response.success = true
         response.data = publishedEntry
       }
-      // console.log('Entry Published: ', publishedEntry)
     }
   } catch (error) {
     console.error('Error creating form entry', error)
