@@ -118,6 +118,204 @@ enum AssetOrder {
   width_DESC
 }
 
+"""
+Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries)
+"""
+type ContactFormEntries implements Entry & _Node {
+  _id: ID!
+  channel(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  data(locale: String): JSON
+  email(locale: String): String
+  linkedFrom(allowedLocales: [String]): ContactFormEntriesLinkingCollections
+  message(locale: String): String
+  name(locale: String): String
+  phone(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ContactFormEntriesCollection {
+  items: [ContactFormEntries]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ContactFormEntriesFilter {
+  AND: [ContactFormEntriesFilter]
+  OR: [ContactFormEntriesFilter]
+  channel: String
+  channel_contains: String
+  channel_exists: Boolean
+  channel_in: [String]
+  channel_not: String
+  channel_not_contains: String
+  channel_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  data_exists: Boolean
+  email: String
+  email_contains: String
+  email_exists: Boolean
+  email_in: [String]
+  email_not: String
+  email_not_contains: String
+  email_not_in: [String]
+  message: String
+  message_contains: String
+  message_exists: Boolean
+  message_in: [String]
+  message_not: String
+  message_not_contains: String
+  message_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  phone: String
+  phone_contains: String
+  phone_exists: Boolean
+  phone_in: [String]
+  phone_not: String
+  phone_not_contains: String
+  phone_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ContactFormEntriesLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ContactFormEntriesOrder {
+  channel_ASC
+  channel_DESC
+  email_ASC
+  email_DESC
+  name_ASC
+  name_DESC
+  phone_ASC
+  phone_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry)
+"""
+type ContactFormEntry implements Entry & _Node {
+  _id: ID!
+  channel(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  data(locale: String): JSON
+  email(locale: String): String
+  linkedFrom(allowedLocales: [String]): ContactFormEntryLinkingCollections
+  message(locale: String): String
+  name(locale: String): String
+  phone(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ContactFormEntryCollection {
+  items: [ContactFormEntry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ContactFormEntryFilter {
+  AND: [ContactFormEntryFilter]
+  OR: [ContactFormEntryFilter]
+  channel: String
+  channel_contains: String
+  channel_exists: Boolean
+  channel_in: [String]
+  channel_not: String
+  channel_not_contains: String
+  channel_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  data_exists: Boolean
+  email: String
+  email_contains: String
+  email_exists: Boolean
+  email_in: [String]
+  email_not: String
+  email_not_contains: String
+  email_not_in: [String]
+  message: String
+  message_contains: String
+  message_exists: Boolean
+  message_in: [String]
+  message_not: String
+  message_not_contains: String
+  message_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  phone: String
+  phone_contains: String
+  phone_exists: Boolean
+  phone_in: [String]
+  phone_not: String
+  phone_not_contains: String
+  phone_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ContactFormEntryLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ContactFormEntryOrder {
+  channel_ASC
+  channel_DESC
+  email_ASC
+  email_DESC
+  name_ASC
+  name_DESC
+  phone_ASC
+  phone_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
 type ContentfulMetadata {
   concepts: [TaxonomyConcept]!
   tags: [ContentfulTag]!
@@ -811,6 +1009,10 @@ type Query {
   _nodes(ids: [ID!]!, locale: String, preview: Boolean): [_Node]!
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  contactFormEntries(id: String!, locale: String, preview: Boolean): ContactFormEntries
+  contactFormEntriesCollection(limit: Int = 100, locale: String, order: [ContactFormEntriesOrder], preview: Boolean, skip: Int = 0, where: ContactFormEntriesFilter): ContactFormEntriesCollection
+  contactFormEntry(id: String!, locale: String, preview: Boolean): ContactFormEntry
+  contactFormEntryCollection(limit: Int = 100, locale: String, order: [ContactFormEntryOrder], preview: Boolean, skip: Int = 0, where: ContactFormEntryFilter): ContactFormEntryCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   faq(id: String!, locale: String, preview: Boolean): Faq
   faqCollection(limit: Int = 100, locale: String, order: [FaqOrder], preview: Boolean, skip: Int = 0, where: FaqFilter): FaqCollection
@@ -822,6 +1024,8 @@ type Query {
   pageCollection(limit: Int = 100, locale: String, order: [PageOrder], preview: Boolean, skip: Int = 0, where: PageFilter): PageCollection
   race(id: String!, locale: String, preview: Boolean): Race
   raceCollection(limit: Int = 100, locale: String, order: [RaceOrder], preview: Boolean, skip: Int = 0, where: RaceFilter): RaceCollection
+  user(id: String!, locale: String, preview: Boolean): User
+  userCollection(limit: Int = 100, locale: String, order: [UserOrder], preview: Boolean, skip: Int = 0, where: UserFilter): UserCollection
 }
 
 """
@@ -975,6 +1179,75 @@ Represents a taxonomy concept entity for finding and organizing content easily.
 """
 type TaxonomyConcept {
   id: String
+}
+
+"""
+User data record paired with a Clerk user. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/user)
+"""
+type User implements Entry & _Node {
+  _id: ID!
+  clerkId(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): UserLinkingCollections
+  name(locale: String): String
+  role(locale: String): String
+  sys: Sys!
+}
+
+type UserCollection {
+  items: [User]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input UserFilter {
+  AND: [UserFilter]
+  OR: [UserFilter]
+  clerkId: String
+  clerkId_contains: String
+  clerkId_exists: Boolean
+  clerkId_in: [String]
+  clerkId_not: String
+  clerkId_not_contains: String
+  clerkId_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  role: String
+  role_contains: String
+  role_exists: Boolean
+  role_in: [String]
+  role_not: String
+  role_not_contains: String
+  role_not_in: [String]
+  sys: SysFilter
+}
+
+type UserLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum UserOrder {
+  clerkId_ASC
+  clerkId_DESC
+  name_ASC
+  name_DESC
+  role_ASC
+  role_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 interface _Node {
