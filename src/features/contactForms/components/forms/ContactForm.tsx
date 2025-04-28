@@ -21,7 +21,6 @@ const formConfig: FormConfig<ContactFormValues> = {
     return `We'll be in touch soon, ${firstName}!`
   },
   onSubmit: async (values: ContactFormValues) => {
-    console.log('Contact Form Submitted', values)
     const title = `${values.email} - ${new Date().toLocaleDateString('en-US', {
       dateStyle: 'medium',
     })}`
@@ -32,8 +31,8 @@ const formConfig: FormConfig<ContactFormValues> = {
       email: values?.email,
       message: values?.message,
     }
-    const submission = await createContactEntry(entryData)
-    console.log('Results: ', submission)
+    const { success } = await createContactEntry(entryData)
+    return success
   },
   formControlsProps: {
     submitLabel: 'Send It',

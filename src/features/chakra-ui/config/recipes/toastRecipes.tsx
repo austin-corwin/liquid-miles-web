@@ -19,7 +19,7 @@ const toastRecipes: Record<ToastProps['status'], ToastProps> = {
   error: {
     variant: 'subtle',
     status: 'error',
-    icon: <GoAlertFill />,
+    icon: <GoAlertFill size={24} />,
   },
   loading: {
     colorScheme: 'dark',

@@ -12,6 +12,6 @@ export interface FormConfig<D> {
   id: string
   fields: FormField[]
   formControlsProps?: FormControlsProps
-  onSubmit: (values: D) => Promise<void>
+  onSubmit: (values: D) => Promise<boolean>
   successMessage: (data: D) => React.ReactNode
 }

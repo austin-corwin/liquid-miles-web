@@ -1,7 +1,7 @@
 'use client'
 
 import { toastRecipes } from '@/features/chakra-ui/config/recipes/toastRecipes'
-import { useToast } from '@chakra-ui/react'
+import { ToastProps, useToast } from '@chakra-ui/react'
 import { useFormik } from 'formik'
 import React from 'react'
 import { FormConfig } from '../types/FormConfig'
@@ -23,11 +23,16 @@ const RenderForm = function <D>({ formConfig }: RenderFormProps<D>) {
   const initialValues = parseinitialValues<D>(formConfig.fields)
   const toast = useToast()
   const handleSubmit = async (values: D) => {
-    await formConfig.onSubmit(values)
+    const success = await formConfig.onSubmit(values)
+    const toastProps: ToastProps = {
+      title: success ? 'Message Sent!' : 'Failed to Send',
+      description: success
+        ? formConfig.successMessage(values)
+        : 'There was a problem sending the message. Please try again.',
+      ...toastRecipes?.[success ? 'success' : 'error'],
+    }
     toast({
-      title: 'Message Sent!',
-      description: formConfig.successMessage(values),
-      ...toastRecipes.success,
+      ...toastProps,
     })
   }
 
