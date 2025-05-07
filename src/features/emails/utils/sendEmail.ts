@@ -1,7 +1,9 @@
 'use server'
-import { Resend } from 'resend'
-import Message from '../components/templates/Message'
+import { CreateEmailResponseSuccess, Resend } from 'resend'
+import { Message } from '../components/templates/Message'
+import { Notice } from '../components/templates/Notice'
 import { EmailMessage } from '../types/EmailMessage'
+import { EmailResponse } from '../types/EmailResponse'
 import { EmailTemplates } from '../types/EmailTemplates'
 
 export interface SendEmailProps {
@@ -17,32 +19,46 @@ export interface SendEmailProps {
   text?: string
 }
 
+// TEST TOKEN REPLACE ME WITH PRODUCTION KEY ASAP. WILL BE DEACTIVATED SOON
 const token =
   process.env.RESEND_API_TOKEN || 're_JM3aUZhp_CKSxa4uZnpc89QMStmBU3cta'
+const verifiedDomain = process.env.RESEND_DOMAIN || 'ericnowels.me'
 const resend = new Resend(token)
 
+/** Server action for sending an email using the Resend API */
 const sendEmail = async (
   sendProps: SendEmailProps
-): Promise<{ id: string }> => {
+): Promise<EmailResponse<CreateEmailResponseSuccess>> => {
+  const templates: Record<EmailTemplates, React.FC<EmailMessage>> = {
+    [EmailTemplates.Message]: Message,
+    [EmailTemplates.Notice]: Notice,
+  }
+  const response: EmailResponse<CreateEmailResponseSuccess> = {
+    errors: null,
+    success: false,
+    data: null,
+  }
   try {
-    const { to, subject, messageData } = sendProps
-
+    const { to, subject, messageData, template } = sendProps
+    const from = `${sendProps?.from || 'noreply'}@${verifiedDomain}`
     const { data, error } = await resend.emails.send({
-      from: 'no-reply@ericnowels.me',
+      from,
+      replyTo: [sendProps.replyTo || from],
       to,
       subject,
-      react: Message(messageData) as React.ReactElement,
+      react: templates[template](messageData) as React.ReactElement,
     })
-    console.log({ data, error })
-
+    response.data = data
     if (error) {
-      throw new Error('failed to send email')
-      // return Response.json({ error }, { status: 500 })
+      response.errors = error
+      throw new Error(`Failed to send email. ${JSON.stringify(error, null, 2)}`)
+    } else {
+      response.success = true
     }
-    return data
   } catch (error) {
     console.error(error)
-    return null
+  } finally {
+    return response
   }
 }
 
