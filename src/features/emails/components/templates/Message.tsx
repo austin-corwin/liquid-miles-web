@@ -3,11 +3,7 @@ import React from 'react'
 import { EmailMessage } from '../../types/EmailMessage'
 import EmailLayout from '../partials/EmailLayout'
 
-const Message: React.FC<EmailMessage> = ({
-  title,
-  recipientName = 'Somebody',
-  message = 'Lorem ipsum dolor sit amet...',
-}) => {
+const Message: React.FC<EmailMessage> = ({ title, recipientName, message }) => {
   return (
     <EmailLayout title={title}>
       <Preview>{recipientName} sent you a message</Preview>
@@ -28,4 +24,14 @@ const Message: React.FC<EmailMessage> = ({
   )
 }
 
-export default Message
+/** Preview Component with test data */
+const SampleMessage: React.FC = () => (
+  <Message
+    title='Sample Email Message'
+    recipientName='Johnny'
+    message='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita maxime repudiandae praesentium culpa repellat magni modi nobis quisquam quo.'
+  />
+)
+
+export { Message }
+export default SampleMessage

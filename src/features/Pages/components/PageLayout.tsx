@@ -5,7 +5,7 @@ import React from 'react'
 
 const PageLayout: React.FC<BoxProps> = ({ children, ...boxProps }) => {
   return (
-    <Box w='full' bg='teal.600' {...boxProps}>
+    <Box w='full' bg='secondary' {...boxProps}>
       <VStack
         w='full'
         maxWidth='container.xl'
