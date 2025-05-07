@@ -12,6 +12,7 @@ export interface SendEmailProps {
   messageData: EmailMessage
   subject: string
   preview?: string
+  /* handle or inbox name only, wihtout the domain. e.g. "no-reply" */
   from?: string
   cc?: string[]
   bcc?: string[]

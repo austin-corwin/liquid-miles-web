@@ -9,6 +9,7 @@ import React from 'react'
 import { EmailMessage } from '../../types/EmailMessage'
 import EmailLayout from '../partials/EmailLayout'
 
+/** Email template for sending short and simple messages with an optional CTA */
 const Notice: React.FC<EmailMessage> = ({ title, message, cta }) => {
   return (
     <EmailLayout title={title}>

@@ -3,6 +3,7 @@ import React from 'react'
 import { EmailMessage } from '../../types/EmailMessage'
 import EmailLayout from '../partials/EmailLayout'
 
+/** Email template for sending messages from one user to another e.g. contact form submissions */
 const Message: React.FC<EmailMessage> = ({ title, recipientName, message }) => {
   return (
     <EmailLayout title={title}>
