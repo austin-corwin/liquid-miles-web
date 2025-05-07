@@ -12,13 +12,14 @@ const AdminEmail: React.FC = () => {
     <PageLayout background='transparent'>
       <PageHeader
         title='Emails'
-        color='white'
+        // color='white'
         flexDirection='column-reverse'
         gap={2}
+        py={0}
       >
         <Heading {...headingRecipes.H6}>Admin</Heading>
       </PageHeader>
-      <VStack w='full' gap={8}>
+      <VStack w='full' gap={8} py={8}>
         <TestEmail />
       </VStack>
     </PageLayout>

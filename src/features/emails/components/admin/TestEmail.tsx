@@ -41,6 +41,7 @@ const TestEmail: React.FC = () => {
       to: [email],
     })
     setIsLoading(false)
+    // Keep for debugging
     console.log(sendRequest)
     if (sendRequest?.success) {
       toast({
