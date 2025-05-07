@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "dev:email": "email dev --dir ./src/features/emails/components",
+    "dev:email": "email dev --dir ./src/features/emails/components/templates",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
