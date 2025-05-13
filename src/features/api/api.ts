@@ -1,11 +1,8 @@
 'use server'
 
-interface ApiResponse<D = unknown> {
-  data: D
-  success: boolean
-  errors?: unknown | null
-}
+import { ApiResponse } from './types'
 
+/** Make GraphQL requests to Contentful API */
 export const fetchGraphQL = async <D = unknown>(
   query: string,
   variables?: { [key: string]: unknown },
