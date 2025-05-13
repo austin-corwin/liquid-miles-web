@@ -7,13 +7,24 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const baseStyle = definePartsStyle({
   addon: {},
   field: {
-    fontWeight: 'semibold',
+    fontWeight: 'medium',
     _placeholder: {
-      color: 'gray.300',
+      color: 'gray.400',
       fontFamily: 'poppins',
-      fontWeight: 'semibold',
+      fontWeight: 'medium',
     },
-    _focus: {},
+    _groupHover: {
+      outlineColor: 'gray.200',
+      borderColor: 'black',
+    },
+    _hover: {
+      borderColor: 'black',
+    },
+    _focus: {
+      ringColor: 'black',
+      outlineColor: 'gray.300',
+      borderColor: 'black',
+    },
     _invalid: {
       color: 'red.700',
       _placeholder: {
