@@ -16,7 +16,6 @@ import {
 import { textareaConfig } from './components/textareaConfig'
 import { alertConfig } from './components/alertConfig'
 
-
 const componentsConfig: Record<string, ComponentStyleConfig> = {
   Accordion: accordionConfig,
   Alert: alertConfig,
