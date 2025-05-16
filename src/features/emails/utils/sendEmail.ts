@@ -40,10 +40,11 @@ const sendEmail = async (
     data: null,
   }
   try {
-    const { to, subject, messageData, template } = sendProps
+    const { to, cc, subject, messageData, template } = sendProps
     const from = `${sendProps?.from || 'noreply'}@${verifiedDomain}`
     const { data, error } = await resend.emails.send({
       from,
+      cc,
       replyTo: [sendProps.replyTo || from],
       to,
       subject,
