@@ -38,7 +38,8 @@ const formConfig: FormConfig<ContactFormValues> = {
       // @TODO: replace or remove me from CC once the LM Resend account is active
       cc: ['ericnowels@gmail.com'],
       from: 'contact',
-      replyTo: 'liquidmilesrace@gmail.com',
+      // replyTo: 'liquidmilesrace@gmail.com',
+      replyTo: values.email,
       subject: `Contact Message from ${values.name}`,
       messageData: {
         title: `Contact Message from ${values.name}`,
