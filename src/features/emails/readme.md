@@ -32,6 +32,7 @@ const emailResponse = await sendEmail({
   bcc: ['someone-else@a-domain.com'],
   from: 'hello',
   replyTo: 'liquidmilesrace@gmail.com',
+  subject: 'Hellow there!',
   messageData: {
     title: 'The headline',
     recipientName: 'FirstName',
