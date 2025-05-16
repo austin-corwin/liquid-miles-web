@@ -1,10 +1,11 @@
 'use client'
 
+import { ContactFormEntry } from '@/api/gql/graphql'
+import { EmailTemplates } from '@/features/emails/types/EmailTemplates'
+import { sendEmail, SendEmailProps } from '@/features/emails/utils/sendEmail'
 import React from 'react'
 import * as yup from 'yup'
 import { FormConfig } from '../../types/FormConfig'
-
-import { ContactFormEntry } from '@/api/gql/graphql'
 import { createContactEntry } from '../../utils/createContactEntry'
 import { RenderForm } from '../RenderForm'
 
@@ -31,8 +32,28 @@ const formConfig: FormConfig<ContactFormValues> = {
       email: values?.email,
       message: values?.message,
     }
-    const { success } = await createContactEntry(entryData)
-    return success
+
+    const emailProps: SendEmailProps = {
+      to: ['liquidmilesrace@gmail.com'],
+      // @TODO: replace or remove me from CC once the LM Resend account is active
+      cc: ['ericnowels@gmail.com'],
+      from: 'contact',
+      replyTo: 'liquidmilesrace@gmail.com',
+      subject: `Contact Message from ${values.name}`,
+      messageData: {
+        title: `Contact Message from ${values.name}`,
+        recipientName: values.name,
+        message: values?.message,
+      },
+      template: EmailTemplates.Message,
+    }
+
+    const [contentfulResponse, emailResponse] = await Promise.all([
+      await createContactEntry(entryData),
+      await sendEmail(emailProps),
+    ])
+
+    return contentfulResponse.success || emailResponse.success
   },
   formControlsProps: {
     submitLabel: 'Send It',
