@@ -1,4 +1,7 @@
-import { verifyWebhook } from '@clerk/nextjs/webhooks'
+import { UserRole } from '@/features/users/types/UserRole'
+import { createUser } from '@/features/users/utils/createUser'
+import { UserJSON } from '@clerk/nextjs/server'
+import { verifyWebhook, WebhookEventType } from '@clerk/nextjs/webhooks'
 import { NextRequest } from 'next/server'
 
 /** Handle webhooks sent by Clerk
@@ -6,14 +9,31 @@ import { NextRequest } from 'next/server'
  */
 export async function POST(req: NextRequest) {
   try {
-    const evt = await verifyWebhook(req)
+    const webhook = await verifyWebhook(req)
+    const eventType: WebhookEventType = webhook.type
 
-    const { id } = evt.data
-    const eventType = evt.type
-    console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
-    console.log('Webhook payload:', evt.data)
+    switch (eventType) {
+      case 'user.created':
+        console.log(`Received create user Webhook`)
+        const payload: UserJSON = webhook.data as UserJSON
+        const { id, primary_email_address_id, email_addresses } = payload
+        const email = email_addresses.find(
+          (address) => address.id === primary_email_address_id
+        )?.email_address
 
-    return new Response('Webhook received', { status: 200 })
+        const createUserRequest = await createUser(id, UserRole.Racer, email)
+        if (!createUserRequest.success) {
+          throw new Error(
+            `Error creating user via Clerk webhook. \n${JSON.stringify(createUserRequest, null, 2)}`
+          )
+        } else console.log('Created User via Clerk Webhook', createUserRequest)
+        break
+      default:
+        console.warn('This event is not supported.')
+        break
+    }
+
+    return new Response('Webhook processed', { status: 200 })
   } catch (err) {
     console.error('Error verifying webhook:', err)
     return new Response('Error verifying webhook', { status: 400 })
