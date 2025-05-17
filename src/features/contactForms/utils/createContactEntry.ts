@@ -1,15 +1,7 @@
 'use server'
 import { ContactFormEntry } from '@/api/gql/graphql'
 import { contentfulClient } from '@/features/api/admin/contentfulClient'
-import { ApiResponse } from '@/features/api/types'
-
-interface ConfentfulError {
-  status: number
-  statusText: string
-  message: string
-  request: unknown
-  details: { errors: Record<string, string> }
-}
+import { ApiResponse, ConfentfulError } from '@/features/api/types'
 
 /** Create a contactFormEntry in Contentful and publish it immediately */
 const createContactEntry = async (
