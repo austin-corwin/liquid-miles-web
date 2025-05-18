@@ -37,6 +37,7 @@
     "react-icons": "^5.5.0",
     "resend": "^4.5.1",
     "svix": "^1.65.0",
+    "swr": "^2.3.3",
     "yup": "^1.6.1"
   },
   "devDependencies": {

@@ -1,11 +1,11 @@
 'use client'
 
 import { Link } from '@/api/gql/graphql'
-import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
+import { Link as ChakraLink, LinkProps } from '@chakra-ui/next-js'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
-interface NavLinkProps extends LinkProps {
+interface NavLinkProps extends Omit<LinkProps, 'href'> {
   link?: Link
 }
 
