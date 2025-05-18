@@ -29,7 +29,13 @@ const mainNavigationConfig: Link[] = [
     label: 'Tickets',
     url: '/tickets',
     requiresAuthentication: true,
-    requiresRole: UserRole.Admin,
+  },
+  {
+    _id: 'admin',
+    label: 'Admin',
+    url: '/admin',
+    // requiresAuthentication: true,
+    requiresRole: [UserRole.Admin],
   },
 ] as Link[]
 
