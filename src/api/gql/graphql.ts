@@ -218,154 +218,6 @@ export enum AssetOrder {
   WidthDesc = 'width_DESC',
 }
 
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntries = Entry &
-  _Node & {
-    __typename?: 'ContactFormEntries'
-    _id: Scalars['ID']['output']
-    channel?: Maybe<Scalars['String']['output']>
-    contentfulMetadata: ContentfulMetadata
-    data?: Maybe<Scalars['JSON']['output']>
-    email?: Maybe<Scalars['String']['output']>
-    linkedFrom?: Maybe<ContactFormEntriesLinkingCollections>
-    message?: Maybe<Scalars['String']['output']>
-    name?: Maybe<Scalars['String']['output']>
-    phone?: Maybe<Scalars['String']['output']>
-    sys: Sys
-    title?: Maybe<Scalars['String']['output']>
-  }
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesChannelArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
-}
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesDataArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
-}
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesEmailArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
-}
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesMessageArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
-}
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesNameArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
-}
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesPhoneArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
-}
-
-/** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntries) */
-export type ContactFormEntriesTitleArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
-}
-
-export type ContactFormEntriesCollection = {
-  __typename?: 'ContactFormEntriesCollection'
-  items: Array<Maybe<ContactFormEntries>>
-  limit: Scalars['Int']['output']
-  skip: Scalars['Int']['output']
-  total: Scalars['Int']['output']
-}
-
-export type ContactFormEntriesFilter = {
-  AND?: InputMaybe<Array<InputMaybe<ContactFormEntriesFilter>>>
-  OR?: InputMaybe<Array<InputMaybe<ContactFormEntriesFilter>>>
-  channel?: InputMaybe<Scalars['String']['input']>
-  channel_contains?: InputMaybe<Scalars['String']['input']>
-  channel_exists?: InputMaybe<Scalars['Boolean']['input']>
-  channel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  channel_not?: InputMaybe<Scalars['String']['input']>
-  channel_not_contains?: InputMaybe<Scalars['String']['input']>
-  channel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>
-  data_exists?: InputMaybe<Scalars['Boolean']['input']>
-  email?: InputMaybe<Scalars['String']['input']>
-  email_contains?: InputMaybe<Scalars['String']['input']>
-  email_exists?: InputMaybe<Scalars['Boolean']['input']>
-  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  email_not?: InputMaybe<Scalars['String']['input']>
-  email_not_contains?: InputMaybe<Scalars['String']['input']>
-  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  message?: InputMaybe<Scalars['String']['input']>
-  message_contains?: InputMaybe<Scalars['String']['input']>
-  message_exists?: InputMaybe<Scalars['Boolean']['input']>
-  message_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  message_not?: InputMaybe<Scalars['String']['input']>
-  message_not_contains?: InputMaybe<Scalars['String']['input']>
-  message_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  name?: InputMaybe<Scalars['String']['input']>
-  name_contains?: InputMaybe<Scalars['String']['input']>
-  name_exists?: InputMaybe<Scalars['Boolean']['input']>
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  name_not?: InputMaybe<Scalars['String']['input']>
-  name_not_contains?: InputMaybe<Scalars['String']['input']>
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  phone?: InputMaybe<Scalars['String']['input']>
-  phone_contains?: InputMaybe<Scalars['String']['input']>
-  phone_exists?: InputMaybe<Scalars['Boolean']['input']>
-  phone_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  phone_not?: InputMaybe<Scalars['String']['input']>
-  phone_not_contains?: InputMaybe<Scalars['String']['input']>
-  phone_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  sys?: InputMaybe<SysFilter>
-  title?: InputMaybe<Scalars['String']['input']>
-  title_contains?: InputMaybe<Scalars['String']['input']>
-  title_exists?: InputMaybe<Scalars['Boolean']['input']>
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  title_not?: InputMaybe<Scalars['String']['input']>
-  title_not_contains?: InputMaybe<Scalars['String']['input']>
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ContactFormEntriesLinkingCollections = {
-  __typename?: 'ContactFormEntriesLinkingCollections'
-  entryCollection?: Maybe<EntryCollection>
-}
-
-export type ContactFormEntriesLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>
-  locale?: InputMaybe<Scalars['String']['input']>
-  preview?: InputMaybe<Scalars['Boolean']['input']>
-  skip?: InputMaybe<Scalars['Int']['input']>
-}
-
-export enum ContactFormEntriesOrder {
-  ChannelAsc = 'channel_ASC',
-  ChannelDesc = 'channel_DESC',
-  EmailAsc = 'email_ASC',
-  EmailDesc = 'email_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  PhoneAsc = 'phone_ASC',
-  PhoneDesc = 'phone_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
-}
-
 /** Submissions using contact form feature. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/contactFormEntry) */
 export type ContactFormEntry = Entry &
   _Node & {
@@ -739,6 +591,7 @@ export enum FaqOrder {
 }
 
 export enum ImageFormat {
+  /** AVIF image format. */
   Avif = 'AVIF',
   /** JPG image format. */
   Jpg = 'JPG',
@@ -842,6 +695,7 @@ export type Link = Entry &
     label?: Maybe<Scalars['String']['output']>
     linkedFrom?: Maybe<LinkLinkingCollections>
     requiresAuthentication?: Maybe<Scalars['Boolean']['output']>
+    requiresRole?: Maybe<Array<Maybe<Scalars['String']['output']>>>
     sys: Sys
     target?: Maybe<Scalars['String']['output']>
     url?: Maybe<Scalars['String']['output']>
@@ -859,6 +713,11 @@ export type LinkLinkedFromArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/link) */
 export type LinkRequiresAuthenticationArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>
+}
+
+/** [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/link) */
+export type LinkRequiresRoleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -894,6 +753,16 @@ export type LinkFilter = {
   requiresAuthentication?: InputMaybe<Scalars['Boolean']['input']>
   requiresAuthentication_exists?: InputMaybe<Scalars['Boolean']['input']>
   requiresAuthentication_not?: InputMaybe<Scalars['Boolean']['input']>
+  requiresRole_contains_all?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>>
+  >
+  requiresRole_contains_none?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>>
+  >
+  requiresRole_contains_some?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>>
+  >
+  requiresRole_exists?: InputMaybe<Scalars['Boolean']['input']>
   sys?: InputMaybe<SysFilter>
   target?: InputMaybe<Scalars['String']['input']>
   target_contains?: InputMaybe<Scalars['String']['input']>
@@ -1343,8 +1212,6 @@ export type Query = {
   _nodes: Array<Maybe<_Node>>
   asset?: Maybe<Asset>
   assetCollection?: Maybe<AssetCollection>
-  contactFormEntries?: Maybe<ContactFormEntries>
-  contactFormEntriesCollection?: Maybe<ContactFormEntriesCollection>
   contactFormEntry?: Maybe<ContactFormEntry>
   contactFormEntryCollection?: Maybe<ContactFormEntryCollection>
   entryCollection?: Maybe<EntryCollection>
@@ -1387,21 +1254,6 @@ export type QueryAssetCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>
   skip?: InputMaybe<Scalars['Int']['input']>
   where?: InputMaybe<AssetFilter>
-}
-
-export type QueryContactFormEntriesArgs = {
-  id: Scalars['String']['input']
-  locale?: InputMaybe<Scalars['String']['input']>
-  preview?: InputMaybe<Scalars['Boolean']['input']>
-}
-
-export type QueryContactFormEntriesCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>
-  locale?: InputMaybe<Scalars['String']['input']>
-  order?: InputMaybe<Array<InputMaybe<ContactFormEntriesOrder>>>
-  preview?: InputMaybe<Scalars['Boolean']['input']>
-  skip?: InputMaybe<Scalars['Int']['input']>
-  where?: InputMaybe<ContactFormEntriesFilter>
 }
 
 export type QueryContactFormEntryArgs = {
@@ -1727,8 +1579,8 @@ export type User = Entry &
     _id: Scalars['ID']['output']
     clerkId?: Maybe<Scalars['String']['output']>
     contentfulMetadata: ContentfulMetadata
+    email?: Maybe<Scalars['String']['output']>
     linkedFrom?: Maybe<UserLinkingCollections>
-    name?: Maybe<Scalars['String']['output']>
     role?: Maybe<Scalars['String']['output']>
     sys: Sys
   }
@@ -1739,13 +1591,13 @@ export type UserClerkIdArgs = {
 }
 
 /** User data record paired with a Clerk user. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/user) */
-export type UserLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+export type UserEmailArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>
 }
 
 /** User data record paired with a Clerk user. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/user) */
-export type UserNameArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>
+export type UserLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 /** User data record paired with a Clerk user. [See type definition](https://app.contentful.com/spaces/rpg7h631tvxf/content_types/user) */
@@ -1772,13 +1624,13 @@ export type UserFilter = {
   clerkId_not_contains?: InputMaybe<Scalars['String']['input']>
   clerkId_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>
-  name?: InputMaybe<Scalars['String']['input']>
-  name_contains?: InputMaybe<Scalars['String']['input']>
-  name_exists?: InputMaybe<Scalars['Boolean']['input']>
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  name_not?: InputMaybe<Scalars['String']['input']>
-  name_not_contains?: InputMaybe<Scalars['String']['input']>
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  email?: InputMaybe<Scalars['String']['input']>
+  email_contains?: InputMaybe<Scalars['String']['input']>
+  email_exists?: InputMaybe<Scalars['Boolean']['input']>
+  email_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  email_not?: InputMaybe<Scalars['String']['input']>
+  email_not_contains?: InputMaybe<Scalars['String']['input']>
+  email_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   role?: InputMaybe<Scalars['String']['input']>
   role_contains?: InputMaybe<Scalars['String']['input']>
   role_exists?: InputMaybe<Scalars['Boolean']['input']>
@@ -1804,8 +1656,8 @@ export type UserLinkingCollectionsEntryCollectionArgs = {
 export enum UserOrder {
   ClerkIdAsc = 'clerkId_ASC',
   ClerkIdDesc = 'clerkId_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
   RoleAsc = 'role_ASC',
   RoleDesc = 'role_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1893,6 +1745,24 @@ export type GetPageBySlugQuery = {
         })
       | null
     >
+  } | null
+}
+
+export type GetUserByClerkIdQueryVariables = Exact<{
+  clerkId?: InputMaybe<Scalars['String']['input']>
+}>
+
+export type GetUserByClerkIdQuery = {
+  __typename?: 'Query'
+  userCollection?: {
+    __typename?: 'UserCollection'
+    items: Array<{
+      __typename?: 'User'
+      _id: string
+      email?: string | null
+      role?: string | null
+      clerkId?: string | null
+    } | null>
   } | null
 }
 
@@ -2209,6 +2079,83 @@ export const GetPageBySlugDocument = {
     },
   ],
 } as unknown as DocumentNode<GetPageBySlugQuery, GetPageBySlugQueryVariables>
+export const GetUserByClerkIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetUserByClerkId' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'clerkId' },
+          },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'userCollection' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'limit' },
+                value: { kind: 'IntValue', value: '1' },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'clerkId' },
+                      value: {
+                        kind: 'Variable',
+                        name: { kind: 'Name', value: 'clerkId' },
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'items' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: '_id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'role' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'clerkId' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetUserByClerkIdQuery,
+  GetUserByClerkIdQueryVariables
+>
 export const PageCollectionQueryDocument = {
   kind: 'Document',
   definitions: [
