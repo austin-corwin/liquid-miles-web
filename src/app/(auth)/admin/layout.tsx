@@ -1,4 +1,6 @@
+import { AdminNavigation } from '@/features/Navigation/components/AdminNavigation'
 import { handleAdminAccess } from '@/features/users/utils/handleAdminAccess'
+import { Stack } from '@chakra-ui/react'
 
 export default async function AdminLayout({
   children,
@@ -6,5 +8,18 @@ export default async function AdminLayout({
   children: React.ReactNode
 }>) {
   await handleAdminAccess()
-  return <>{children}</>
+
+  return (
+    <>
+      <Stack
+        alignItems='flex-start'
+        justifyContent='space-between'
+        flexDirection={{ base: 'column', md: 'row' }}
+        w='full'
+      >
+        {children}
+        <AdminNavigation />
+      </Stack>
+    </>
+  )
 }
