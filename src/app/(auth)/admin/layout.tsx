@@ -1,17 +1,10 @@
-import { UserRole } from '@/features/users/types/UserRole'
-import { getUserByClerkId } from '@/features/users/utils/getUserByClerkId'
-import { auth } from '@clerk/nextjs/server'
+import { handleAdminAccess } from '@/features/users/utils/handleAdminAccess'
 
 export default async function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const clerk = await auth()
-  const user = await getUserByClerkId(clerk.userId)
-  if (user.role !== UserRole.Admin) {
-    clerk.redirectToSignIn()
-  }
-
-  return <div>{children}</div>
+  await handleAdminAccess()
+  return <>{children}</>
 }
