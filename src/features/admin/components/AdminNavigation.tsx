@@ -12,8 +12,6 @@ const AdminNavigation: React.FC = () => {
       position='sticky'
       top={0}
       py={8}
-      shadow='lg'
-      minHeight={{ base: 'auto', md: '100vh' }}
     >
       <NavMenu
         links={adminNavigationConfig}

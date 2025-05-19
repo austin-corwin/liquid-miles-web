@@ -1,6 +1,5 @@
 'use client'
 
-import { headingRecipes } from '@/features/chakra-ui/config/recipes'
 import {
   Box,
   Heading,
@@ -22,11 +21,16 @@ const UserList: React.FC = () => {
   const { users } = useUsers()
   return (
     <Box w='full'>
-      <TableContainer borderColor='secondary' borderWidth={2} rounded='lg'>
+      <TableContainer
+        bg='white'
+        borderColor='secondary'
+        borderWidth={2}
+        rounded='lg'
+      >
         <Table variant='simple'>
           <TableCaption placement='top' bg='secondary' color='white' mt={0}>
             <HStack alignItems='center' py={2}>
-              <Heading {...headingRecipes.H6}>
+              <Heading size={'sm'}>
                 <Tag mr={2}>{users?.length}</Tag> Active Users
               </Heading>
             </HStack>

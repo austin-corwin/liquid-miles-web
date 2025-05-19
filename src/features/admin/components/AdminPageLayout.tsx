@@ -14,11 +14,11 @@ const AdminPageLayout: React.FC<AdminPageLayoutProps> = ({
   ...boxProps
 }) => {
   return (
-    <PageLayout background='transparent' {...boxProps}>
+    <PageLayout background='gray.200' minH='100vh' pl={8} {...boxProps}>
       <PageHeader title={title} flexDirection='column-reverse' gap={2} py={0}>
         <Heading {...headingRecipes.H6}>Admin</Heading>
       </PageHeader>
-      <VStack w='full' gap={8} py={8} alignItems='start'>
+      <VStack w='full' gap={8} py={8} alignItems='start' pb={96}>
         {children}
       </VStack>
     </PageLayout>

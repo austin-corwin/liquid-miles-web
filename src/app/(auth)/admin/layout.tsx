@@ -16,6 +16,7 @@ export default async function AdminLayout({
         justifyContent='space-between'
         flexDirection={{ base: 'column', md: 'row' }}
         w='full'
+        bg='white'
       >
         <AdminNavigation />
         {children}

@@ -66,7 +66,7 @@ const TestEmail: React.FC = () => {
       p={6}
       rounded='lg'
     >
-      <Heading {...headingRecipes.H4} as='h2' py={2}>
+      <Heading {...headingRecipes.H6} as='h2' py={2}>
         Send Test Email
       </Heading>
 
