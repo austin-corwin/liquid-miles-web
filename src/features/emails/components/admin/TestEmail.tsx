@@ -3,9 +3,8 @@
 import { headingRecipes } from '@/features/chakra-ui/config/recipes'
 import { toastRecipes } from '@/features/chakra-ui/config/recipes/toastRecipes'
 import {
-  Box,
   Button,
-  Divider,
+  Code,
   Heading,
   Input,
   InputGroup,
@@ -67,7 +66,7 @@ const TestEmail: React.FC = () => {
       p={6}
       rounded='lg'
     >
-      <Heading {...headingRecipes.H4} as='h2' py={2}>
+      <Heading {...headingRecipes.H6} as='h2' py={2}>
         Send Test Email
       </Heading>
 
@@ -97,11 +96,10 @@ const TestEmail: React.FC = () => {
         >
           Send
         </Button>
-        <Divider py={2} mb={2} maxW='prose' mx='auto' />
         <Text fontWeight='semibold' py={2}>
           Additional Payload Data
         </Text>
-        <Box
+        <Code
           p={{ base: 4, md: 6 }}
           bg='gray.200'
           color='gray.800'
@@ -109,9 +107,11 @@ const TestEmail: React.FC = () => {
           rounded='lg'
           overflowX='auto'
           w='full'
+          maxW='full'
+          whiteSpace='preserve'
         >
-          <pre>{JSON.stringify(testEmailData, null, 2)}</pre>
-        </Box>
+          {JSON.stringify(testEmailData, null, 2)}
+        </Code>
       </VStack>
     </VStack>
   )

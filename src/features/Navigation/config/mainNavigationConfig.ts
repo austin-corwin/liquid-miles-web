@@ -1,4 +1,5 @@
 import { Link } from '@/api/gql/graphql'
+import { UserRole } from '@/features/users/types/UserRole'
 
 const mainNavigationConfig: Link[] = [
   {
@@ -28,6 +29,13 @@ const mainNavigationConfig: Link[] = [
     label: 'Tickets',
     url: '/tickets',
     requiresAuthentication: true,
+  },
+  {
+    _id: 'admin',
+    label: 'Admin',
+    url: '/admin',
+    // requiresAuthentication: true,
+    requiresRole: [UserRole.Admin],
   },
 ] as Link[]
 
