@@ -2,6 +2,12 @@ import { Link } from '@/api/gql/graphql'
 
 const adminNavigationConfig: Link[] = [
   {
+    _id: 'dashboard',
+    label: 'Dashboard',
+    url: '/admin',
+    target: '_self',
+  },
+  {
     _id: 'users',
     label: 'Users',
     url: '/admin/users',

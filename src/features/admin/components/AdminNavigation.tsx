@@ -1,7 +1,7 @@
 import { VStack } from '@chakra-ui/react'
 import React from 'react'
+import { NavMenu } from '../../Navigation/components/NavMenu'
 import { adminNavigationConfig } from '../config/adminNavigationConfig'
-import { NavMenu } from './NavMenu'
 
 const AdminNavigation: React.FC = () => {
   return (
@@ -11,23 +11,27 @@ const AdminNavigation: React.FC = () => {
       minW={64}
       position='sticky'
       top={0}
-      py={16}
-      px={{ base: 4 }}
+      py={8}
+      shadow='lg'
+      minHeight='100vh'
     >
       <NavMenu
         links={adminNavigationConfig}
         flexDirection={{ base: 'column' }}
         alignItems='start'
         justifyContent='flex-start'
-        bg='gray.100'
-        rounded='lg'
         w='full'
         p={4}
         linkProps={{
           textAlign: 'left',
-          fontSize: 'sm',
+          w: 'full',
+          rounded: 'md',
+          px: { base: 4, md: 6 },
+          py: { base: 2, md: 3 },
+          color: 'gray.700',
           _hover: {
-            color: 'secondary',
+            color: 'black',
+            textDecoration: 'underline',
           },
         }}
       />
