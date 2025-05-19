@@ -23,9 +23,9 @@ const useUsers = (): UseUsers => {
     const { data } = await fetchGraphQL<UserCollection>(getAllUsersQuery)
     return data?.items
   })
+
   const { data: clerkData } = useSWR(`clerkUsers`, async () => {
     const clerkUsers = await getClerkUsers()
-
     return clerkUsers
   })
 

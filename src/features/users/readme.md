@@ -4,7 +4,7 @@ User management tools for CRUD operations, and aggregation of Clerk + Contentful
 
 ## User Creation
 
-WHen a user is successfully created and verified in Clerk, either by self-sign-up or Clerk admins sending an invite, a webhook will be sent to /api/clerk/webhook. If the payload is valid a user record will be created in the database for storing additional, non-auth related data about the user.
+When a user is successfully created and verified in Clerk, either by self-sign-up or Clerk admins sending an invite, a webhook will be sent to /api/clerk/webhook. If the payload is valid a user record will be created in the database for storing additional, non-auth related data about the user.
 
 ## Configuration
 
