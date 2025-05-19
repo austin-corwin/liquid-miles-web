@@ -1,4 +1,5 @@
-import { Link as ChakraLink, HStack, Image, Text } from '@chakra-ui/react'
+import { Link as ChakraLink, Image } from '@chakra-ui/next-js'
+import { HStack, Text } from '@chakra-ui/react'
 import { mainNavigationConfig } from '../config/mainNavigationConfig'
 import { AuthLinks } from './AuthLinks'
 import { NavMenu } from './NavMenu'
