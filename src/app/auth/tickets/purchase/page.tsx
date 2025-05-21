@@ -10,7 +10,7 @@ export default function Home() {
   )
   const handleCheckout = async () => {
     const stripe = await stripePromise
-    const response = await fetch('/api/checkout-sessions', {
+    const response = await fetch('/api/checkout', {
       method: 'POST',
     })
     const session = await response.json()
