@@ -5,7 +5,7 @@
 
 // const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
-export default function Success() {
+export default function Cancel() {
   //   const stripePromise = loadStripe(
   //     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
   //   )
@@ -21,7 +21,7 @@ export default function Success() {
   //   const { session_id } = router.query
   return (
     <div>
-      <h1>Successful payment screen</h1>
+      <h1>Cancel payment screen</h1>
       {/* <p>Session ID: {session_id}</p> */}
       {/* <button onClick={handleCheckout}>Checkout</button> */}
     </div>

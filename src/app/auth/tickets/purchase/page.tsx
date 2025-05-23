@@ -11,10 +11,14 @@ export default function Home() {
   const handleCheckout = async () => {
     const stripe = await stripePromise
     const response = await fetch('/api/checkout', {
-      method: 'POST',
+      method: 'GET',
     })
-    const session = await response.json()
-    await stripe.redirectToCheckout({ sessionId: session.id })
+    const data = await response.json()
+    console.log('session is', data)
+    if (data && data.sessionId) {
+      console.log('redirect to checkout', data)
+      await stripe.redirectToCheckout({ sessionId: data.sessionId })
+    }
   }
   return (
     <div>
