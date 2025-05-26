@@ -20,8 +20,14 @@ const adminNavigationConfig: Link[] = [
     target: '_self',
   },
   {
+    _id: 'style-guide',
+    label: 'Style Guide',
+    url: '/admin/style-guide',
+    target: '_self',
+  },
+  {
     _id: 'cms',
-    label: 'Contentful CMS',
+    label: 'Contentful CMS 🔗',
     url: 'https://app.contentful.com/',
     target: '_blank',
   },
