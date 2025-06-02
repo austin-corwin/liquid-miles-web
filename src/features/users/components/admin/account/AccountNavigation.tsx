@@ -1,4 +1,5 @@
 import { NavMenu } from '@/features/Navigation/components/NavMenu'
+import { accountNavigationConfig } from '@/features/users/config/accountNavigationConfig'
 import { VStack } from '@chakra-ui/react'
 import React from 'react'
 
@@ -13,7 +14,7 @@ const AccountNavigation: React.FC = () => {
       py={8}
     >
       <NavMenu
-        links={[]}
+        links={accountNavigationConfig}
         flexDirection={{ base: 'column' }}
         alignItems='start'
         justifyContent='flex-start'

@@ -26,7 +26,7 @@ const AuthLinks: React.FC<ButtonProps> = ({ ...buttonProps }) => {
         </SignInButton>
       </SignedOut>
       <SignedIn>
-        <UserButton />
+        <UserButton userProfileMode='navigation' userProfileUrl='/account' />
       </SignedIn>
     </>
   )
