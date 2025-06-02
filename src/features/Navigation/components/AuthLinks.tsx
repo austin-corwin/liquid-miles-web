@@ -11,7 +11,7 @@ const AuthLinks: React.FC<ButtonProps> = ({ ...buttonProps }) => {
   return (
     <>
       <SignedOut>
-        <SignInButton>
+        <SignInButton signUpForceRedirectUrl='/account'>
           <Button
             variant='outline'
             size='sm'
