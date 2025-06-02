@@ -1,0 +1,16 @@
+[data-localization-key="userProfile.navbar.description"] {
+	display: none;
+}
+
+.cl-navbar {
+	background: white;
+
+	>div {
+		background: white;
+		@apply bg-white;
+	}
+
+	h1 {
+		@apply text-3xl uppercase font-bold text-gray-600;
+	}
+}

@@ -1,39 +1,44 @@
 import { headingRecipes } from '@/features/chakra-ui/config/recipes'
-import { PageHeader } from '@/features/Pages/components/PageHeader'
-import { PageLayout } from '@/features/Pages/components/PageLayout'
-import { BoxProps, Heading, VStack } from '@chakra-ui/react'
+import { Box, BoxProps, Heading, VStack } from '@chakra-ui/react'
 import React from 'react'
 
 interface AccountPageLayoutProps extends BoxProps {
   title: string
+  subtitle?: React.ReactNode
 }
 
 const AccountPageLayout: React.FC<AccountPageLayoutProps> = ({
   title,
   children,
+  subtitle,
   ...boxProps
 }) => {
   return (
-    <PageLayout
-      background='white'
-      minH='100vh'
-      pl={{ base: 0, md: 8 }}
-      {...boxProps}
-    >
-      <PageHeader title={title} flexDirection='column-reverse' gap={2} py={0}>
-        <Heading {...headingRecipes.H6}>Account</Heading>
-      </PageHeader>
+    <Box w='full' bg='white' {...boxProps}>
       <VStack
         w='full'
-        gap={8}
-        py={8}
-        alignItems='start'
-        pb={16}
-        overflow='hidden'
+        maxWidth='container.xl'
+        alignItems='center'
+        pb={12}
+        mx='auto'
       >
-        {children}
+        <VStack
+          as='header'
+          w='full'
+          gap={{ base: 4 }}
+          position={'relative'}
+          pb={6}
+        >
+          <Heading w='full' color='inherit' {...headingRecipes.H3} as='h1'>
+            {title}
+          </Heading>
+          {subtitle && <Box w='full'>{subtitle}</Box>}
+        </VStack>
+        <VStack w='full' gap={8} alignItems='start' pb={16} overflow='hidden'>
+          {children}
+        </VStack>
       </VStack>
-    </PageLayout>
+    </Box>
   )
 }
 

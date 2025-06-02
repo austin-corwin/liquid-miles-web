@@ -2,6 +2,7 @@ import { fonts } from '@/config/fonts'
 import { ChakraUiProvider } from '@/features/chakra-ui/components/ChakraUiProvider'
 import { DebugBreakpoints } from '@/features/chakra-ui/components/DebugBreakpoints'
 import Navigation from '@/features/Navigation/components/Navigation'
+import { clerkComponentsTheme } from '@/features/users/config/clerkComponentsTheme'
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import './globals.css'
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   const { poppins } = fonts
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={clerkComponentsTheme.clerkProvider}>
       <html lang='en'>
         <body className={`${poppins.variable} antialiased`}>
           <ChakraUiProvider>
