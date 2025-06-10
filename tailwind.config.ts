@@ -45,6 +45,15 @@ export default {
       boxShadow: {
         'btn-fill': 'inset 0 -4rem 0 0 #ffc800',
       },
+      keyframes: {
+        wave: {
+          '0%, 100%': { transform: 'rotate(-15deg)' },
+          '50%': { transform: 'rotate(15deg)' },
+        },
+      },
+      animation: {
+        wave: 'wave 1s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
