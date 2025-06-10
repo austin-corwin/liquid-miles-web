@@ -13,9 +13,9 @@ export async function GET(req: Request) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'Your Product Name',
+              name: 'Full Pint',
             },
-            unit_amount: 1000, // Price in cents
+            unit_amount: 5000, // Price in cents
           },
           quantity: 1,
         },

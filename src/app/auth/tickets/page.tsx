@@ -1,6 +1,6 @@
-"use client";
-import Tickets from "@/features/Tickets";
+'use client'
+import Tickets from '@/features/Tickets/Tickets'
 
 export default function Home() {
-  return <Tickets />;
+  return <Tickets />
 }

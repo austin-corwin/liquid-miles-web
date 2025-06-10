@@ -20,8 +20,11 @@ export default function Success() {
   //   const router = useRouter()
   //   const { session_id } = router.query
   return (
-    <div>
+    <div className='min-h-screen'>
       <h1>Successful payment screen</h1>
+      <div className='flex justify-center items-center w-full'>
+        Confirmation code would go here.
+      </div>
       {/* <p>Session ID: {session_id}</p> */}
       {/* <button onClick={handleCheckout}>Checkout</button> */}
     </div>
