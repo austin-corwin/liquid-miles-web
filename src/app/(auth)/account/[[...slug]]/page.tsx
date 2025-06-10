@@ -1,6 +1,6 @@
 'use client'
-import { AccountDashboard } from '@/features/users/components/admin/account/AccountDashboard'
-import { AccountSignOut } from '@/features/users/components/admin/account/AccountSignOut'
+import { AccountDashboard } from '@/features/users/components/account/AccountDashboard'
+import { AccountSignOut } from '@/features/users/components/account/AccountSignOut'
 import { clerkComponentsTheme } from '@/features/users/config/clerkComponentsTheme'
 import { UserProfile } from '@clerk/nextjs'
 import React from 'react'
