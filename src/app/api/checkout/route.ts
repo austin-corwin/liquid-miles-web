@@ -22,7 +22,7 @@ export async function GET(req: Request) {
       ],
       mode: 'payment',
       success_url: `http://${req.headers.get('host')}/auth/tickets/success`,
-      cancel_url: `http://${req.headers.get('host')}/auth/tickets/purchase`,
+      cancel_url: `http://${req.headers.get('host')}/auth/tickets`,
     })
     // console.log('RES IN GET IF IS ', await res)
     // return await res.status(200).json({ message: 'Success', data: session })
