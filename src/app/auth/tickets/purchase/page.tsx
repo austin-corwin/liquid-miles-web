@@ -1,13 +1,8 @@
 'use client'
-import { loadStripe } from '@stripe/stripe-js'
-// import { loadStripe } from '@stripe/stripe-js'
-
-// const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+import getStripe from '@/utils/getStripe'
 
 export default function Home() {
-  const stripePromise = loadStripe(
-    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-  )
+  const stripePromise = getStripe()
   const handleCheckout = async () => {
     const stripe = await stripePromise
     const response = await fetch('/api/checkout', {

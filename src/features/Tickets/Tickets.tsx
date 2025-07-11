@@ -1,10 +1,8 @@
 import { Card } from '@/components/molecules/Card'
-import { loadStripe } from '@stripe/stripe-js'
+import getStripe from '@/utils/getStripe'
 
 const Tickets = () => {
-  const stripePromise = loadStripe(
-    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-  )
+  const stripePromise = getStripe()
   const handleCheckout = async () => {
     const stripe = await stripePromise
     const response = await fetch('/api/checkout', {
