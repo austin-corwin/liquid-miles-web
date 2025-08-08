@@ -21,8 +21,8 @@ export async function GET(req: Request) {
         },
       ],
       mode: 'payment',
-      success_url: `http://${req.headers.get('host')}/auth/tickets/success`,
-      cancel_url: `http://${req.headers.get('host')}/auth/tickets`,
+      success_url: `http://${req.headers.get('host')}/tickets/success`,
+      cancel_url: `http://${req.headers.get('host')}/tickets`,
     })
     return Response.json({ sessionId: session.id })
   } else {
