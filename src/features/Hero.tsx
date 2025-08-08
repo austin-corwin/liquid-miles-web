@@ -10,7 +10,7 @@ const Hero = () => {
     >
       <div className='flex justify-center items-center'>
         <div className='flex flex-col justify-center items-center pb-24'>
-          <h1 className='text-white font-primary font-extrabold text-lg lg:text-hero lg:leading-none lg:mb-8'>
+          <h1 className='text-white font-primary font-extrabold text-3xl p-4 md:p-0 text-center lg:text-hero lg:leading-none lg:mb-8'>
             Welcome to Liquid Miles
           </h1>
           <a

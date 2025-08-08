@@ -8,12 +8,12 @@ import Wave from '@/components/Wave'
 
 const PickYourPint = () => {
   return (
-    <div className='relative'>
-      <div className='w-full bg-tertiary flex flex-col items-center py-12 z-10'>
-        <h3 className='text-secondary font-primary uppercase font-extrabold text-[4rem]'>
+    <div className='relative bg-tertiary pb-48'>
+      <div className='w-full bg-tertiary flex flex-col items-center py-12 lg:py-24 z-10 pb-48'>
+        <h3 className='text-secondary font-primary uppercase font-extrabold text-[1.5rem] lg:text-[4rem]'>
           Pick Your Pint
         </h3>
-        <div className='flex flex-col items-centr lg:flex-row gap-16 mt-8'>
+        <div className='flex p-4 flex-col items-center lg:flex-row gap-16 mt-8'>
           {/* <div className='flex flex-col gap-4 w-full p-4 h-80 border-2 rounded-xl border-secondary'>
           <h4 className='uppercase font-primary text-secondary font-semibold text-2xl'>
             Full Pint
@@ -24,8 +24,8 @@ const PickYourPint = () => {
           <StandardCard
             header={
               <div className='flex flex-col items-center'>
-                <Heading className='text-white'>Half Pint</Heading>
-                <div className='w-60 h-60 relative'>
+                <p className='text-white  lg:text-2xl font-bold'>Half Pint</p>
+                <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
                   <Image fill src={halfPint} alt='Full pint' />
                 </div>
               </div>
@@ -48,8 +48,8 @@ const PickYourPint = () => {
           <StandardCard
             header={
               <div className='flex flex-col items-center'>
-                <Heading className='text-white'>Full Pint</Heading>
-                <div className='w-60 h-60 relative'>
+                <p className='text-white font-bold'>Full Pint</p>
+                <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
                   <Image fill src={fullPint} alt='Full pint' />
                 </div>
               </div>
@@ -68,8 +68,11 @@ const PickYourPint = () => {
           />
         </div>
       </div>
-      <div className='z-0 absolute -top-[10rem] lg:-top-[15rem] left-0 right-0'>
+      <div className='z-0 absolute -top-[5rem] md:-top-[10rem] lg:-top-[15rem] left-0 right-0'>
         <Wave fill='#adcad6' />
+      </div>
+      <div className='z-0 absolute bottom-0 left-0 right-0'>
+        <Wave fill='#1C606D' />
       </div>
     </div>
   )

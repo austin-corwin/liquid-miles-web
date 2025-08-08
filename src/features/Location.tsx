@@ -2,18 +2,18 @@ import BlobMask from '@/components/BlobMask'
 
 const Location = () => {
   return (
-    <div className='bg-white w-full flex justify-center py-48 pb-24'>
-      <div className='container w-full flex gap-12'>
-        <div className='w-full max-w-[500px]'>
+    <div className='bg-white w-full flex justify-center py-24 pb-18 lg:py-48 lg:pb-24 p-4'>
+      <div className='container w-full flex flex-col items-center lg:flex-row gap-12'>
+        <div className='w-full max-w-[300px] lg:max-w-[500px]'>
           <BlobMask
             path='../../images/neighborhoodRoute.jpg'
             id='neighborhoodRoute'
           />
         </div>
-        <section className='gap-4 flex flex-col text-secondary max-w-[700px] justify-center'>
+        <section className='gap-4 text-center lg:text-left flex flex-col text-secondary max-w-[700px] justify-center'>
           <div>
-            <p className='uppercase font-bold pb-2'>Location</p>
-            <h2 className='text-secondary font-extrabold text-[4rem] font-primary leading-none'>
+            <p className='uppercase font-bold lg:pb-2'>Location</p>
+            <h2 className='text-secondary font-extrabold text-[1.5rem] lg:text-[4rem] font-primary leading-none'>
               Fort Collins, CO
             </h2>
           </div>
