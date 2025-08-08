@@ -9,7 +9,7 @@ const Navigation: React.FC<{ children?: React.ReactNode }> = () => {
     <HStack
       id='main-navigation'
       w='full'
-      bg='primary'
+      bg='tertiary'
       justifyContent='space-between'
       alignItems='center'
       px={{ base: 4, md: 8 }}
