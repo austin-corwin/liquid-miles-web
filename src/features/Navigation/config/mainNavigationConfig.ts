@@ -26,7 +26,7 @@ const mainNavigationConfig: Link[] = [
   {
     _id: 'tickets',
     label: 'Tickets',
-    url: '/tickets',
+    url: '/auth/tickets',
     requiresAuthentication: true,
   },
 ] as Link[]
