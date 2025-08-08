@@ -1,4 +1,4 @@
-import BlobMask from "@/components/BlobMask";
+import BlobMask from '@/components/BlobMask'
 
 const Location = () => {
   return (
@@ -27,7 +27,7 @@ const Location = () => {
         </section>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Location;
+export default Location
