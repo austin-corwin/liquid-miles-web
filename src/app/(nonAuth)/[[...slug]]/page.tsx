@@ -71,8 +71,8 @@ export default async function Page({ params }: Props) {
     <Home />
   ) : (
     <div>
-      <PageLayout bg='white'>
-        <PageHeader title={page?.title} color='secondary'>
+      <PageLayout minHeight='calc(100vh - 4rem)' bg='secondary'>
+        <PageHeader title={page?.title} color='white'>
           {page?.subtitle && (
             <h2 className='text-2xl'>
               <Markdown content={page.subtitle as Content} />
@@ -80,7 +80,7 @@ export default async function Page({ params }: Props) {
           )}
           <Divider borderTopColor='secondary' borderTopWidth={2} opacity={1} />
         </PageHeader>
-        <div className='container mx-auto text-lg text-secondary'>
+        <div className='container mx-auto text-lg text-white'>
           {page?.content?.json && (
             <Markdown content={page?.content as Content} />
           )}
@@ -98,7 +98,9 @@ export default async function Page({ params }: Props) {
           </section>
         )}
       </PageLayout>
-      <Wave fill='#ffc800' />
+      <div className='absolute bottom-0 left-0 right-0'>
+        <Wave fill='#ffc800' />
+      </div>
     </div>
   )
 }

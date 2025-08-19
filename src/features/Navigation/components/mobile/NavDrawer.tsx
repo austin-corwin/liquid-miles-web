@@ -42,7 +42,7 @@ const NavDrawer: React.FC<NavDrawerProps> = ({
       {...drawerProps}
     >
       <DrawerOverlay />
-      <DrawerContent bg='primary'>
+      <DrawerContent bg='tertiary'>
         <DrawerHeader
           display='flex'
           justifyContent='flex-end'
