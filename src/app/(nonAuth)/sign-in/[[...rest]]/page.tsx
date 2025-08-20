@@ -1,8 +1,8 @@
-import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignIn, UserButton } from '@clerk/nextjs'
 
 export default function Home() {
   return (
-    <div className='w-full flex flex-col h-full justify-center items-center mt-24'>
+    <div className='w-full flex flex-col h-full justify-center items-center p-8 bg-secondary min-h-screen'>
       {/* TODO: Save this feature for later to implement request account */}
       {/* <p className='mb-8'>
         Don&apos;t have an account? Fill out our{" "}
@@ -16,5 +16,5 @@ export default function Home() {
         <UserButton />
       </SignedIn>
     </div>
-  );
+  )
 }

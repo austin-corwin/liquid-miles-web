@@ -11,16 +11,21 @@ import halfPint from '../../../public/images/halfpint.png'
 
 const Tickets = () => {
   const stripePromise = getStripe()
-  const handleCheckout = async () => {
-    const stripe = await stripePromise
-    const response = await fetch('/api/checkout', {
-      method: 'GET',
-    })
-    const data = await response.json()
-    console.log('session is', data)
-    if (data && data.sessionId) {
-      console.log('redirect to checkout', data)
-      await stripe.redirectToCheckout({ sessionId: data.sessionId })
+  const handleCheckout = async (priceId: string) => {
+    if (!priceId) {
+      throw 'Missing priceId'
+    } else {
+      const stripe = await stripePromise
+      const response = await fetch(
+        `/api/checkout?priceId=${encodeURIComponent(priceId)}`,
+        { method: 'GET' }
+      )
+      const data = await response.json()
+      console.log('session is', data)
+      if (data && data.sessionId) {
+        console.log('redirect to checkout', data)
+        await stripe.redirectToCheckout({ sessionId: data.sessionId })
+      }
     }
   }
 
@@ -55,7 +60,9 @@ const Tickets = () => {
                 body={`For those of you who aren't quite prepared enough to do the full pint, we've come up with a non-competitive alternative so that you can still participate and get a t-shirt. You'll be expected to do 5 1-mile laps and drink 5 crispy boys in under 5 hours. Since this is non-competitive, feel free to go at your own pace. Think of it like a Sunday stroll, but with beer.`}
                 footer={
                   <Button
-                    onClick={handleCheckout}
+                    onClick={() =>
+                      handleCheckout(process.env.NEXT_PUBLIC_HALFPINT)
+                    }
                     colorScheme='teal'
                     className='flex items-center gap-'
                   >
@@ -83,7 +90,9 @@ const Tickets = () => {
                 body={`The big cheese. Are you ready for it? We are. You'll be running a total of 10 1-mile laps around downtown Fort Collins, CO and consuming consuming 10 crispy boys in the process. All of this must be completed within 10 hours or you will not rank on the leaderboards or potentially be crowned King or Queen for this years race. Hope you've been training.`}
                 footer={
                   <Button
-                    onClick={handleCheckout}
+                    onClick={() =>
+                      handleCheckout(process.env.NEXT_PUBLIC_FULLPINT)
+                    }
                     colorScheme='teal'
                     className='flex items-center gap-2'
                   >
