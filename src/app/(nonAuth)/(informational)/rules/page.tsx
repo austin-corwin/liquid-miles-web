@@ -1,5 +1,5 @@
-import Rules from "@/features/Rules";
+import Rules from '@/features/Rules'
 
-export default function Home() {
-  return <Rules />;
+export default function RulesPage() {
+  return <Rules />
 }

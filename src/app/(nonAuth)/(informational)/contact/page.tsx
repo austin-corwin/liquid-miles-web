@@ -1,6 +1,13 @@
-"use client";
-import Contact from "@/features/Contact";
+import Contact from '@/features/Contact'
+import { Metadata } from 'next'
+import React from 'react'
 
-export default function Home() {
-  return <Contact />;
+export const metadata: Metadata = {
+  title: 'Contact | Liquid Miles',
 }
+
+const Page: React.FC = () => {
+  return <Contact />
+}
+
+export default Page

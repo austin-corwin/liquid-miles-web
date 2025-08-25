@@ -1,18 +1,21 @@
-import BlobMask from "@/components/BlobMask";
-import Wave from "@/components/Wave";
+'use client'
+
+import BlobMask from '@/components/BlobMask'
+import Wave from '@/components/Wave'
+import React from 'react'
 
 const About = () => {
   return (
     <div
       id='about'
-      className='bg-secondary w-full flex justify-center py-12 pb-24 relative'
+      className='bg-secondary w-full flex justify-center lg:py-12 py-6 pb-18 lg:pb-24 px-4 md:px-auto relative'
     >
-      <div className='container w-full flex flex-col lg:flex-row gap-12'>
-        <div className='w-full max-w-[500px]'>
+      <div className='container w-full flex flex-col lg:flex-row gap-12 items-center'>
+        <div className=' flex justify-center w-full max-w-[300px] lg:max-w-[500px]'>
           <BlobMask path='../../images/neighborhoodRoute.jpg' id='aboutPhoto' />
         </div>
-        <section className='gap-4 flex flex-col text-white max-w-[700px]'>
-          <h2 className='text-white font-extrabold text-[1.5rem] lg:text-[4rem] font-primary '>
+        <section className='gap-4 text-center md:text-left flex flex-col text-white max-w-[700px]'>
+          <h2 className='text-white  font-extrabold text-[1.5rem] lg:text-[4rem] font-primary '>
             What is Liquid Miles?
           </h2>
           <p>
@@ -48,7 +51,7 @@ const About = () => {
         {/* <Wave fill='#000000' /> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

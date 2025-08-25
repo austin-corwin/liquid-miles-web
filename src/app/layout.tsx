@@ -1,52 +1,33 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Navigation from "@/components/navigation/Navigation";
-import { fonts } from "@/config/fonts";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
-import Link from "next/link";
+import { fonts } from '@/config/fonts'
+import { ChakraUiProvider } from '@/features/chakra-ui/components/ChakraUiProvider'
+import { DebugBreakpoints } from '@/features/chakra-ui/components/DebugBreakpoints'
+import Navigation from '@/features/Navigation/components/Navigation'
+import { ClerkProvider } from '@clerk/nextjs'
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Liquid Miles",
-  description: "That crazy event",
-};
+  title: 'Liquid Miles',
+  description: 'That crazy event',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  const { poppins } = fonts;
+  const { poppins } = fonts
   return (
     <ClerkProvider>
       <html lang='en'>
         <body className={`${poppins.variable} antialiased`}>
-          <Navigation>
-            <SignedIn>
-              <Link
-                href='/auth/tickets'
-                className='font-primary font-extrabold hover:text-white duration-300 transition-all ease-in-out'
-              >
-                Tickets
-              </Link>
-            </SignedIn>
-            <div className='font-primary font-bold border-2 border-black p-2 rounded-xl hover:text-white hover:border-white'>
-              <SignedOut>
-                <SignInButton />
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </div>
-          </Navigation>
-          <main>{children}</main>
+          <ChakraUiProvider>
+            <Navigation />
+            <main>{children}</main>
+            <DebugBreakpoints />
+          </ChakraUiProvider>
         </body>
       </html>
     </ClerkProvider>
-  );
+  )
 }

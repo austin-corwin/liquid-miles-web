@@ -1,4 +1,4 @@
-import Wave from "@/components/Wave";
+import Wave from '@/components/Wave'
 
 const Hero = () => {
   return (
@@ -10,19 +10,22 @@ const Hero = () => {
     >
       <div className='flex justify-center items-center'>
         <div className='flex flex-col justify-center items-center pb-24'>
-          <h1 className='text-white font-primary font-extrabold text-lg lg:text-hero lg:leading-none lg:mb-8'>
+          <h1 className='text-white font-primary font-extrabold text-3xl p-4 md:p-0 text-center lg:text-hero lg:leading-none lg:mb-8'>
             Welcome to Liquid Miles
           </h1>
-          <button className='p-4 z-10 rounded-lg border-primary border-2 w-fit font-extrabold font-primary text-white duration-300 transition-all hover:shadow-btn-fill'>
+          <a
+            href='https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=M21udWRrY3JnaDFwazRmMDhybzFpYjFia3IgbGlxdWlkbWlsZXNyYWNlQG0&tmsrc=liquidmilesrace%40gmail.com'
+            className='p-4 z-10 rounded-lg border-primary border-2 w-fit font-extrabold font-primary text-white duration-300 transition-all hover:shadow-btn-fill'
+          >
             Add to My Calendar
-          </button>
+          </a>
         </div>
       </div>
       <div className='absolute -bottom-4 lg:-bottom-8 left-0 right-0'>
         <Wave fill='#1C606D' />
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
