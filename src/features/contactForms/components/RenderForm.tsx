@@ -15,12 +15,17 @@ import { FormControls } from './partials/FormControls'
 
 interface RenderFormProps<D> {
   formConfig: FormConfig<D>
+  /** Optional visual variant overrides for dark backgrounds */
+  variant?: 'default' | 'onDark'
 }
 
 /**
  * Render a contact form based on a fonfig
  */
-const RenderForm = function <D>({ formConfig }: RenderFormProps<D>) {
+const RenderForm = function <D>({
+  formConfig,
+  variant = 'default',
+}: RenderFormProps<D>) {
   const toast = useToast()
   const [sent, setSent] = React.useState<boolean>(false)
   const validationSchema = parseValidationSchema<D>(formConfig)
@@ -70,6 +75,10 @@ const RenderForm = function <D>({ formConfig }: RenderFormProps<D>) {
             isReadOnly={formik.isSubmitting}
             isDisabled={sent}
             helperText={field?.helperText}
+            labelColor={variant === 'onDark' ? 'white' : undefined}
+            helperTextColor={
+              variant === 'onDark' ? 'whiteAlpha.800' : undefined
+            }
             error={
               formik.touched?.[fieldKey] &&
               formik.errors?.[fieldKey]?.toString()

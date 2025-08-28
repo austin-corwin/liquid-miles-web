@@ -37,7 +37,7 @@ const Tickets = () => {
         </h1>
         <div className='relative bg-tertiary pb-48'>
           <div className='w-full bg-tertiary flex flex-col items-center z-10 pb-48'>
-            <div className='flex p-4 flex-col items-center lg:flex-row gap-2 lg:gap-16 mt-8'>
+            <div className='lg:h-[43rem] h-full flex p-4 flex-col items-center lg:flex-row gap-2 lg:gap-16 mt-8'>
               {/* <div className='flex flex-col gap-4 w-full p-4 h-80 border-2 rounded-xl border-secondary'>
           <h4 className='uppercase font-primary text-secondary font-semibold text-2xl'>
             Full Pint

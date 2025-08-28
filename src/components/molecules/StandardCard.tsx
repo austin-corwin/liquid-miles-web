@@ -20,14 +20,17 @@ export const StandardCard: React.FC<StandardCardProps> = ({
   return (
     <Card
       variant={variant}
-      className='w-full p-4 border-2 rounded-xl border-secondary max-w-[500px] bg-secondary text-white'
+      bg='secondary'
+      color='white'
+      display='flex'
+      flexDirection='column'
+      minH='28rem'
+      className='w-full h-full self-stretch p-4 border-2 rounded-xl border-secondary max-w-[500px]'
     >
       <CardHeader className='w-full flex justify-center'>{header}</CardHeader>
       {/* <Image src={fullPint} alt='Full pint' /> */}
-      <p className='text-white w-full flex justify-center font-bold'>
-        {subheader}
-      </p>
-      <CardBody>{body}</CardBody>
+      <p className='w-full flex justify-center font-bold'>{subheader}</p>
+      <CardBody className='flex-1'>{body}</CardBody>
       <CardFooter className='flex justify-end'>{footer}</CardFooter>
     </Card>
   )

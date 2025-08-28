@@ -33,6 +33,10 @@ const createContactEntry = async (
           name: { 'en-US': formData?.name },
           email: { 'en-US': formData?.email },
           message: { 'en-US': formData?.message },
+          // Store any extra structured data (e.g., t-shirt size) on the entry
+          data: {
+            'en-US': formData?.data as unknown as Record<string, unknown>,
+          },
         },
       }
     )
