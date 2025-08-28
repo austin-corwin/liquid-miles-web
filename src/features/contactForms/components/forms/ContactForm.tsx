@@ -36,7 +36,7 @@ const formConfig: FormConfig<ContactFormValues> = {
     const emailProps: SendEmailProps = {
       to: ['liquidmilesrace@gmail.com'],
       // @TODO: replace or remove me from CC once the LM Resend account is active
-      cc: ['ericnowels@gmail.com'],
+      cc: ['austincorwin5@gmail.com'],
       from: 'contact',
       replyTo: values.email,
       subject: `Contact Message from ${values.name}`,

@@ -21,6 +21,8 @@ export interface TextFieldProps extends FormControlProps {
   error?: React.ReactNode
   placeholder?: InputProps['placeholder']
   inputProps?: InputProps & TextareaProps
+  labelColor?: string
+  helperTextColor?: string
 }
 
 /**
@@ -34,6 +36,8 @@ const TextField: React.FC<TextFieldProps> = ({
   error,
   id,
   inputProps,
+  labelColor,
+  helperTextColor,
   ...formControlProps
 }) => {
   const fieldProps: InputProps & TextareaProps = {
@@ -51,7 +55,7 @@ const TextField: React.FC<TextFieldProps> = ({
       id={id}
       {...formControlProps}
     >
-      <FormLabel>{label}</FormLabel>
+      <FormLabel color={labelColor}>{label}</FormLabel>
       {fieldType === 'textarea' ? (
         <Textarea {...fieldProps} />
       ) : (
@@ -62,7 +66,9 @@ const TextField: React.FC<TextFieldProps> = ({
           {error}
         </FormHelperText>
       </Fade>
-      {helperText && <FormHelperText>{helperText}</FormHelperText>}
+      {helperText && (
+        <FormHelperText color={helperTextColor}>{helperText}</FormHelperText>
+      )}
     </FormControl>
   )
 }

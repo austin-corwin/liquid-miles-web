@@ -21,9 +21,9 @@ export interface SendEmailProps {
 }
 
 // TEST TOKEN REPLACE ME WITH PRODUCTION KEY ASAP. WILL BE DEACTIVATED SOON
-const token =
-  process.env.RESEND_API_TOKEN || 're_JM3aUZhp_CKSxa4uZnpc89QMStmBU3cta'
-const verifiedDomain = process.env.RESEND_DOMAIN || 'ericnowels.me'
+const token = process.env.RESEND_API_TOKEN
+// const verifiedDomain = process.env.RESEND_DOMAIN || 'ericnowels.me'
+const verifiedDomain = process.env.RESEND_DOMAIN
 const resend = new Resend(token)
 
 /** Server action for sending an email using the Resend API */
