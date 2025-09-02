@@ -4,7 +4,8 @@ const BlobMask = ({ path, id }: { path: string; id: string }) => {
       id='10015.io'
       viewBox='0 0 480 480'
       xmlns='http://www.w3.org/2000/svg'
-      xmlnsXlink='http://www.w3.org/1999/xlink'
+      width='100%'
+      height='100%'
     >
       <defs>
         <clipPath id={id}>
@@ -20,11 +21,11 @@ const BlobMask = ({ path, id }: { path: string; id: string }) => {
         width='100%'
         height='100%'
         clipPath={`url(#${id})`}
-        xlinkHref={path}
+        href={path}
         preserveAspectRatio='xMidYMid slice'
       ></image>
     </svg>
-  );
-};
+  )
+}
 
-export default BlobMask;
+export default BlobMask

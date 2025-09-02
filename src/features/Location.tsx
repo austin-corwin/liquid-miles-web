@@ -6,7 +6,7 @@ const Location = () => {
       <div className='container w-full flex flex-col items-center lg:flex-row gap-12'>
         <div className='w-full max-w-[300px] lg:max-w-[500px]'>
           <BlobMask
-            path='../../images/neighborhoodRoute.jpg'
+            path='/images/neighborhoodRoute.jpg'
             id='neighborhoodRoute'
           />
         </div>
