@@ -48,7 +48,7 @@ const Tickets = () => {
               <StandardCard
                 header={
                   <div className='flex flex-col items-center'>
-                    <p className='text-white  lg:text-2xl font-bold'>
+                    <p className='text-white  lg:text-[2.5rem] font-bold'>
                       Half Pint
                     </p>
                     <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
@@ -80,7 +80,9 @@ const Tickets = () => {
               <StandardCard
                 header={
                   <div className='flex flex-col items-center'>
-                    <p className='text-white font-bold'>Full Pint</p>
+                    <p className='text-white font-bold lg:text-[2.5rem]'>
+                      Full Pint
+                    </p>
                     <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
                       <Image fill src={fullPint} alt='Full pint' />
                     </div>
