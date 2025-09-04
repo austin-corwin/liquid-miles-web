@@ -12,7 +12,7 @@ const About = () => {
     >
       <div className='container w-full flex flex-col lg:flex-row-reverse gap-12 items-center'>
         <div className=' flex justify-center w-full max-w-[300px] lg:max-w-[500px]'>
-          <BlobMask path='../../images/runners-cropped.png' id='aboutPhoto' />
+          <BlobMask path='/images/runners-cropped.png' id='aboutPhoto' />
         </div>
         <section className='gap-4 text-center md:text-left flex flex-col text-white max-w-[700px]'>
           <h2 className='text-white  font-extrabold text-[1.5rem] lg:text-[4rem] font-primary '>
