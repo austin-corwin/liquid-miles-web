@@ -13,14 +13,19 @@ const Hero = () => {
       <div className='absolute inset-0 bg-black/25 pointer-events-none'></div>
       <div className='flex justify-center items-center relative z-10'>
         <div className='flex flex-col justify-center items-center pb-24'>
-          <h1 className='text-white font-primary font-extrabold text-3xl p-4 md:p-0 text-center lg:text-[6rem] lg:leading-none lg:mb-8'>
-            Welcome to Liquid Miles
-          </h1>
+          <div>
+            <h1 className='text-white pb-0 font-primary font-extrabold text-[2.5rem] p-4 md:p-0 text-center lg:text-[6rem] lg:leading-none lg:mb-8'>
+              Welcome to Liquid Miles
+            </h1>
+            <p className='text-white font-primary font-extrabold text-xl p-4 md:p-0 text-center lg:text-3xl lg:leading-none lg:mb-8'>
+              9/27/2025
+            </p>
+          </div>
 
           <Button
             variant='solid'
             colorScheme='teal'
-            className='flex items-center gap-2'
+            className='flex items-center gap-2 mt-4'
             as='a'
             href='https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MTh1cWhvZ2puY2xoMThtc3ZhZ2w2NTRlOGkgbGlxdWlkbWlsZXNyYWNlQG0&tmsrc=liquidmilesrace%40gmail.com'
           >
