@@ -1,4 +1,5 @@
 import BlobMask from '@/components/BlobMask'
+import { Text } from '@chakra-ui/react'
 
 const Location = () => {
   return (
@@ -12,7 +13,15 @@ const Location = () => {
         </div>
         <section className='gap-4 text-center lg:text-left flex flex-col text-secondary max-w-[700px] justify-center'>
           <div>
-            <p className='uppercase font-bold lg:pb-2'>Location</p>
+            {/* <p className='uppercase font-[900] lg:pb-2'>Location</p> */}
+            <Text
+              fontWeight={{ base: 'bold', lg: '900' }}
+              pb={{ base: 0, lg: 2 }}
+              className='uppercase'
+              mb={{ base: 1, lg: 'auto' }}
+            >
+              Location
+            </Text>
             <h2 className='text-secondary font-extrabold text-[1.5rem] lg:text-[4rem] font-primary leading-none'>
               Fort Collins, CO
             </h2>

@@ -35,8 +35,7 @@ const formConfig: FormConfig<ContactFormValues> = {
 
     const emailProps: SendEmailProps = {
       to: ['liquidmilesrace@gmail.com'],
-      // @TODO: replace or remove me from CC once the LM Resend account is active
-      cc: ['austincorwin5@gmail.com'],
+      cc: ['austincorwin5@gmail.com', 'courtneymorrison443@gmail.com'],
       from: 'contact',
       replyTo: values.email,
       subject: `Contact Message from ${values.name}`,
@@ -52,6 +51,8 @@ const formConfig: FormConfig<ContactFormValues> = {
       await createContactEntry(entryData),
       await sendEmail(emailProps),
     ])
+
+    console.log('contentfulResponse is', contentfulResponse)
 
     return contentfulResponse.success || emailResponse.success
   },

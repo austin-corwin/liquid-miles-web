@@ -1,6 +1,6 @@
 import Wave from '@/components/Wave'
 import { Button, Icon } from '@chakra-ui/react'
-import { HiCalendarDays } from 'react-icons/hi2'
+import { HiArrowRight } from 'react-icons/hi2'
 
 const Hero = () => {
   return (
@@ -11,10 +11,10 @@ const Hero = () => {
       }}
     >
       <div className='absolute inset-0 bg-black/25 pointer-events-none'></div>
-      <div className='flex justify-center items-center relative z-10'>
+      <div className='flex justify-center items-center relative z-50'>
         <div className='flex flex-col justify-center items-center pb-24'>
           <div>
-            <h1 className='text-white pb-0 font-primary font-extrabold text-[2.5rem] p-4 md:p-0 text-center lg:text-[6rem] lg:leading-none lg:mb-8'>
+            <h1 className='text-white pb-0 font-primary font-extrabold text-[2.5rem] p-4 md:p-0 text-center lg:text-[6rem] lg:leading-none lg:mb-4'>
               Welcome to Liquid Miles
             </h1>
             <p className='text-white font-primary font-extrabold text-xl p-4 md:p-0 text-center lg:text-3xl lg:leading-none lg:mb-8'>
@@ -22,7 +22,7 @@ const Hero = () => {
             </p>
           </div>
 
-          <Button
+          {/* <Button
             variant='solid'
             colorScheme='teal'
             className='flex items-center gap-2 mt-4'
@@ -32,6 +32,18 @@ const Hero = () => {
             Add to My Calendar
             <Icon className='flex items-center text-2xl' boxSize={4}>
               <HiCalendarDays />
+            </Icon>
+          </Button> */}
+          <Button
+            variant='solid'
+            colorScheme='teal'
+            className='flex items-center gap-2 mt-4 z-50 relative'
+            as='a'
+            href='/tickets'
+          >
+            Buy Tickets
+            <Icon className='flex items-center text-2xl' boxSize={4}>
+              <HiArrowRight />
             </Icon>
           </Button>
         </div>

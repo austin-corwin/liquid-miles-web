@@ -24,7 +24,7 @@ export const StandardCard: React.FC<StandardCardProps> = ({
       color='white'
       display='flex'
       flexDirection='column'
-      minH='28rem'
+      minH={{ base: '28rem', lg: '44rem' }}
       className='w-full h-full self-stretch p-4 border-2 rounded-xl border-secondary max-w-[500px]'
     >
       <CardHeader className='w-full flex justify-center'>{header}</CardHeader>

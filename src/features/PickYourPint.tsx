@@ -13,7 +13,7 @@ const PickYourPint = () => {
         <h3 className='text-secondary font-primary uppercase font-extrabold text-[1.5rem] lg:text-[4rem]'>
           Pick Your Pint
         </h3>
-        <div className='h-full lg:h-[43rem] flex p-4 flex-col items-stretch lg:flex-row gap-16 mt-8'>
+        <div className='h-full lg:h-[43rem] flex p-4 flex-col items-stretch lg:flex-row gap-4 lg:gap-16 mt-8'>
           {/* <div className='flex flex-col gap-4 w-full p-4 h-80 border-2 rounded-xl border-secondary'>
           <h4 className='uppercase font-primary text-secondary font-semibold text-2xl'>
             Full Pint
@@ -24,14 +24,16 @@ const PickYourPint = () => {
           <StandardCard
             header={
               <div className='flex flex-col items-center'>
-                <p className='text-white  lg:text-2xl font-bold'>Half Pint</p>
+                <p className='text-white  lg:text-[2.5rem] font-bold'>
+                  Half Pint
+                </p>
                 <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
                   <Image fill src={halfPint} alt='Full pint' />
                 </div>
               </div>
             }
             subheader='5 Beers - 5 Miles'
-            body={`For those of you who aren't quite prepared enough to do the full pint, we've come up with a non-competitive alternative so that you can still participate and get a t-shirt. You'll be expected to do 5 1-mile laps and drink 5 crispy boys in under 5 hours. Since this is non-competitive, feel free to go at your own pace. Think of it like a Sunday stroll, but with beer.`}
+            body={`For those of you who aren't quite prepared enough to do the full pint, we've come up with an alternative so that you can still participate and get a t-shirt. You'll be expected to do 5 1-mile laps and drink 5 crispy boys in under 5 hours. Feel free to go at your own pace.`}
             footer={
               <Button
                 as='a'
@@ -53,14 +55,16 @@ const PickYourPint = () => {
           <StandardCard
             header={
               <div className='flex flex-col items-center'>
-                <p className='text-white font-bold'>Full Pint</p>
+                <p className='text-white font-bold lg:text-[2.5rem]'>
+                  Full Pint
+                </p>
                 <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
                   <Image fill src={fullPint} alt='Full pint' />
                 </div>
               </div>
             }
             subheader='10 Miles - 10 Beers'
-            body={`The big cheese. Are you ready for it? We are. You'll be running a total of 10 1-mile laps around downtown Fort Collins, CO and consuming consuming 10 crispy boys in the process. All of this must be completed within 10 hours or you will not rank on the leaderboards or potentially be crowned King or Queen for this years race. Hope you've been training.`}
+            body={`The big cheese. Are you ready for it? We are. You'll be running a total of 10 1-mile laps around Fort Collins, CO and consuming consuming 10 crispy boys in the process. All of this must be completed within 10 hours or you will not rank on the leaderboards or potentially be crowned King or Queen for this years race. Hope you've been training.`}
             footer={
               <Button
                 as='a'
