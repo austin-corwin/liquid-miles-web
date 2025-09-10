@@ -39,7 +39,7 @@ const PickYourPint = () => {
                 as='a'
                 href='/tickets'
                 colorScheme='teal'
-                className='flex items-center gap-'
+                className='flex items-center gap-2 z-50'
               >
                 Buy Tickets
                 <Icon className='flex items-center text-2xl' boxSize={4}>
@@ -70,7 +70,7 @@ const PickYourPint = () => {
                 as='a'
                 href='/tickets'
                 colorScheme='teal'
-                className='flex items-center gap-2'
+                className='flex items-center gap-2 z-50'
               >
                 Buy Tickets
                 <Icon className='flex items-center text-2xl' boxSize={4}>
