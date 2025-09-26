@@ -1,6 +1,6 @@
 import Wave from '@/components/Wave'
-import { Button, Icon } from '@chakra-ui/react'
-import { HiArrowRight } from 'react-icons/hi2'
+// import { Button, Icon } from '@chakra-ui/react'
+// import { HiArrowRight } from 'react-icons/hi2'
 
 const Hero = () => {
   return (
@@ -17,9 +17,9 @@ const Hero = () => {
             <h1 className='text-white pb-0 font-primary font-extrabold text-[2.5rem] p-4 md:p-0 text-center lg:text-[6rem] lg:leading-none lg:mb-4'>
               Welcome to Liquid Miles
             </h1>
-            <p className='text-white font-primary font-extrabold text-xl p-4 md:p-0 text-center lg:text-3xl lg:leading-none lg:mb-8'>
+            {/* <p className='text-white font-primary font-extrabold text-xl p-4 md:p-0 text-center lg:text-3xl lg:leading-none lg:mb-8'>
               9/27/2025
-            </p>
+            </p> */}
           </div>
 
           {/* <Button
@@ -34,7 +34,7 @@ const Hero = () => {
               <HiCalendarDays />
             </Icon>
           </Button> */}
-          <Button
+          {/* <Button
             variant='solid'
             colorScheme='teal'
             className='flex items-center gap-2 mt-4 z-50 relative'
@@ -45,7 +45,7 @@ const Hero = () => {
             <Icon className='flex items-center text-2xl' boxSize={4}>
               <HiArrowRight />
             </Icon>
-          </Button>
+          </Button> */}
         </div>
       </div>
       <div className='absolute -bottom-4 lg:-bottom-8 left-0 right-0 z-10'>
