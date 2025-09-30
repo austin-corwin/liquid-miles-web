@@ -17,9 +17,9 @@ const Hero = () => {
             <h1 className='text-white pb-0 font-primary font-extrabold text-[2.5rem] p-4 md:p-0 text-center lg:text-[6rem] lg:leading-none lg:mb-4'>
               Welcome to Liquid Miles
             </h1>
-            <p className='text-white font-primary font-extrabold text-xl p-4 md:p-0 text-center lg:text-3xl lg:leading-none lg:mb-8'>
+            {/* <p className='text-white font-primary font-extrabold text-xl p-4 md:p-0 text-center lg:text-3xl lg:leading-none lg:mb-8'>
               9/27/2025
-            </p>
+            </p> */}
           </div>
 
           {/* <Button
