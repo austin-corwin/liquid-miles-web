@@ -1,89 +1,78 @@
-// import { Card } from '@/components/molecules/Card'
+'use client'
+
 import { StandardCard } from '@/components/molecules/StandardCard'
 import Wave from '@/components/Wave'
-import getStripe from '@/utils/getStripe'
+import { TICKET_TYPES } from '@/features/Tickets/ticketOptions'
 import { Button, Heading, Icon } from '@chakra-ui/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { HiArrowRight } from 'react-icons/hi2'
 
 import fullPint from '../../../public/images/fullpint.png'
 import halfPint from '../../../public/images/halfpint.png'
 
 const Tickets = () => {
-  const stripePromise = getStripe()
-  const handleCheckout = async (priceId: string) => {
-    if (!priceId) {
-      throw 'Missing priceId'
-    } else {
-      const stripe = await stripePromise
-      const response = await fetch(
-        `/api/checkout?priceId=${encodeURIComponent(priceId)}`,
-        { method: 'GET' }
-      )
-      const data = await response.json()
-      console.log('session is', data)
-      if (data && data.sessionId) {
-        console.log('redirect to checkout', data)
-        await stripe.redirectToCheckout({ sessionId: data.sessionId })
-      }
-    }
-  }
-
-  const isClosed = true
+  const isClosed = false
 
   const TicketContent = () => (
-    <div className='lg:h-[43rem] h-full flex p-4 flex-col items-center lg:flex-row gap-2 lg:gap-16 mt-8'>
-      <StandardCard
-        header={
-          <div className='flex flex-col items-center'>
-            <p className='text-white  lg:text-[2.5rem] font-bold'>Half Pint</p>
-            <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
-              <Image fill src={halfPint} alt='Full pint' />
+    <div className='h-full flex p-4 flex-col items-center gap-12 lg:gap-16 mt-8'>
+      <div className='lg:h-[43rem] h-full w-full flex flex-col items-center lg:flex-row lg:items-stretch gap-2 lg:gap-16'>
+        <StandardCard
+          header={
+            <div className='flex flex-col items-center'>
+              <p className='text-white  lg:text-[2.5rem] font-bold'>Half Pint</p>
+              <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
+                <Image fill src={halfPint} alt='Half pint' />
+              </div>
             </div>
-          </div>
-        }
-        subheader='5 Beers - 5 Miles'
-        body={`For those of you who aren't quite prepared enough to do the full pint, we've come up with a non-competitive alternative so that you can still participate and get a t-shirt. You'll be expected to do 5 1-mile laps and drink 5 crispy boys in under 5 hours. Since this is non-competitive, feel free to go at your own pace. Think of it like a Sunday stroll, but with beer.`}
-        footer={
-          <Button
-            onClick={() => handleCheckout(process.env.NEXT_PUBLIC_HALFPINT)}
-            colorScheme='teal'
-            className='flex items-center gap-'
-          >
-            Buy Tickets
-            <Icon className='flex items-center text-2xl' boxSize={4}>
-              <HiArrowRight />
-            </Icon>
-          </Button>
-        }
-        variant='pintCard'
-      />
-      <Heading className='h-full text-secondary flex items-center'>or</Heading>
-      <StandardCard
-        header={
-          <div className='flex flex-col items-center'>
-            <p className='text-white font-bold lg:text-[2.5rem]'>Full Pint</p>
-            <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
-              <Image fill src={fullPint} alt='Full pint' />
+          }
+          subheader='5 Beers - 5 Miles'
+          body={`For those of you who aren't quite prepared enough to do the full pint, we've come up with a non-competitive alternative so that you can still participate and get a t-shirt. You'll be expected to do 5 1-mile laps and drink 5 crispy boys in under 5 hours. Since this is non-competitive, feel free to go at your own pace. Think of it like a Sunday stroll, but with beer.`}
+          footer={
+            <Button
+              as={Link}
+              href={`/tickets/info?ticket=${TICKET_TYPES.half.id}`}
+              colorScheme='teal'
+              className='flex items-center gap-2'
+            >
+              Buy Tickets
+              <Icon className='flex items-center text-2xl' boxSize={4}>
+                <HiArrowRight />
+              </Icon>
+            </Button>
+          }
+          variant='pintCard'
+        />
+        <div className='flex self-stretch items-center justify-center shrink-0'>
+          <Heading className='text-secondary'>or</Heading>
+        </div>
+        <StandardCard
+          header={
+            <div className='flex flex-col items-center'>
+              <p className='text-white font-bold lg:text-[2.5rem]'>Full Pint</p>
+              <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
+                <Image fill src={fullPint} alt='Full pint' />
+              </div>
             </div>
-          </div>
-        }
-        subheader='10 Miles - 10 Beers'
-        body={`The big cheese. Are you ready for it? We are. You'll be running a total of 10 1-mile laps around downtown Fort Collins, CO and consuming consuming 10 crispy boys in the process. All of this must be completed within 10 hours or you will not rank on the leaderboards or potentially be crowned King or Queen for this years race. Hope you've been training.`}
-        footer={
-          <Button
-            onClick={() => handleCheckout(process.env.NEXT_PUBLIC_FULLPINT)}
-            colorScheme='teal'
-            className='flex items-center gap-2'
-          >
-            Buy Tickets
-            <Icon className='flex items-center text-2xl' boxSize={4}>
-              <HiArrowRight />
-            </Icon>
-          </Button>
-        }
-        variant='pintCard'
-      />
+          }
+          subheader='10 Miles - 10 Beers'
+          body={`The big cheese. Are you ready for it? We are. You'll be running a total of 10 1-mile laps around downtown Fort Collins, CO and consuming consuming 10 crispy boys in the process. All of this must be completed within 10 hours or you will not rank on the leaderboards or potentially be crowned King or Queen for this years race. Hope you've been training.`}
+          footer={
+            <Button
+              as={Link}
+              href={`/tickets/info?ticket=${TICKET_TYPES.full.id}`}
+              colorScheme='teal'
+              className='flex items-center gap-2'
+            >
+              Buy Tickets
+              <Icon className='flex items-center text-2xl' boxSize={4}>
+                <HiArrowRight />
+              </Icon>
+            </Button>
+          }
+          variant='pintCard'
+        />
+      </div>
     </div>
   )
 

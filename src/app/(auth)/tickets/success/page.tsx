@@ -4,7 +4,6 @@ import Wave from '@/components/Wave'
 import { PageHeader } from '@/features/Pages/components/PageHeader'
 import { PageLayout } from '@/features/Pages/components/PageLayout'
 import { Button, Divider, Icon, VStack } from '@chakra-ui/react'
-// import { TicketSuccessForm } from '@/features/contactForms/components/forms/TicketSuccessForm'
 import Link from 'next/link'
 import { HiArrowRight } from 'react-icons/hi2'
 
@@ -24,21 +23,10 @@ export default function Success() {
               can always check our FAQs or reach out via the contact form.
             </p>
 
-            {/* <Divider
-              borderTopColor='secondary'
-              borderTopWidth={2}
-              opacity={1}
-            /> */}
-
-            {/* <div className='w-full bg-white rounded-xl p-6 text-black'>
-              <TicketSuccessForm />
-            </div> */}
-
             <div className='flex flex-wrap gap-3 z-50'>
               <Button
                 as={Link}
                 href='/faqs'
-                // variant='outline'
                 colorScheme='teal'
               >
                 View FAQs
