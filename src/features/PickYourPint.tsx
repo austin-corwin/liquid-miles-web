@@ -10,9 +10,30 @@ const PickYourPint = () => {
   return (
     <div className='relative bg-tertiary pb-48'>
       <div className='w-full bg-tertiary flex flex-col items-center py-12 lg:py-24 z-10 pb-48'>
-        <h3 className='text-secondary font-primary uppercase font-extrabold text-[1.5rem] lg:text-[4rem]'>
-          Pick Your Pint
-        </h3>
+        <div className='flex items-center justify-center gap-3 lg:gap-6 px-4'>
+          <div className='relative w-14 h-14 lg:w-24 lg:h-24 shrink-0'>
+            <Image
+              fill
+              src='/images/lm-running-cups-fun.svg'
+              alt='Liquid Miles running cups'
+              className='object-contain'
+              sizes='(max-width: 1024px) 3.5rem, 6rem'
+            />
+          </div>
+          <h3 className='text-secondary font-primary uppercase font-extrabold text-[1.5rem] lg:text-[4rem]'>
+            Pick Your Pint
+          </h3>
+          <div className='relative w-14 h-14 lg:w-24 lg:h-24 shrink-0'>
+            <Image
+              fill
+              src='/images/lm-running-cups-fun.svg'
+              alt=''
+              aria-hidden
+              className='object-contain'
+              sizes='(max-width: 1024px) 3.5rem, 6rem'
+            />
+          </div>
+        </div>
         <div className='h-full lg:h-[43rem] flex p-4 flex-col items-stretch lg:flex-row gap-4 lg:gap-16 mt-8'>
           {/* <div className='flex flex-col gap-4 w-full p-4 h-80 border-2 rounded-xl border-secondary'>
           <h4 className='uppercase font-primary text-secondary font-semibold text-2xl'>
