@@ -2,10 +2,7 @@
 
 import { ContactFormEntry } from '@/api/gql/graphql'
 import { startTicketCheckout } from '@/features/Tickets/startTicketCheckout'
-import {
-  TICKET_TYPES,
-  TicketTypeId,
-} from '@/features/Tickets/ticketOptions'
+import { TICKET_TYPES, TicketTypeId } from '@/features/Tickets/ticketOptions'
 import React from 'react'
 import * as yup from 'yup'
 import { FormConfig } from '../../types/FormConfig'
@@ -32,8 +29,7 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
   const formConfig: FormConfig<TicketSuccessFormValues> = {
     id: 'ticket-info-form',
     successTitle: 'Shirt info saved!',
-    successMessage: () =>
-      'Taking you to the ticket checkout page…',
+    successMessage: () => 'Taking you to the ticket checkout page…',
     onSubmit: async (values: TicketSuccessFormValues) => {
       const title = `${values.email} - ${ticket.label} - ${new Date().toLocaleDateString(
         'en-US',
@@ -69,7 +65,11 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
     onSuccess: async (values) => {
       await startTicketCheckout({
         priceId: ticket.priceId,
+        ticketType: ticket.id,
         includeHoodie: values.wantsHoodie === 'Yes',
+        shirtSize: values.shirtSize,
+        name: values.name,
+        email: values.email,
       })
     },
     formControlsProps: {
@@ -105,7 +105,10 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
         helperText: 'e.g., XS, S, M, L, XL, XXL',
         schema: yup
           .string()
-          .matches(/^XS$|^S$|^M$|^L$|^XL$|^XXL$/i, 'Use XS, S, M, L, XL, or XXL')
+          .matches(
+            /^XS$|^S$|^M$|^L$|^XL$|^XXL$/i,
+            'Use XS, S, M, L, XL, or XXL'
+          )
           .required('T-Shirt size is required'),
         initialValue: '',
       },

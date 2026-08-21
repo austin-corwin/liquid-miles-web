@@ -89,14 +89,14 @@ const RenderForm = function <D>({
           isDisabled: sent,
           helperText: field?.helperText,
           labelColor: variant === 'onDark' ? 'white' : undefined,
-          helperTextColor:
-            variant === 'onDark' ? 'whiteAlpha.800' : undefined,
+          helperTextColor: variant === 'onDark' ? 'whiteAlpha.800' : undefined,
           error,
         }
 
         if (field.fieldType === 'radio') {
           return (
             <RadioField
+              key={field.id}
               {...sharedProps}
               options={field.options}
               value={formik.values?.[fieldKey]?.toString()}
@@ -108,6 +108,7 @@ const RenderForm = function <D>({
 
         return (
           <TextField
+            key={field.id}
             {...sharedProps}
             fieldType={field.fieldType}
             inputProps={{

@@ -1,26 +1,26 @@
 import getStripe from '@/utils/getStripe'
+import { TicketTypeId } from './types'
 
-const HOODIE_PRICE_ID = process.env.NEXT_PUBLIC_HOODIE ?? ''
-
-interface StartTicketCheckoutOptions {
+export interface StartTicketCheckoutOptions {
   priceId: string
+  ticketType: TicketTypeId
   includeHoodie?: boolean
+  shirtSize?: string
+  name?: string
+  email?: string
 }
 
 export const startTicketCheckout = async ({
   priceId,
+  ticketType,
   includeHoodie = false,
+  shirtSize,
+  name,
+  email,
 }: StartTicketCheckoutOptions) => {
   if (!priceId) {
     console.error(
-      'Missing Stripe priceId. Set NEXT_PUBLIC_HALFPINT and NEXT_PUBLIC_FULLPINT in .env.local, then restart the dev server.'
-    )
-    return false
-  }
-
-  if (includeHoodie && !HOODIE_PRICE_ID) {
-    console.error(
-      'Missing Stripe hoodie priceId. Set NEXT_PUBLIC_HOODIE in .env.local, then restart the dev server.'
+      'Missing Stripe priceId. Set NEXT_PUBLIC_HALFPINT and NEXT_PUBLIC_FULLPINT in .env.local.'
     )
     return false
   }
@@ -33,13 +33,17 @@ export const startTicketCheckout = async ({
     return false
   }
 
-  const params = new URLSearchParams({ priceId })
-  if (includeHoodie) {
-    params.set('hoodie', '1')
-  }
-
-  const response = await fetch(`/api/checkout?${params.toString()}`, {
-    method: 'GET',
+  const response = await fetch('/api/checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      priceId,
+      ticketType,
+      includeHoodie,
+      shirtSize,
+      name,
+      email,
+    }),
   })
   const data = await response.json()
   if (!data?.sessionId) {

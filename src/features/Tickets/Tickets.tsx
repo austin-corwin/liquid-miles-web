@@ -2,8 +2,11 @@
 
 import { StandardCard } from '@/components/molecules/StandardCard'
 import Wave from '@/components/Wave'
+import { getTicketsFromPublicMetadata } from '@/features/Tickets/getTicketsFromPublicMetadata'
+import { OwnedTicketsSection } from '@/features/Tickets/OwnedTicketsSection'
 import { TICKET_TYPES } from '@/features/Tickets/ticketOptions'
 import { Button, Heading, Icon } from '@chakra-ui/react'
+import { useUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { HiArrowRight } from 'react-icons/hi2'
@@ -12,6 +15,14 @@ import fullPint from '../../../public/images/fullpint.png'
 import halfPint from '../../../public/images/halfpint.png'
 
 const Tickets = () => {
+  const { user, isLoaded } = useUser()
+  const tickets = getTicketsFromPublicMetadata(user?.publicMetadata)
+  const hasTicket = isLoaded && tickets.length > 0
+  const holderName =
+    user?.fullName ||
+    [user?.firstName, user?.lastName].filter(Boolean).join(' ') ||
+    user?.primaryEmailAddress?.emailAddress
+
   const isClosed = false
 
   const TicketContent = () => (
@@ -20,7 +31,9 @@ const Tickets = () => {
         <StandardCard
           header={
             <div className='flex flex-col items-center'>
-              <p className='text-white  lg:text-[2.5rem] font-bold'>Half Pint</p>
+              <p className='text-white  lg:text-[2.5rem] font-bold'>
+                Half Pint
+              </p>
               <div className='w-32 h-32 lg:w-60 lg:h-60 relative'>
                 <Image fill src={halfPint} alt='Half pint' />
               </div>
@@ -84,10 +97,12 @@ const Tickets = () => {
         </h1>
         <div className='relative bg-tertiary pb-48'>
           <div className='w-full bg-tertiary flex flex-col items-center z-10 pb-48'>
-            {!isClosed ? (
+            {hasTicket ? (
+              <OwnedTicketsSection tickets={tickets} holderName={holderName} />
+            ) : !isClosed ? (
               <TicketContent />
             ) : (
-              <div className='font-primary'>
+              <div className='font-primary mt-8'>
                 Ticket sales for 2025 have closed, stay tuned for more
                 information for next year!
               </div>
