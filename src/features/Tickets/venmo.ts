@@ -15,16 +15,22 @@ export const buildVenmoPayUrl = ({
   amountDollars: number
   note?: string
 }) => {
-  const params = new URLSearchParams({
-    txn: 'pay',
-    audience: 'private',
-    recipients: username,
-    amount: amountDollars.toFixed(2),
-  })
+  const params: Array<[string, string]> = [
+    ['txn', 'pay'],
+    ['audience', 'private'],
+    ['recipients', username],
+    ['amount', amountDollars.toFixed(2)],
+  ]
   if (note?.trim()) {
-    params.set('note', note.trim())
+    params.push(['note', note.trim()])
   }
-  return `https://venmo.com/?${params.toString()}`
+
+  // Venmo (especially QR scans) treats `+` as a literal plus, not a space.
+  // encodeURIComponent uses %20 so the note stays readable.
+  const query = params
+    .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+    .join('&')
+  return `https://venmo.com/?${query}`
 }
 
 export const buildVenmoQrImageUrl = (payUrl: string) =>
@@ -32,4 +38,4 @@ export const buildVenmoQrImageUrl = (payUrl: string) =>
 
 /** Soft note for Venmo — ticket type only; admin matches payer name in Venmo */
 export const buildVenmoNote = (ticketLabel: string) =>
-  `Liquid Miles - ${ticketLabel}`
+  `Liquid Miles ${ticketLabel}`

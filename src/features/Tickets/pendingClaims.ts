@@ -9,11 +9,29 @@ import {
   toPaymentCode,
 } from './types'
 
+const stripTrailingSlash = (url: string) => url.replace(/\/$/, '')
+
+const hostOnly = (url: string) =>
+  stripTrailingSlash(url).replace(/^https?:\/\//, '')
+
+const isLocalhostUrl = (url: string) =>
+  /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(stripTrailingSlash(url))
+
 export const getAppBaseUrl = () => {
-  const explicit = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, '')
-  if (explicit) return explicit
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
-  return 'http://localhost:3000'
+  const explicit = process.env.NEXT_PUBLIC_APP_URL
+    ? stripTrailingSlash(process.env.NEXT_PUBLIC_APP_URL)
+    : ''
+
+  // A local .env value copied to Vercel would send buyers to localhost.
+  if (explicit && !isLocalhostUrl(explicit)) return explicit
+
+  const vercelHost =
+    process.env.VERCEL_ENV === 'production'
+      ? process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL
+      : process.env.VERCEL_URL
+  if (vercelHost) return `https://${hostOnly(vercelHost)}`
+
+  return explicit || 'http://localhost:3000'
 }
 
 export const createPendingTicketClaim = async ({
