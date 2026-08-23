@@ -115,7 +115,7 @@ const Tickets = () => {
               <TicketContent />
             ) : (
               <div className='font-primary mt-8'>
-                Ticket sales for 2025 have closed, stay tuned for more
+                Ticket sales for 2026 have closed, stay tuned for more
                 information for next year!
               </div>
             )}
