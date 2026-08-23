@@ -1,8 +1,9 @@
 'use client'
 
 import { ContactFormEntry } from '@/api/gql/graphql'
-import { startTicketCheckout } from '@/features/Tickets/startTicketCheckout'
+import { startVenmoCheckout } from '@/features/Tickets/startVenmoCheckout'
 import { TICKET_TYPES, TicketTypeId } from '@/features/Tickets/ticketOptions'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import * as yup from 'yup'
 import { FormConfig } from '../../types/FormConfig'
@@ -25,11 +26,12 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
   ticketType,
 }) => {
   const ticket = TICKET_TYPES[ticketType]
+  const router = useRouter()
 
   const formConfig: FormConfig<TicketSuccessFormValues> = {
     id: 'ticket-info-form',
     successTitle: 'Shirt info saved!',
-    successMessage: () => 'Taking you to the ticket checkout page…',
+    successMessage: () => 'Taking you to Venmo payment…',
     onSubmit: async (values: TicketSuccessFormValues) => {
       const title = `${values.email} - ${ticket.label} - ${new Date().toLocaleDateString(
         'en-US',
@@ -49,6 +51,7 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
           `Ticket: ${ticket.label}`,
           `T-shirt size: ${values.shirtSize}`,
           `Hoodie instead of shirt: ${values.wantsHoodie}`,
+          `Payment: Venmo`,
         ]
           .filter(Boolean)
           .join('\n'),
@@ -56,6 +59,7 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
           shirtSize: values?.shirtSize,
           ticket: ticket.label,
           wantsHoodie,
+          paymentMethod: 'venmo',
         } as unknown as string,
       }
 
@@ -63,17 +67,19 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
       return contentfulResponse.success
     },
     onSuccess: async (values) => {
-      await startTicketCheckout({
-        priceId: ticket.priceId,
+      const payPath = await startVenmoCheckout({
         ticketType: ticket.id,
         includeHoodie: values.wantsHoodie === 'Yes',
         shirtSize: values.shirtSize,
         name: values.name,
         email: values.email,
       })
+      if (payPath) {
+        router.push(payPath)
+      }
     },
     formControlsProps: {
-      submitLabel: 'Continue to payment',
+      submitLabel: 'Continue to Venmo',
       loadingText: 'Saving',
     },
     fields: [
@@ -115,7 +121,7 @@ const TicketSuccessForm: React.FC<TicketSuccessFormProps> = ({
       {
         id: 'wantsHoodie',
         label:
-          'Would you like a hoodie instead of a shirt this year? Pricing will be factored into your ticket ($10 more than the shirt price)',
+          'Would you like a hoodie instead of a shirt this year? Pricing will be factored into your ticket ($5 more than the shirt price)',
         fieldType: 'radio',
         isRequired: true,
         options: [

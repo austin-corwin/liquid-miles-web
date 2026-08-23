@@ -129,7 +129,7 @@ const RenderForm = function <D>({
         <Fade in={sent}>
           <Text {...textRecipes.FinePrint} textAlign='center' w='full'>
             {formConfig.onSuccess ? (
-              <>Taking you to ticket checkout…</>
+              <>Taking you to the next step…</>
             ) : (
               <>
                 <Icon as={GoLightBulb} /> Reset the form to submit a new

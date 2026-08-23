@@ -1,5 +1,6 @@
 import { clerkClient } from '@clerk/nextjs/server'
 import {
+  PendingTicketClaim,
   PurchasedTicket,
   TicketCheckoutMetadata,
   TicketTypeId,
@@ -32,12 +33,16 @@ export const recordTicketPurchase = async ({
   metadata,
   amountTotal,
   currency,
+  paymentMethod = 'venmo',
+  clearPendingClaimId,
 }: {
   userId: string
   sessionId: string
   metadata: TicketCheckoutMetadata
   amountTotal?: number | null
   currency?: string | null
+  paymentMethod?: 'venmo'
+  clearPendingClaimId?: string
 }) => {
   const client = await clerkClient()
   const user = await client.users.getUser(userId)
@@ -60,14 +65,22 @@ export const recordTicketPurchase = async ({
     amountTotal: amountTotal ?? null,
     currency: currency ?? null,
     confirmationCode: toConfirmationCode(sessionId),
+    paymentMethod,
   }
 
   const tickets = [...existing, purchase]
+  const pending =
+    (user.publicMetadata?.pendingTickets as PendingTicketClaim[] | undefined) ??
+    []
+  const pendingTickets = clearPendingClaimId
+    ? pending.filter((item) => item.claimId !== clearPendingClaimId)
+    : pending
 
   await client.users.updateUserMetadata(userId, {
     publicMetadata: {
       ...user.publicMetadata,
       tickets,
+      pendingTickets,
     },
   })
 

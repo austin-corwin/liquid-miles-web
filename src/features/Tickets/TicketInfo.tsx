@@ -48,10 +48,10 @@ const TicketInfo = () => {
                 </div>
                 <p className='text-center max-w-xl'>
                   Tell us your name, email, and shirt size so we can order the
-                  right shirt. After you submit, you’ll continue to payment for
-                  your {ticket.label} ticket. (Yes we know that the mockup above
-                  says &apos;September&apos;, we assure you the real merch will
-                  say &apos;October&apos;)
+                  right shirt. After you submit, you’ll continue to Venmo
+                  payment for your {ticket.label} ticket. (Yes we know that the
+                  mockup above says &apos;September&apos;, we assure you the
+                  real merch will say &apos;October&apos;)
                 </p>
                 <div className='w-full bg-white rounded-xl p-6 text-black'>
                   <TicketSuccessForm ticketType={ticket.id} />

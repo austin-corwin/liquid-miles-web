@@ -2,8 +2,10 @@
 
 import { StandardCard } from '@/components/molecules/StandardCard'
 import Wave from '@/components/Wave'
+import { getPendingTicketsFromPublicMetadata } from '@/features/Tickets/getPendingTicketsFromPublicMetadata'
 import { getTicketsFromPublicMetadata } from '@/features/Tickets/getTicketsFromPublicMetadata'
 import { OwnedTicketsSection } from '@/features/Tickets/OwnedTicketsSection'
+import { PendingTicketsSection } from '@/features/Tickets/PendingTicketsSection'
 import { TICKET_TYPES } from '@/features/Tickets/ticketOptions'
 import { Button, Heading, Icon } from '@chakra-ui/react'
 import { useUser } from '@clerk/nextjs'
@@ -17,7 +19,11 @@ import halfPint from '../../../public/images/halfpint.png'
 const Tickets = () => {
   const { user, isLoaded } = useUser()
   const tickets = getTicketsFromPublicMetadata(user?.publicMetadata)
+  const pendingClaims = getPendingTicketsFromPublicMetadata(
+    user?.publicMetadata
+  )
   const hasTicket = isLoaded && tickets.length > 0
+  const hasPending = isLoaded && pendingClaims.length > 0
   const holderName =
     user?.fullName ||
     [user?.firstName, user?.lastName].filter(Boolean).join(' ') ||
@@ -99,6 +105,8 @@ const Tickets = () => {
           <div className='w-full bg-tertiary flex flex-col items-center z-10 pb-48'>
             {hasTicket ? (
               <OwnedTicketsSection tickets={tickets} holderName={holderName} />
+            ) : hasPending ? (
+              <PendingTicketsSection claims={pendingClaims} />
             ) : !isClosed ? (
               <TicketContent />
             ) : (
