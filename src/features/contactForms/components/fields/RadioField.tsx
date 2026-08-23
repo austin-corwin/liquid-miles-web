@@ -17,7 +17,8 @@ export interface RadioOption {
   value: string
 }
 
-export interface RadioFieldProps extends FormControlProps {
+export interface RadioFieldProps
+  extends Omit<FormControlProps, 'onChange' | 'onBlur'> {
   id: string
   label?: string
   helperText?: React.ReactNode
