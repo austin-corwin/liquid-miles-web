@@ -19,12 +19,16 @@ const Notice: React.FC<EmailMessage> = ({ title, message, cta }) => {
           <strong>{title}</strong>
         </Text>
         <Section className='py-2 px-6 rounded-md'>
-          <Text className='text-lg'>{message}</Text>
+          <Text className='text-lg whitespace-pre-line'>{message}</Text>
         </Section>
         {cta && (
           <Section className='py-2'>
-            <Button href={cta.href} target='_blank'>
-              {cta['aria-label'] || cta?.children}
+            <Button
+              href={cta.href}
+              target='_blank'
+              className='bg-[#1C606D] text-white px-5 py-3 rounded-md font-semibold no-underline'
+            >
+              {cta['aria-label'] || cta?.children || 'Open'}
             </Button>
           </Section>
         )}
