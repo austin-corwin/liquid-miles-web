@@ -3,42 +3,65 @@ import { ContactFormEntry } from '@/api/gql/graphql'
 import { contentfulClient } from '@/features/api/admin/contentfulClient'
 import { ApiResponse } from '@/features/api/types'
 
-interface ConfentfulError {
-  status: number
-  statusText: string
-  message: string
-  request: unknown
-  details: { errors: Record<string, string> }
+const locale = 'en-US'
+
+const toLocalizedField = (value: unknown) => {
+  if (value === undefined || value === null || value === '') {
+    return undefined
+  }
+  return { [locale]: value }
+}
+
+const parseContentfulError = (error: unknown) => {
+  if (!(error instanceof Error)) {
+    return { message: 'Unknown Contentful error' }
+  }
+
+  try {
+    const jsonStart = error.message.indexOf('{')
+    if (jsonStart >= 0) {
+      return JSON.parse(error.message.slice(jsonStart))
+    }
+  } catch {
+    // fall through to the raw message
+  }
+
+  return { message: error.message }
 }
 
 /** Create a contactFormEntry in Contentful and publish it immediately */
 const createContactEntry = async (
   formData: Partial<ContactFormEntry>
 ): Promise<ApiResponse> => {
-  console.log('createContactEntry', formData)
-
   const response: ApiResponse = {
     success: false,
     errors: null,
     data: null,
   }
 
+  if (!process.env.CONTENTFUL_MANAGEMENT_TOKEN) {
+    response.errors = {
+      message:
+        'Missing CONTENTFUL_MANAGEMENT_TOKEN. Create a Contentful personal access token and add it to .env.local.',
+    }
+    return response
+  }
+
   try {
+    const fields = Object.fromEntries(
+      Object.entries({
+        title: toLocalizedField(formData?.title),
+        channel: toLocalizedField(formData?.channel),
+        name: toLocalizedField(formData?.name),
+        email: toLocalizedField(formData?.email),
+        message: toLocalizedField(formData?.message),
+        data: toLocalizedField(formData?.data),
+      }).filter(([, value]) => value !== undefined)
+    )
+
     const createRequest = await contentfulClient.entry.create(
       { contentTypeId: 'contactFormEntry' },
-      {
-        fields: {
-          title: { 'en-US': formData?.title },
-          channel: { 'en-US': formData?.channel },
-          name: { 'en-US': formData?.name },
-          email: { 'en-US': formData?.email },
-          message: { 'en-US': formData?.message },
-          // Store any extra structured data (e.g., t-shirt size) on the entry
-          data: {
-            'en-US': formData?.data as unknown as Record<string, unknown>,
-          },
-        },
-      }
+      { fields }
     )
 
     if (createRequest) {
@@ -57,12 +80,11 @@ const createContactEntry = async (
       }
     }
   } catch (error) {
-    console.error('Error creating form entry', error)
-    const errorObject = error as Error
-    const contentfulError: ConfentfulError = JSON.parse(errorObject?.message)
+    const contentfulError = parseContentfulError(error)
+    console.error('Error creating form entry', contentfulError)
     response.errors = contentfulError
-  } finally {
-    return response
   }
+
+  return response
 }
 export { createContactEntry }

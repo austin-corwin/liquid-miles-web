@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { HiArrowRight } from 'react-icons/hi2'
 
-export default function Success() {
+export default function PendingPayment() {
   const { user, isLoaded } = useUser()
 
   useEffect(() => {
@@ -21,31 +21,24 @@ export default function Success() {
   return (
     <div className='relative'>
       <PageLayout minHeight='calc(100vh - 4rem)' bg='secondary'>
-        <PageHeader title='You’re in 🎉' color='white' pb={2}>
+        <PageHeader title='Thanks — we’re confirming payment' color='white' pb={2}>
           <Divider borderTopColor='secondary' borderTopWidth={2} opacity={1} />
         </PageHeader>
 
         <div className='container text-white mb-48 flex w-full'>
           <VStack alignItems='start' gap={6} w='full'>
             <p className='text-xl'>
-              Your ticket is confirmed. We’ve emailed you the details—you can
-              view your ticket anytime on the Tickets page.
+              We’ve got your Venmo claim. Once we match the payment in Venmo,
+              your ticket unlocks automatically and we’ll email you. You can
+              check status anytime on the Tickets page.
             </p>
 
             <div className='flex flex-wrap gap-3 z-50'>
               <Button as={Link} href='/tickets' colorScheme='teal'>
-                View my ticket
+                Back to tickets
                 <Icon className='ml-2 text-2xl' boxSize={4}>
                   <HiArrowRight />
                 </Icon>
-              </Button>
-              <Button
-                as={Link}
-                href='/faqs'
-                colorScheme='teal'
-                variant='outline'
-              >
-                View FAQs
               </Button>
             </div>
           </VStack>

@@ -14,14 +14,16 @@ const baseStyle = definePartsStyle({
   },
   control: {
     background: 'light',
-    borderColor: 'secondary',
+    borderColor: 'gray.400',
     transition: 'all .2s ease',
     _checked: {
       color: 'secondary',
       background: 'secondary',
+      borderColor: 'secondary',
       _hover: {
         color: 'primary',
         background: 'primary',
+        borderColor: 'primary',
       },
     },
     _hover: {

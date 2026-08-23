@@ -44,10 +44,12 @@ const OwnedTicketCard = ({ ticket, holderName }: OwnedTicketCardProps) => {
             <p className='font-primary uppercase font-extrabold text-lg lg:text-xl leading-none'>
               Liquid Miles
             </p>
-            <p className='text-sm text-white/80 mt-1'>Fort Collins, CO · 2026</p>
+            <p className='text-sm text-white/80 mt-1'>
+              Fort Collins, CO · 2026
+            </p>
           </div>
         </div>
-        <span className='rounded-md border border-primary bg-primary px-2 py-1 font-primary uppercase text-xs font-bold tracking-wide text-secondary'>
+        <span className='rounded-md border border-primary bg-primary px-1.5 py-0.5 lg:px-2 lg:py-1 font-primary uppercase text-[0.625rem] lg:text-xs font-bold tracking-wide text-secondary shrink-0'>
           Admit one
         </span>
       </header>
