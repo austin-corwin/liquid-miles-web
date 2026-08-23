@@ -3,7 +3,6 @@
 import {
   Fade,
   FormControl,
-  FormControlProps,
   FormHelperText,
   FormLabel,
   Radio,
@@ -17,8 +16,8 @@ export interface RadioOption {
   value: string
 }
 
-export interface RadioFieldProps
-  extends Omit<FormControlProps, 'onChange' | 'onBlur'> {
+/** Explicit props only — avoids FormControlProps.onChange type clash with RadioGroup */
+export interface RadioFieldProps {
   id: string
   label?: string
   helperText?: React.ReactNode
@@ -29,6 +28,9 @@ export interface RadioFieldProps
   onBlur?: React.FocusEventHandler
   labelColor?: string
   helperTextColor?: string
+  isRequired?: boolean
+  isReadOnly?: boolean
+  isDisabled?: boolean
 }
 
 const RadioField: React.FC<RadioFieldProps> = ({
@@ -42,15 +44,17 @@ const RadioField: React.FC<RadioFieldProps> = ({
   onBlur,
   labelColor,
   helperTextColor,
-  ...formControlProps
+  isRequired,
+  isReadOnly,
+  isDisabled,
 }) => {
   return (
     <FormControl
-      isRequired={formControlProps?.isRequired}
-      isReadOnly={formControlProps?.isReadOnly}
+      isRequired={isRequired}
+      isReadOnly={isReadOnly}
+      isDisabled={isDisabled}
       isInvalid={!!error}
       id={id}
-      {...formControlProps}
     >
       <FormLabel color={labelColor}>{label}</FormLabel>
       <RadioGroup
