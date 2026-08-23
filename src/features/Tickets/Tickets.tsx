@@ -7,7 +7,7 @@ import { getTicketsFromPublicMetadata } from '@/features/Tickets/getTicketsFromP
 import { OwnedTicketsSection } from '@/features/Tickets/OwnedTicketsSection'
 import { PendingTicketsSection } from '@/features/Tickets/PendingTicketsSection'
 import { TICKET_TYPES } from '@/features/Tickets/ticketOptions'
-import { Button, Heading, Icon } from '@chakra-ui/react'
+import { Button, Heading, Icon, Spinner } from '@chakra-ui/react'
 import { useUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -103,7 +103,11 @@ const Tickets = () => {
         </h1>
         <div className='relative bg-tertiary pb-48'>
           <div className='w-full bg-tertiary flex flex-col items-center z-10 pb-48'>
-            {hasTicket ? (
+            {!isLoaded ? (
+              <div className='mt-16'>
+                <Spinner color='teal.600' size='lg' />
+              </div>
+            ) : hasTicket ? (
               <OwnedTicketsSection tickets={tickets} holderName={holderName} />
             ) : hasPending ? (
               <PendingTicketsSection claims={pendingClaims} />
