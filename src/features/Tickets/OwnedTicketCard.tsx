@@ -45,7 +45,7 @@ const OwnedTicketCard = ({ ticket, holderName }: OwnedTicketCardProps) => {
               Liquid Miles
             </p>
             <p className='text-sm text-white/80 mt-1'>
-              Fort Collins, CO · 2026
+              Fort Collins, CO · 10/3/2026
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ const OwnedTicketCard = ({ ticket, holderName }: OwnedTicketCardProps) => {
             <p className='text-xs uppercase tracking-widest text-white/70'>
               Event
             </p>
-            <p className='font-semibold'>Liquid Miles 2026</p>
+            <p className='font-semibold'>October 3, 2026</p>
           </div>
           <div>
             <p className='text-xs uppercase tracking-widest text-white/70'>
